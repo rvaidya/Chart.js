@@ -517,7 +517,7 @@ module.exports = LinearScaleBase.extend({
 				drawPointLabels(me);
 			}
 
-			if (opts.backgroundColors && opts.backgroundColors.length === getValueCount(scale)) {
+			if (opts.backgroundColors && opts.backgroundColors.length === getValueCount(me)) {
 				drawBackgroundColors(me);
 			}
 

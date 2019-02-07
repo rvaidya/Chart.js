@@ -1021,13 +1021,13 @@ function getRgba(string) {
    }
 
    for (var i = 0; i < rgb.length; i++) {
-      rgb[i] = scale$1(rgb[i], 0, 255);
+      rgb[i] = scale(rgb[i], 0, 255);
    }
    if (!a && a != 0) {
       a = 1;
    }
    else {
-      a = scale$1(a, 0, 1);
+      a = scale(a, 0, 1);
    }
    rgb[3] = a;
    return rgb;
@@ -1041,10 +1041,10 @@ function getHsla(string) {
    var match = string.match(hsl);
    if (match) {
       var alpha = parseFloat(match[4]);
-      var h = scale$1(parseInt(match[1]), 0, 360),
-          s = scale$1(parseFloat(match[2]), 0, 100),
-          l = scale$1(parseFloat(match[3]), 0, 100),
-          a = scale$1(isNaN(alpha) ? 1 : alpha, 0, 1);
+      var h = scale(parseInt(match[1]), 0, 360),
+          s = scale(parseFloat(match[2]), 0, 100),
+          l = scale(parseFloat(match[3]), 0, 100),
+          a = scale(isNaN(alpha) ? 1 : alpha, 0, 1);
       return [h, s, l, a];
    }
 }
@@ -1057,10 +1057,10 @@ function getHwb(string) {
    var match = string.match(hwb);
    if (match) {
     var alpha = parseFloat(match[4]);
-      var h = scale$1(parseInt(match[1]), 0, 360),
-          w = scale$1(parseFloat(match[2]), 0, 100),
-          b = scale$1(parseFloat(match[3]), 0, 100),
-          a = scale$1(isNaN(alpha) ? 1 : alpha, 0, 1);
+      var h = scale(parseInt(match[1]), 0, 360),
+          w = scale(parseFloat(match[2]), 0, 100),
+          b = scale(parseFloat(match[3]), 0, 100),
+          a = scale(isNaN(alpha) ? 1 : alpha, 0, 1);
       return [h, w, b, a];
    }
 }
@@ -1157,7 +1157,7 @@ function keyword(rgb) {
 }
 
 // helpers
-function scale$1(num, min, max) {
+function scale(num, min, max) {
    return Math.min(Math.max(min, num), max);
 }
 
@@ -12408,7 +12408,7 @@ var scale_radialLinear = scale_linearbase.extend({
 				drawPointLabels(me);
 			}
 
-			if (opts.backgroundColors && opts.backgroundColors.length === getValueCount(scale)) {
+			if (opts.backgroundColors && opts.backgroundColors.length === getValueCount(me)) {
 				drawBackgroundColors(me);
 			}
 
