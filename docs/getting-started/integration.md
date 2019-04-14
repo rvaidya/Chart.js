@@ -25,7 +25,7 @@ import Chart from 'chart.js';
 var myChart = new Chart(ctx, {...});
 ```
 
-**Note:** Moment.js is installed along Chart.js as dependency. If you don't want to use Momemt.js (either because you use a different date adapter or simply because don't need time functionalities), you will have to configure your bundler to exclude this dependency (e.g. using [`externals` for Webpack](https://webpack.js.org/configuration/externals/) or [`external` for Rollup](https://rollupjs.org/guide/en#peer-dependencies)).
+**Note:** Moment.js is installed along Chart.js as dependency. If you don't want to use Moment.js (either because you use a different date adapter or simply because don't need time functionalities), you will have to configure your bundler to exclude this dependency (e.g. using [`externals` for Webpack](https://webpack.js.org/configuration/externals/) or [`external` for Rollup](https://rollupjs.org/guide/en#peer-dependencies)).
 
 ```javascript
 // Webpack
@@ -83,4 +83,19 @@ require(['moment'], function() {
         new Chart(ctx, {...});
     });
 });
+```
+
+## Content Security Policy
+
+By default, Chart.js injects CSS directly into the DOM. For webpages secured using [Content Security Policy (CSP)](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP), this requires to allow `style-src 'unsafe-inline'`. For stricter CSP environments, where only `style-src 'self'` is allowed, the following CSS file needs to be manually added to your webpage:
+
+```html
+<link rel="stylesheet" type="text/css" href="path/to/chartjs/dist/Chart.min.css">
+```
+
+And the style injection must be turned off **before creating the first chart**:
+
+```javascript
+// Disable automatic style injection
+Chart.platform.disableCSSInjection = true;
 ```
