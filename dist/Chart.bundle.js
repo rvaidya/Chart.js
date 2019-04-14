@@ -1,5 +1,5 @@
 /*!
- * Chart.js v2.7.3
+ * Chart.js v2.8.0
  * https://www.chartjs.org
  * (c) 2019 Chart.js Contributors
  * Released under the MIT License
@@ -1670,7 +1670,7 @@ var helpers = {
 
 	/**
 	 * Returns a unique id, sequentially generated from a global variable.
-	 * @returns {Number}
+	 * @returns {number}
 	 * @function
 	 */
 	uid: (function() {
@@ -1683,7 +1683,7 @@ var helpers = {
 	/**
 	 * Returns true if `value` is neither null nor undefined, else returns false.
 	 * @param {*} value - The value to test.
-	 * @returns {Boolean}
+	 * @returns {boolean}
 	 * @since 2.7.0
 	 */
 	isNullOrUndef: function(value) {
@@ -1693,7 +1693,7 @@ var helpers = {
 	/**
 	 * Returns true if `value` is an array (including typed arrays), else returns false.
 	 * @param {*} value - The value to test.
-	 * @returns {Boolean}
+	 * @returns {boolean}
 	 * @function
 	 */
 	isArray: function(value) {
@@ -1710,7 +1710,7 @@ var helpers = {
 	/**
 	 * Returns true if `value` is an object (excluding null), else returns false.
 	 * @param {*} value - The value to test.
-	 * @returns {Boolean}
+	 * @returns {boolean}
 	 * @since 2.7.0
 	 */
 	isObject: function(value) {
@@ -1720,7 +1720,7 @@ var helpers = {
 	/**
 	 * Returns true if `value` is a finite number, else returns false
 	 * @param {*} value  - The value to test.
-	 * @returns {Boolean}
+	 * @returns {boolean}
 	 */
 	isFinite: function(value) {
 		return (typeof value === 'number' || value instanceof Number) && isFinite(value);
@@ -1739,7 +1739,7 @@ var helpers = {
 	/**
 	 * Returns value at the given `index` in array if defined, else returns `defaultValue`.
 	 * @param {Array} value - The array to lookup for value at `index`.
-	 * @param {Number} index - The index in `value` to lookup for value.
+	 * @param {number} index - The index in `value` to lookup for value.
 	 * @param {*} defaultValue - The value to return if `value[index]` is undefined.
 	 * @returns {*}
 	 */
@@ -1750,9 +1750,9 @@ var helpers = {
 	/**
 	 * Calls `fn` with the given `args` in the scope defined by `thisArg` and returns the
 	 * value returned by `fn`. If `fn` is not a function, this method returns undefined.
-	 * @param {Function} fn - The function to call.
+	 * @param {function} fn - The function to call.
 	 * @param {Array|undefined|null} args - The arguments with which `fn` should be called.
-	 * @param {Object} [thisArg] - The value of `this` provided for the call to `fn`.
+	 * @param {object} [thisArg] - The value of `this` provided for the call to `fn`.
 	 * @returns {*}
 	 */
 	callback: function(fn, args, thisArg) {
@@ -1765,10 +1765,10 @@ var helpers = {
 	 * Note(SB) for performance sake, this method should only be used when loopable type
 	 * is unknown or in none intensive code (not called often and small loopable). Else
 	 * it's preferable to use a regular for() loop and save extra function calls.
-	 * @param {Object|Array} loopable - The object or array to be iterated.
-	 * @param {Function} fn - The function to call for each item.
-	 * @param {Object} [thisArg] - The value of `this` provided for the call to `fn`.
-	 * @param {Boolean} [reverse] - If true, iterates backward on the loopable.
+	 * @param {object|Array} loopable - The object or array to be iterated.
+	 * @param {function} fn - The function to call for each item.
+	 * @param {object} [thisArg] - The value of `this` provided for the call to `fn`.
+	 * @param {boolean} [reverse] - If true, iterates backward on the loopable.
 	 */
 	each: function(loopable, fn, thisArg, reverse) {
 		var i, len, keys;
@@ -1797,7 +1797,7 @@ var helpers = {
 	 * @see https://stackoverflow.com/a/14853974
 	 * @param {Array} a0 - The array to compare
 	 * @param {Array} a1 - The array to compare
-	 * @returns {Boolean}
+	 * @returns {boolean}
 	 */
 	arrayEquals: function(a0, a1) {
 		var i, ilen, v0, v1;
@@ -1883,11 +1883,11 @@ var helpers = {
 	/**
 	 * Recursively deep copies `source` properties into `target` with the given `options`.
 	 * IMPORTANT: `target` is not cloned and will be updated with `source` properties.
-	 * @param {Object} target - The target object in which all sources are merged into.
-	 * @param {Object|Array(Object)} source - Object(s) to merge into `target`.
-	 * @param {Object} [options] - Merging options:
-	 * @param {Function} [options.merger] - The merge method (key, target, source, options)
-	 * @returns {Object} The `target` object.
+	 * @param {object} target - The target object in which all sources are merged into.
+	 * @param {object|object[]} source - Object(s) to merge into `target`.
+	 * @param {object} [options] - Merging options:
+	 * @param {function} [options.merger] - The merge method (key, target, source, options)
+	 * @returns {object} The `target` object.
 	 */
 	merge: function(target, source, options) {
 		var sources = helpers.isArray(source) ? source : [source];
@@ -1919,9 +1919,9 @@ var helpers = {
 	/**
 	 * Recursively deep copies `source` properties into `target` *only* if not defined in target.
 	 * IMPORTANT: `target` is not cloned and will be updated with `source` properties.
-	 * @param {Object} target - The target object in which all sources are merged into.
-	 * @param {Object|Array(Object)} source - Object(s) to merge into `target`.
-	 * @returns {Object} The `target` object.
+	 * @param {object} target - The target object in which all sources are merged into.
+	 * @param {object|object[]} source - Object(s) to merge into `target`.
+	 * @returns {object} The `target` object.
 	 */
 	mergeIf: function(target, source) {
 		return helpers.merge(target, source, {merger: helpers._mergerIf});
@@ -1929,10 +1929,10 @@ var helpers = {
 
 	/**
 	 * Applies the contents of two or more objects together into the first object.
-	 * @param {Object} target - The target object in which all objects are merged into.
-	 * @param {Object} arg1 - Object containing additional properties to merge in target.
-	 * @param {Object} argN - Additional objects containing properties to merge in target.
-	 * @returns {Object} The `target` object.
+	 * @param {object} target - The target object in which all objects are merged into.
+	 * @param {object} arg1 - Object containing additional properties to merge in target.
+	 * @param {object} argN - Additional objects containing properties to merge in target.
+	 * @returns {object} The `target` object.
 	 */
 	extend: function(target) {
 		var setFn = function(value, key) {
@@ -2283,11 +2283,11 @@ var exports$1 = {
 	 * Creates a "path" for a rectangle with rounded corners at position (x, y) with a
 	 * given size (width, height) and the same `radius` for all corners.
 	 * @param {CanvasRenderingContext2D} ctx - The canvas 2D Context.
-	 * @param {Number} x - The x axis of the coordinate for the rectangle starting point.
-	 * @param {Number} y - The y axis of the coordinate for the rectangle starting point.
-	 * @param {Number} width - The rectangle's width.
-	 * @param {Number} height - The rectangle's height.
-	 * @param {Number} radius - The rounded amount (in pixels) for the four corners.
+	 * @param {number} x - The x axis of the coordinate for the rectangle starting point.
+	 * @param {number} y - The y axis of the coordinate for the rectangle starting point.
+	 * @param {number} width - The rectangle's width.
+	 * @param {number} height - The rectangle's height.
+	 * @param {number} radius - The rounded amount (in pixels) for the four corners.
 	 * @todo handle `radius` as top-left, top-right, bottom-right, bottom-left array/object?
 	 */
 	roundedRect: function(ctx, x, y, width, height, radius) {
@@ -2432,9 +2432,9 @@ var exports$1 = {
 
 	/**
 	 * Returns true if the point is inside the rectangle
-	 * @param {Object} point - The point to test
-	 * @param {Object} area - The rectangle
-	 * @returns {Boolean}
+	 * @param {object} point - The point to test
+	 * @param {object} area - The rectangle
+	 * @returns {boolean}
 	 * @private
 	 */
 	_isPointInArea: function(point, area) {
@@ -2536,8 +2536,8 @@ var valueOrDefault = helpers_core.valueOrDefault;
 
 /**
  * Converts the given font object into a CSS font string.
- * @param {Object} font - A font object.
- * @return {String} The CSS font string. See https://developer.mozilla.org/en-US/docs/Web/CSS/font
+ * @param {object} font - A font object.
+ * @return {string} The CSS font string. See https://developer.mozilla.org/en-US/docs/Web/CSS/font
  * @private
  */
 function toFontString(font) {
@@ -2558,9 +2558,9 @@ function toFontString(font) {
 var helpers_options = {
 	/**
 	 * Converts the given line height `value` in pixels for a specific font `size`.
-	 * @param {Number|String} value - The lineHeight to parse (eg. 1.6, '14px', '75%', '1.6em').
-	 * @param {Number} size - The font size (in pixels) used to resolve relative `value`.
-	 * @returns {Number} The effective line height in pixels (size * 1.2 if value is invalid).
+	 * @param {number|string} value - The lineHeight to parse (eg. 1.6, '14px', '75%', '1.6em').
+	 * @param {number} size - The font size (in pixels) used to resolve relative `value`.
+	 * @returns {number} The effective line height in pixels (size * 1.2 if value is invalid).
 	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/line-height
 	 * @since 2.7.0
 	 */
@@ -2587,9 +2587,9 @@ var helpers_options = {
 
 	/**
 	 * Converts the given value into a padding object with pre-computed width/height.
-	 * @param {Number|Object} value - If a number, set the value to all TRBL component,
+	 * @param {number|object} value - If a number, set the value to all TRBL component,
 	 *  else, if and object, use defined properties and sets undefined ones to 0.
-	 * @returns {Object} The padding values (top, right, bottom, left, width, height)
+	 * @returns {object} The padding values (top, right, bottom, left, width, height)
 	 * @since 2.7.0
 	 */
 	toPadding: function(value) {
@@ -2616,8 +2616,8 @@ var helpers_options = {
 
 	/**
 	 * Parses font options and returns the font object.
-	 * @param {Object} options - A object that contains font options to be parsed.
-	 * @return {Object} The font object.
+	 * @param {object} options - A object that contains font options to be parsed.
+	 * @return {object} The font object.
 	 * @todo Support font.* options and renamed to toFont().
 	 * @private
 	 */
@@ -2639,10 +2639,10 @@ var helpers_options = {
 
 	/**
 	 * Evaluates the given `inputs` sequentially and returns the first defined value.
-	 * @param {Array[]} inputs - An array of values, falling back to the last value.
-	 * @param {Object} [context] - If defined and the current value is a function, the value
+	 * @param {Array} inputs - An array of values, falling back to the last value.
+	 * @param {object} [context] - If defined and the current value is a function, the value
 	 * is called with `context` as first argument and the result becomes the new input.
-	 * @param {Number} [index] - If defined and the current value is an array, the value
+	 * @param {number} [index] - If defined and the current value is an array, the value
 	 * at `index` become the new input.
 	 * @since 2.7.0
 	 */
@@ -2844,8 +2844,8 @@ var core_animations = {
 	/**
 	 * @param {Chart} chart - The chart to animate.
 	 * @param {Chart.Animation} animation - The animation that we will animate.
-	 * @param {Number} duration - The animation duration in ms.
-	 * @param {Boolean} lazy - if true, the chart is not marked as animating to enable more responsive interactions
+	 * @param {number} duration - The animation duration in ms.
+	 * @param {boolean} lazy - if true, the chart is not marked as animating to enable more responsive interactions
 	 */
 	addAnimation: function(chart, animation, duration, lazy) {
 		var animations = this.animations;
@@ -2917,20 +2917,24 @@ var core_animations = {
 	 */
 	advance: function() {
 		var animations = this.animations;
-		var animation, chart;
+		var animation, chart, numSteps, nextStep;
 		var i = 0;
 
+		// 1 animation per chart, so we are looping charts here
 		while (i < animations.length) {
 			animation = animations[i];
 			chart = animation.chart;
+			numSteps = animation.numSteps;
 
-			animation.currentStep = Math.floor((Date.now() - animation.startTime) / animation.duration * animation.numSteps);
-			animation.currentStep = Math.min(animation.currentStep, animation.numSteps);
+			// Make sure that currentStep starts at 1
+			// https://github.com/chartjs/Chart.js/issues/6104
+			nextStep = Math.floor((Date.now() - animation.startTime) / animation.duration * numSteps) + 1;
+			animation.currentStep = Math.min(nextStep, numSteps);
 
 			helpers$1.callback(animation.render, [chart, animation], chart);
 			helpers$1.callback(animation.onAnimationProgress, [animation], chart);
 
-			if (animation.currentStep >= animation.numSteps) {
+			if (animation.currentStep >= numSteps) {
 				helpers$1.callback(animation.onAnimationComplete, [animation], chart);
 				chart.animating = false;
 				animations.splice(i, 1);
@@ -3164,7 +3168,9 @@ helpers$1.extend(DatasetController.prototype, {
 				unlistenArrayEvents(me._data, me);
 			}
 
-			listenArrayEvents(data, me);
+			if (data && Object.isExtensible(data)) {
+				listenArrayEvents(data, me);
+			}
 			me._data = data;
 		}
 
@@ -3615,8 +3621,8 @@ core_defaults._set('global', {
 	}
 });
 
-function isVertical(bar) {
-	return bar._view.width !== undefined;
+function isVertical(vm) {
+	return vm && vm.width !== undefined;
 }
 
 /**
@@ -3625,24 +3631,21 @@ function isVertical(bar) {
  * @return {Bounds} bounds of the bar
  * @private
  */
-function getBarBounds(bar) {
-	var vm = bar._view;
-	var x1, x2, y1, y2;
+function getBarBounds(vm) {
+	var x1, x2, y1, y2, half;
 
-	if (isVertical(bar)) {
-		// vertical
-		var halfWidth = vm.width / 2;
-		x1 = vm.x - halfWidth;
-		x2 = vm.x + halfWidth;
+	if (isVertical(vm)) {
+		half = vm.width / 2;
+		x1 = vm.x - half;
+		x2 = vm.x + half;
 		y1 = Math.min(vm.y, vm.base);
 		y2 = Math.max(vm.y, vm.base);
 	} else {
-		// horizontal bar
-		var halfHeight = vm.height / 2;
+		half = vm.height / 2;
 		x1 = Math.min(vm.x, vm.base);
 		x2 = Math.max(vm.x, vm.base);
-		y1 = vm.y - halfHeight;
-		y2 = vm.y + halfHeight;
+		y1 = vm.y - half;
+		y2 = vm.y + half;
 	}
 
 	return {
@@ -3653,96 +3656,107 @@ function getBarBounds(bar) {
 	};
 }
 
+function swap(orig, v1, v2) {
+	return orig === v1 ? v2 : orig === v2 ? v1 : orig;
+}
+
+function parseBorderSkipped(vm) {
+	var edge = vm.borderSkipped;
+	var res = {};
+
+	if (!edge) {
+		return res;
+	}
+
+	if (vm.horizontal) {
+		if (vm.base > vm.x) {
+			edge = swap(edge, 'left', 'right');
+		}
+	} else if (vm.base < vm.y) {
+		edge = swap(edge, 'bottom', 'top');
+	}
+
+	res[edge] = true;
+	return res;
+}
+
+function parseBorderWidth(vm, maxW, maxH) {
+	var value = vm.borderWidth;
+	var skip = parseBorderSkipped(vm);
+	var t, r, b, l;
+
+	if (helpers$1.isObject(value)) {
+		t = +value.top || 0;
+		r = +value.right || 0;
+		b = +value.bottom || 0;
+		l = +value.left || 0;
+	} else {
+		t = r = b = l = +value || 0;
+	}
+
+	return {
+		t: skip.top || (t < 0) ? 0 : t > maxH ? maxH : t,
+		r: skip.right || (r < 0) ? 0 : r > maxW ? maxW : r,
+		b: skip.bottom || (b < 0) ? 0 : b > maxH ? maxH : b,
+		l: skip.left || (l < 0) ? 0 : l > maxW ? maxW : l
+	};
+}
+
+function boundingRects(vm) {
+	var bounds = getBarBounds(vm);
+	var width = bounds.right - bounds.left;
+	var height = bounds.bottom - bounds.top;
+	var border = parseBorderWidth(vm, width / 2, height / 2);
+
+	return {
+		outer: {
+			x: bounds.left,
+			y: bounds.top,
+			w: width,
+			h: height
+		},
+		inner: {
+			x: bounds.left + border.l,
+			y: bounds.top + border.t,
+			w: width - border.l - border.r,
+			h: height - border.t - border.b
+		}
+	};
+}
+
+function inRange(vm, x, y) {
+	var skipX = x === null;
+	var skipY = y === null;
+	var bounds = !vm || (skipX && skipY) ? false : getBarBounds(vm);
+
+	return bounds
+		&& (skipX || x >= bounds.left && x <= bounds.right)
+		&& (skipY || y >= bounds.top && y <= bounds.bottom);
+}
+
 var element_rectangle = core_element.extend({
 	draw: function() {
 		var ctx = this._chart.ctx;
 		var vm = this._view;
-		var left, right, top, bottom, signX, signY, borderSkipped;
-		var borderWidth = vm.borderWidth;
+		var rects = boundingRects(vm);
+		var outer = rects.outer;
+		var inner = rects.inner;
 
-		if (!vm.horizontal) {
-			// bar
-			left = vm.x - vm.width / 2;
-			right = vm.x + vm.width / 2;
-			top = vm.y;
-			bottom = vm.base;
-			signX = 1;
-			signY = bottom > top ? 1 : -1;
-			borderSkipped = vm.borderSkipped || 'bottom';
-		} else {
-			// horizontal bar
-			left = vm.base;
-			right = vm.x;
-			top = vm.y - vm.height / 2;
-			bottom = vm.y + vm.height / 2;
-			signX = right > left ? 1 : -1;
-			signY = 1;
-			borderSkipped = vm.borderSkipped || 'left';
-		}
-
-		// Canvas doesn't allow us to stroke inside the width so we can
-		// adjust the sizes to fit if we're setting a stroke on the line
-		if (borderWidth) {
-			// borderWidth shold be less than bar width and bar height.
-			var barSize = Math.min(Math.abs(left - right), Math.abs(top - bottom));
-			borderWidth = borderWidth > barSize ? barSize : borderWidth;
-			var halfStroke = borderWidth / 2;
-			// Adjust borderWidth when bar top position is near vm.base(zero).
-			var borderLeft = left + (borderSkipped !== 'left' ? halfStroke * signX : 0);
-			var borderRight = right + (borderSkipped !== 'right' ? -halfStroke * signX : 0);
-			var borderTop = top + (borderSkipped !== 'top' ? halfStroke * signY : 0);
-			var borderBottom = bottom + (borderSkipped !== 'bottom' ? -halfStroke * signY : 0);
-			// not become a vertical line?
-			if (borderLeft !== borderRight) {
-				top = borderTop;
-				bottom = borderBottom;
-			}
-			// not become a horizontal line?
-			if (borderTop !== borderBottom) {
-				left = borderLeft;
-				right = borderRight;
-			}
-		}
-
-		ctx.beginPath();
 		ctx.fillStyle = vm.backgroundColor;
-		ctx.strokeStyle = vm.borderColor;
-		ctx.lineWidth = borderWidth;
+		ctx.fillRect(outer.x, outer.y, outer.w, outer.h);
 
-		// Corner points, from bottom-left to bottom-right clockwise
-		// | 1 2 |
-		// | 0 3 |
-		var corners = [
-			[left, bottom],
-			[left, top],
-			[right, top],
-			[right, bottom]
-		];
-
-		// Find first (starting) corner with fallback to 'bottom'
-		var borders = ['bottom', 'left', 'top', 'right'];
-		var startCorner = borders.indexOf(borderSkipped, 0);
-		if (startCorner === -1) {
-			startCorner = 0;
+		if (outer.w === inner.w && outer.h === inner.h) {
+			return;
 		}
 
-		function cornerAt(index) {
-			return corners[(startCorner + index) % 4];
-		}
-
-		// Draw rectangle from 'startCorner'
-		var corner = cornerAt(0);
-		ctx.moveTo(corner[0], corner[1]);
-
-		for (var i = 1; i < 4; i++) {
-			corner = cornerAt(i);
-			ctx.lineTo(corner[0], corner[1]);
-		}
-
-		ctx.fill();
-		if (borderWidth) {
-			ctx.stroke();
-		}
+		ctx.save();
+		ctx.beginPath();
+		ctx.rect(outer.x, outer.y, outer.w, outer.h);
+		ctx.clip();
+		ctx.fillStyle = vm.borderColor;
+		ctx.rect(inner.x, inner.y, inner.w, inner.h);
+		ctx.fill('evenodd');
+		ctx.restore();
 	},
 
 	height: function() {
@@ -3751,48 +3765,28 @@ var element_rectangle = core_element.extend({
 	},
 
 	inRange: function(mouseX, mouseY) {
-		var inRange = false;
-
-		if (this._view) {
-			var bounds = getBarBounds(this);
-			inRange = mouseX >= bounds.left && mouseX <= bounds.right && mouseY >= bounds.top && mouseY <= bounds.bottom;
-		}
-
-		return inRange;
+		return inRange(this._view, mouseX, mouseY);
 	},
 
 	inLabelRange: function(mouseX, mouseY) {
-		var me = this;
-		if (!me._view) {
-			return false;
-		}
-
-		var inRange = false;
-		var bounds = getBarBounds(me);
-
-		if (isVertical(me)) {
-			inRange = mouseX >= bounds.left && mouseX <= bounds.right;
-		} else {
-			inRange = mouseY >= bounds.top && mouseY <= bounds.bottom;
-		}
-
-		return inRange;
+		var vm = this._view;
+		return isVertical(vm)
+			? inRange(vm, mouseX, null)
+			: inRange(vm, null, mouseY);
 	},
 
 	inXRange: function(mouseX) {
-		var bounds = getBarBounds(this);
-		return mouseX >= bounds.left && mouseX <= bounds.right;
+		return inRange(this._view, mouseX, null);
 	},
 
 	inYRange: function(mouseY) {
-		var bounds = getBarBounds(this);
-		return mouseY >= bounds.top && mouseY <= bounds.bottom;
+		return inRange(this._view, null, mouseY);
 	},
 
 	getCenterPoint: function() {
 		var vm = this._view;
 		var x, y;
-		if (isVertical(this)) {
+		if (isVertical(vm)) {
 			x = vm.x;
 			y = (vm.y + vm.base) / 2;
 		} else {
@@ -3806,7 +3800,7 @@ var element_rectangle = core_element.extend({
 	getArea: function() {
 		var vm = this._view;
 
-		return isVertical(this)
+		return isVertical(vm)
 			? vm.width * Math.abs(vm.y - vm.base)
 			: vm.height * Math.abs(vm.x - vm.base);
 	},
@@ -4015,8 +4009,8 @@ var controller_bar = core_datasetController.extend({
 
 	/**
 	 * Returns the stacks based on groups and bar visibility.
-	 * @param {Number} [last] - The dataset index
-	 * @returns {Array} The stack list
+	 * @param {number} [last] - The dataset index
+	 * @returns {string[]} The list of stack IDs
 	 * @private
 	 */
 	_getStacks: function(last) {
@@ -4051,9 +4045,9 @@ var controller_bar = core_datasetController.extend({
 
 	/**
 	 * Returns the stack index for the given dataset based on groups and bar visibility.
-	 * @param {Number} [datasetIndex] - The dataset index
-	 * @param {String} [name] - The stack name to find
-	 * @returns {Number} The stack index
+	 * @param {number} [datasetIndex] - The dataset index
+	 * @param {string} [name] - The stack name to find
+	 * @returns {number} The stack index
 	 * @private
 	 */
 	getStackIndex: function(datasetIndex, name) {
@@ -4411,6 +4405,7 @@ var controller_bubble = core_datasetController.extend({
 });
 
 var resolve$3 = helpers$1.options.resolve;
+var valueOrDefault$4 = helpers$1.valueOrDefault;
 
 core_defaults._set('doughnut', {
 	animation: {
@@ -4557,6 +4552,7 @@ var controller_doughnut = core_datasetController.extend({
 		var arcs = meta.data;
 		var cutoutPercentage = opts.cutoutPercentage;
 		var circumference = opts.circumference;
+		var chartWeight = me._getRingWeight(me.index);
 		var i, ilen;
 
 		// If the chart's circumference isn't a full circle, calculate minSize as a ratio of the width/height of the arc
@@ -4585,14 +4581,14 @@ var controller_doughnut = core_datasetController.extend({
 		chart.borderWidth = me.getMaxBorderWidth();
 		chart.outerRadius = Math.max((minSize - chart.borderWidth) / 2, 0);
 		chart.innerRadius = Math.max(cutoutPercentage ? (chart.outerRadius / 100) * (cutoutPercentage) : 0, 0);
-		chart.radiusLength = (chart.outerRadius - chart.innerRadius) / chart.getVisibleDatasetCount();
+		chart.radiusLength = (chart.outerRadius - chart.innerRadius) / (me._getVisibleDatasetWeightTotal() || 1);
 		chart.offsetX = offset.x * chart.outerRadius;
 		chart.offsetY = offset.y * chart.outerRadius;
 
 		meta.total = me.calculateTotal();
 
-		me.outerRadius = chart.outerRadius - (chart.radiusLength * me.getRingIndex(me.index));
-		me.innerRadius = Math.max(me.outerRadius - chart.radiusLength, 0);
+		me.outerRadius = chart.outerRadius - chart.radiusLength * me._getRingWeightOffset(me.index);
+		me.innerRadius = Math.max(me.outerRadius - chart.radiusLength * chartWeight, 0);
 
 		for (i = 0, ilen = arcs.length; i < ilen; ++i) {
 			me.updateElement(arcs[i], i, reset);
@@ -4727,7 +4723,6 @@ var controller_doughnut = core_datasetController.extend({
 		var model = arc._model;
 		var options = arc._options;
 		var getHoverColor = helpers$1.getHoverColor;
-		var valueOrDefault = helpers$1.valueOrDefault;
 
 		arc.$previousStyle = {
 			backgroundColor: model.backgroundColor,
@@ -4735,9 +4730,9 @@ var controller_doughnut = core_datasetController.extend({
 			borderWidth: model.borderWidth,
 		};
 
-		model.backgroundColor = valueOrDefault(options.hoverBackgroundColor, getHoverColor(options.backgroundColor));
-		model.borderColor = valueOrDefault(options.hoverBorderColor, getHoverColor(options.borderColor));
-		model.borderWidth = valueOrDefault(options.hoverBorderWidth, options.borderWidth);
+		model.backgroundColor = valueOrDefault$4(options.hoverBackgroundColor, getHoverColor(options.backgroundColor));
+		model.borderColor = valueOrDefault$4(options.hoverBorderColor, getHoverColor(options.borderColor));
+		model.borderWidth = valueOrDefault$4(options.hoverBorderWidth, options.borderWidth);
 	},
 
 	/**
@@ -4780,6 +4775,37 @@ var controller_doughnut = core_datasetController.extend({
 		}
 
 		return values;
+	},
+
+	/**
+	 * Get radius length offset of the dataset in relation to the visible datasets weights. This allows determining the inner and outer radius correctly
+	 * @private
+	 */
+	_getRingWeightOffset: function(datasetIndex) {
+		var ringWeightOffset = 0;
+
+		for (var i = 0; i < datasetIndex; ++i) {
+			if (this.chart.isDatasetVisible(i)) {
+				ringWeightOffset += this._getRingWeight(i);
+			}
+		}
+
+		return ringWeightOffset;
+	},
+
+	/**
+	 * @private
+	 */
+	_getRingWeight: function(dataSetIndex) {
+		return Math.max(valueOrDefault$4(this.chart.data.datasets[dataSetIndex].weight, 1), 0);
+	},
+
+	/**
+	 * Returns the sum of all visibile data set weights.  This value can be 0.
+	 * @private
+	 */
+	_getVisibleDatasetWeightTotal: function() {
+		return this._getRingWeightOffset(this.chart.data.datasets.length);
 	}
 });
 
@@ -4835,7 +4861,7 @@ var controller_horizontalBar = controller_bar.extend({
 	}
 });
 
-var valueOrDefault$4 = helpers$1.valueOrDefault;
+var valueOrDefault$5 = helpers$1.valueOrDefault;
 var resolve$4 = helpers$1.options.resolve;
 var isPointInArea = helpers$1.canvas._isPointInArea;
 
@@ -4860,7 +4886,7 @@ core_defaults._set('line', {
 });
 
 function lineEnabled(dataset, options) {
-	return valueOrDefault$4(dataset.showLine, options.showLines);
+	return valueOrDefault$5(dataset.showLine, options.showLines);
 }
 
 var controller_line = core_datasetController.extend({
@@ -4921,6 +4947,7 @@ var controller_line = core_datasetController.extend({
 		var value = dataset.data[index];
 		var yScale = me.getScaleForId(meta.yAxisID);
 		var xScale = me.getScaleForId(meta.xAxisID);
+		var lineModel = meta.dataset._model;
 		var x, y;
 
 		var options = me._resolvePointOptions(point, index);
@@ -4947,10 +4974,10 @@ var controller_line = core_datasetController.extend({
 			backgroundColor: options.backgroundColor,
 			borderColor: options.borderColor,
 			borderWidth: options.borderWidth,
-			tension: meta.dataset._model ? meta.dataset._model.tension : 0,
-			steppedLine: meta.dataset._model ? meta.dataset._model.steppedLine : false,
+			tension: valueOrDefault$5(custom.tension, lineModel ? lineModel.tension : 0),
+			steppedLine: lineModel ? lineModel.steppedLine : false,
 			// Tooltip
-			hitRadius: options.hitRadius,
+			hitRadius: options.hitRadius
 		};
 	},
 
@@ -4985,7 +5012,7 @@ var controller_line = core_datasetController.extend({
 			hoverRadius: 'pointHoverRadius',
 			pointStyle: 'pointStyle',
 			radius: 'pointRadius',
-			rotation: 'pointRotation',
+			rotation: 'pointRotation'
 		};
 		var keys = Object.keys(ELEMENT_OPTIONS);
 
@@ -5039,8 +5066,8 @@ var controller_line = core_datasetController.extend({
 		// The default behavior of lines is to break at null values, according
 		// to https://github.com/chartjs/Chart.js/issues/2435#issuecomment-216718158
 		// This option gives lines the ability to span gaps
-		values.spanGaps = valueOrDefault$4(dataset.spanGaps, options.spanGaps);
-		values.tension = resolve$4([custom.tension, dataset.lineTension, elementOptions.tension]);
+		values.spanGaps = valueOrDefault$5(dataset.spanGaps, options.spanGaps);
+		values.tension = valueOrDefault$5(dataset.lineTension, elementOptions.tension);
 		values.steppedLine = resolve$4([custom.steppedLine, dataset.steppedLine, elementOptions.stepped]);
 
 		return values;
@@ -5086,7 +5113,7 @@ var controller_line = core_datasetController.extend({
 		var lineModel = meta.dataset._model;
 		var area = chart.chartArea;
 		var points = meta.data || [];
-		var i, ilen, point, model, controlPoints;
+		var i, ilen, model, controlPoints;
 
 		// Only consider points that are drawn in case the spanGaps option is used
 		if (lineModel.spanGaps) {
@@ -5103,8 +5130,7 @@ var controller_line = core_datasetController.extend({
 			helpers$1.splineCurveMonotone(points);
 		} else {
 			for (i = 0, ilen = points.length; i < ilen; ++i) {
-				point = points[i];
-				model = point._model;
+				model = points[i]._model;
 				controlPoints = helpers$1.splineCurve(
 					helpers$1.previousItem(points, i)._model,
 					model,
@@ -5181,10 +5207,10 @@ var controller_line = core_datasetController.extend({
 			radius: model.radius
 		};
 
-		model.backgroundColor = valueOrDefault$4(options.hoverBackgroundColor, getHoverColor(options.backgroundColor));
-		model.borderColor = valueOrDefault$4(options.hoverBorderColor, getHoverColor(options.borderColor));
-		model.borderWidth = valueOrDefault$4(options.hoverBorderWidth, options.borderWidth);
-		model.radius = valueOrDefault$4(options.hoverRadius, options.radius);
+		model.backgroundColor = valueOrDefault$5(options.hoverBackgroundColor, getHoverColor(options.backgroundColor));
+		model.borderColor = valueOrDefault$5(options.hoverBorderColor, getHoverColor(options.borderColor));
+		model.borderWidth = valueOrDefault$5(options.hoverBorderWidth, options.borderWidth);
+		model.radius = valueOrDefault$5(options.hoverRadius, options.radius);
 	},
 });
 
@@ -5502,6 +5528,7 @@ core_defaults._set('pie', {
 // Pie charts are Doughnut chart with different defaults
 var controller_pie = controller_doughnut;
 
+var valueOrDefault$6 = helpers$1.valueOrDefault;
 var resolve$6 = helpers$1.options.resolve;
 
 core_defaults._set('radar', {
@@ -5528,10 +5555,8 @@ var controller_radar = core_datasetController.extend({
 		var meta = me.getMeta();
 		var line = meta.dataset;
 		var points = meta.data || [];
-		var custom = line.custom || {};
-		var dataset = me.getDataset();
-		var lineElementOptions = me.chart.options.elements.line;
 		var scale = me.chart.scale;
+		var dataset = me.getDataset();
 		var i, ilen;
 
 		// Compatibility: If the properties are defined with only the old name, use those values
@@ -5539,32 +5564,19 @@ var controller_radar = core_datasetController.extend({
 			dataset.lineTension = dataset.tension;
 		}
 
-		helpers$1.extend(meta.dataset, {
-			// Utility
-			_datasetIndex: me.index,
-			_scale: scale,
-			// Data
-			_children: points,
-			_loop: true,
-			// Model
-			_model: {
-				// Appearance
-				tension: resolve$6([custom.tension, dataset.lineTension, lineElementOptions.tension]),
-				backgroundColor: resolve$6([custom.backgroundColor, dataset.backgroundColor, lineElementOptions.backgroundColor]),
-				borderWidth: resolve$6([custom.borderWidth, dataset.borderWidth, lineElementOptions.borderWidth]),
-				borderColor: resolve$6([custom.borderColor, dataset.borderColor, lineElementOptions.borderColor]),
-				fill: resolve$6([custom.fill, dataset.fill, lineElementOptions.fill]),
-				borderCapStyle: resolve$6([custom.borderCapStyle, dataset.borderCapStyle, lineElementOptions.borderCapStyle]),
-				borderDash: resolve$6([custom.borderDash, dataset.borderDash, lineElementOptions.borderDash]),
-				borderDashOffset: resolve$6([custom.borderDashOffset, dataset.borderDashOffset, lineElementOptions.borderDashOffset]),
-				borderJoinStyle: resolve$6([custom.borderJoinStyle, dataset.borderJoinStyle, lineElementOptions.borderJoinStyle]),
-			}
-		});
+		// Utility
+		line._scale = scale;
+		line._datasetIndex = me.index;
+		// Data
+		line._children = points;
+		line._loop = true;
+		// Model
+		line._model = me._resolveLineOptions(line);
 
-		meta.dataset.pivot();
+		line.pivot();
 
 		// Update Points
-		for (i = 0, ilen = points.length; i < ilen; i++) {
+		for (i = 0, ilen = points.length; i < ilen; ++i) {
 			me.updateElement(points[i], i, reset);
 		}
 
@@ -5572,7 +5584,7 @@ var controller_radar = core_datasetController.extend({
 		me.updateBezierControlPoints();
 
 		// Now pivot the point for animation
-		for (i = 0, ilen = points.length; i < ilen; i++) {
+		for (i = 0, ilen = points.length; i < ilen; ++i) {
 			points[i].pivot();
 		}
 	},
@@ -5582,43 +5594,120 @@ var controller_radar = core_datasetController.extend({
 		var custom = point.custom || {};
 		var dataset = me.getDataset();
 		var scale = me.chart.scale;
-		var pointElementOptions = me.chart.options.elements.point;
 		var pointPosition = scale.getPointPositionForValue(index, dataset.data[index]);
+		var options = me._resolvePointOptions(point, index);
+		var lineModel = me.getMeta().dataset._model;
+		var x = reset ? scale.xCenter : pointPosition.x;
+		var y = reset ? scale.yCenter : pointPosition.y;
 
-		// Compatibility: If the properties are defined with only the old name, use those values
-		if ((dataset.radius !== undefined) && (dataset.pointRadius === undefined)) {
-			dataset.pointRadius = dataset.radius;
+		// Utility
+		point._scale = scale;
+		point._options = options;
+		point._datasetIndex = me.index;
+		point._index = index;
+
+		// Desired view properties
+		point._model = {
+			x: x, // value not used in dataset scale, but we want a consistent API between scales
+			y: y,
+			skip: custom.skip || isNaN(x) || isNaN(y),
+			// Appearance
+			radius: options.radius,
+			pointStyle: options.pointStyle,
+			rotation: options.rotation,
+			backgroundColor: options.backgroundColor,
+			borderColor: options.borderColor,
+			borderWidth: options.borderWidth,
+			tension: valueOrDefault$6(custom.tension, lineModel ? lineModel.tension : 0),
+
+			// Tooltip
+			hitRadius: options.hitRadius
+		};
+	},
+
+	/**
+	 * @private
+	 */
+	_resolvePointOptions: function(element, index) {
+		var me = this;
+		var chart = me.chart;
+		var dataset = chart.data.datasets[me.index];
+		var custom = element.custom || {};
+		var options = chart.options.elements.point;
+		var values = {};
+		var i, ilen, key;
+
+		// Scriptable options
+		var context = {
+			chart: chart,
+			dataIndex: index,
+			dataset: dataset,
+			datasetIndex: me.index
+		};
+
+		var ELEMENT_OPTIONS = {
+			backgroundColor: 'pointBackgroundColor',
+			borderColor: 'pointBorderColor',
+			borderWidth: 'pointBorderWidth',
+			hitRadius: 'pointHitRadius',
+			hoverBackgroundColor: 'pointHoverBackgroundColor',
+			hoverBorderColor: 'pointHoverBorderColor',
+			hoverBorderWidth: 'pointHoverBorderWidth',
+			hoverRadius: 'pointHoverRadius',
+			pointStyle: 'pointStyle',
+			radius: 'pointRadius',
+			rotation: 'pointRotation'
+		};
+		var keys = Object.keys(ELEMENT_OPTIONS);
+
+		for (i = 0, ilen = keys.length; i < ilen; ++i) {
+			key = keys[i];
+			values[key] = resolve$6([
+				custom[key],
+				dataset[ELEMENT_OPTIONS[key]],
+				dataset[key],
+				options[key]
+			], context, index);
 		}
-		if ((dataset.hitRadius !== undefined) && (dataset.pointHitRadius === undefined)) {
-			dataset.pointHitRadius = dataset.hitRadius;
+
+		return values;
+	},
+
+	/**
+	 * @private
+	 */
+	_resolveLineOptions: function(element) {
+		var me = this;
+		var chart = me.chart;
+		var dataset = chart.data.datasets[me.index];
+		var custom = element.custom || {};
+		var options = chart.options.elements.line;
+		var values = {};
+		var i, ilen, key;
+
+		var keys = [
+			'backgroundColor',
+			'borderWidth',
+			'borderColor',
+			'borderCapStyle',
+			'borderDash',
+			'borderDashOffset',
+			'borderJoinStyle',
+			'fill'
+		];
+
+		for (i = 0, ilen = keys.length; i < ilen; ++i) {
+			key = keys[i];
+			values[key] = resolve$6([
+				custom[key],
+				dataset[key],
+				options[key]
+			]);
 		}
 
-		helpers$1.extend(point, {
-			// Utility
-			_datasetIndex: me.index,
-			_index: index,
-			_scale: scale,
+		values.tension = valueOrDefault$6(dataset.lineTension, options.tension);
 
-			// Desired view properties
-			_model: {
-				x: reset ? scale.xCenter : pointPosition.x, // value not used in dataset scale, but we want a consistent API between scales
-				y: reset ? scale.yCenter : pointPosition.y,
-
-				// Appearance
-				tension: resolve$6([custom.tension, dataset.lineTension, me.chart.options.elements.line.tension]),
-				radius: resolve$6([custom.radius, dataset.pointRadius, pointElementOptions.radius], undefined, index),
-				backgroundColor: resolve$6([custom.backgroundColor, dataset.pointBackgroundColor, pointElementOptions.backgroundColor], undefined, index),
-				borderColor: resolve$6([custom.borderColor, dataset.pointBorderColor, pointElementOptions.borderColor], undefined, index),
-				borderWidth: resolve$6([custom.borderWidth, dataset.pointBorderWidth, pointElementOptions.borderWidth], undefined, index),
-				pointStyle: resolve$6([custom.pointStyle, dataset.pointStyle, pointElementOptions.pointStyle], undefined, index),
-				rotation: resolve$6([custom.rotation, dataset.pointRotation, pointElementOptions.rotation], undefined, index),
-
-				// Tooltip
-				hitRadius: resolve$6([custom.hitRadius, dataset.pointHitRadius, pointElementOptions.hitRadius], undefined, index)
-			}
-		});
-
-		point._model.skip = custom.skip || isNaN(point._model.x) || isNaN(point._model.y);
+		return values;
 	},
 
 	updateBezierControlPoints: function() {
@@ -5632,7 +5721,7 @@ var controller_radar = core_datasetController.extend({
 			return Math.max(Math.min(pt, max), min);
 		}
 
-		for (i = 0, ilen = points.length; i < ilen; i++) {
+		for (i = 0, ilen = points.length; i < ilen; ++i) {
 			model = points[i]._model;
 			controlPoints = helpers$1.splineCurve(
 				helpers$1.previousItem(points, i, true)._model,
@@ -5650,11 +5739,8 @@ var controller_radar = core_datasetController.extend({
 	},
 
 	setHoverStyle: function(point) {
-		// Point
-		var dataset = this.chart.data.datasets[point._datasetIndex];
-		var custom = point.custom || {};
-		var index = point._index;
 		var model = point._model;
+		var options = point._options;
 		var getHoverColor = helpers$1.getHoverColor;
 
 		point.$previousStyle = {
@@ -5664,10 +5750,10 @@ var controller_radar = core_datasetController.extend({
 			radius: model.radius
 		};
 
-		model.radius = resolve$6([custom.hoverRadius, dataset.pointHoverRadius, this.chart.options.elements.point.hoverRadius], undefined, index);
-		model.backgroundColor = resolve$6([custom.hoverBackgroundColor, dataset.pointHoverBackgroundColor, getHoverColor(model.backgroundColor)], undefined, index);
-		model.borderColor = resolve$6([custom.hoverBorderColor, dataset.pointHoverBorderColor, getHoverColor(model.borderColor)], undefined, index);
-		model.borderWidth = resolve$6([custom.hoverBorderWidth, dataset.pointHoverBorderWidth, model.borderWidth], undefined, index);
+		model.backgroundColor = valueOrDefault$6(options.hoverBackgroundColor, getHoverColor(options.backgroundColor));
+		model.borderColor = valueOrDefault$6(options.hoverBorderColor, getHoverColor(options.borderColor));
+		model.borderWidth = valueOrDefault$6(options.hoverBorderWidth, options.borderWidth);
+		model.radius = valueOrDefault$6(options.hoverRadius, options.radius);
 	}
 });
 
@@ -5726,7 +5812,7 @@ var controllers = {
  * Helper function to get relative position for an event
  * @param {Event|IEvent} event - The event to get the position for
  * @param {Chart} chart - The chart
- * @returns {Point} the event position
+ * @returns {object} the event position
  */
 function getRelativePosition(e, chart) {
 	if (e.native) {
@@ -5741,8 +5827,8 @@ function getRelativePosition(e, chart) {
 
 /**
  * Helper function to traverse all of the visible elements in the chart
- * @param chart {chart} the chart
- * @param handler {Function} the callback to execute for each visible item
+ * @param {Chart} chart - the chart
+ * @param {function} handler - the callback to execute for each visible item
  */
 function parseVisibleItems(chart, handler) {
 	var datasets = chart.data.datasets;
@@ -5765,8 +5851,8 @@ function parseVisibleItems(chart, handler) {
 
 /**
  * Helper function to get the items that intersect the event position
- * @param items {ChartElement[]} elements to filter
- * @param position {Point} the point to be nearest to
+ * @param {ChartElement[]} items - elements to filter
+ * @param {object} position - the point to be nearest to
  * @return {ChartElement[]} the nearest items
  */
 function getIntersectItems(chart, position) {
@@ -5783,10 +5869,10 @@ function getIntersectItems(chart, position) {
 
 /**
  * Helper function to get the items nearest to the event position considering all visible items in teh chart
- * @param chart {Chart} the chart to look at elements from
- * @param position {Point} the point to be nearest to
- * @param intersect {Boolean} if true, only consider items that intersect the position
- * @param distanceMetric {Function} function to provide the distance between points
+ * @param {Chart} chart - the chart to look at elements from
+ * @param {object} position - the point to be nearest to
+ * @param {boolean} intersect - if true, only consider items that intersect the position
+ * @param {function} distanceMetric - function to provide the distance between points
  * @return {ChartElement[]} the nearest items
  */
 function getNearestItems(chart, position, intersect, distanceMetric) {
@@ -5800,7 +5886,6 @@ function getNearestItems(chart, position, intersect, distanceMetric) {
 
 		var center = element.getCenterPoint();
 		var distance = distanceMetric(position, center);
-
 		if (distance < minDistance) {
 			nearestItems = [element];
 			minDistance = distance;
@@ -5816,7 +5901,7 @@ function getNearestItems(chart, position, intersect, distanceMetric) {
 /**
  * Get a distance metric function for two points based on the
  * axis mode setting
- * @param {String} axis the axis mode. x|y|xy
+ * @param {string} axis - the axis mode. x|y|xy
  */
 function getDistanceMetricForAxis(axis) {
 	var useX = axis.indexOf('x') !== -1;
@@ -5899,9 +5984,9 @@ var core_interaction = {
 		 * If the options.intersect mode is false, we find the nearest item and return the items at the same index as that item
 		 * @function Chart.Interaction.modes.index
 		 * @since v2.4.0
-		 * @param chart {chart} the chart we are returning items from
-		 * @param e {Event} the event we are find things at
-		 * @param options {IInteractionOptions} options to use during interaction
+		 * @param {Chart} chart - the chart we are returning items from
+		 * @param {Event} e - the event we are find things at
+		 * @param {IInteractionOptions} options - options to use during interaction
 		 * @return {Chart.Element[]} Array of elements that are under the point. If none are found, an empty array is returned
 		 */
 		index: indexMode,
@@ -5910,9 +5995,9 @@ var core_interaction = {
 		 * Returns items in the same dataset. If the options.intersect parameter is true, we only return items if we intersect something
 		 * If the options.intersect is false, we find the nearest item and return the items in that dataset
 		 * @function Chart.Interaction.modes.dataset
-		 * @param chart {chart} the chart we are returning items from
-		 * @param e {Event} the event we are find things at
-		 * @param options {IInteractionOptions} options to use during interaction
+		 * @param {Chart} chart - the chart we are returning items from
+		 * @param {Event} e - the event we are find things at
+		 * @param {IInteractionOptions} options - options to use during interaction
 		 * @return {Chart.Element[]} Array of elements that are under the point. If none are found, an empty array is returned
 		 */
 		dataset: function(chart, e, options) {
@@ -5942,8 +6027,8 @@ var core_interaction = {
 		 * Point mode returns all elements that hit test based on the event position
 		 * of the event
 		 * @function Chart.Interaction.modes.intersect
-		 * @param chart {chart} the chart we are returning items from
-		 * @param e {Event} the event we are find things at
+		 * @param {Chart} chart - the chart we are returning items from
+		 * @param {Event} e - the event we are find things at
 		 * @return {Chart.Element[]} Array of elements that are under the point. If none are found, an empty array is returned
 		 */
 		point: function(chart, e) {
@@ -5954,9 +6039,9 @@ var core_interaction = {
 		/**
 		 * nearest mode returns the element closest to the point
 		 * @function Chart.Interaction.modes.intersect
-		 * @param chart {chart} the chart we are returning items from
-		 * @param e {Event} the event we are find things at
-		 * @param options {IInteractionOptions} options to use
+		 * @param {Chart} chart - the chart we are returning items from
+		 * @param {Event} e - the event we are find things at
+		 * @param {IInteractionOptions} options - options to use
 		 * @return {Chart.Element[]} Array of elements that are under the point. If none are found, an empty array is returned
 		 */
 		nearest: function(chart, e, options) {
@@ -5969,9 +6054,9 @@ var core_interaction = {
 		/**
 		 * x mode returns the elements that hit-test at the current x coordinate
 		 * @function Chart.Interaction.modes.x
-		 * @param chart {chart} the chart we are returning items from
-		 * @param e {Event} the event we are find things at
-		 * @param options {IInteractionOptions} options to use
+		 * @param {Chart} chart - the chart we are returning items from
+		 * @param {Event} e - the event we are find things at
+		 * @param {IInteractionOptions} options - options to use
 		 * @return {Chart.Element[]} Array of elements that are under the point. If none are found, an empty array is returned
 		 */
 		x: function(chart, e, options) {
@@ -6000,9 +6085,9 @@ var core_interaction = {
 		/**
 		 * y mode returns the elements that hit-test at the current y coordinate
 		 * @function Chart.Interaction.modes.y
-		 * @param chart {chart} the chart we are returning items from
-		 * @param e {Event} the event we are find things at
-		 * @param options {IInteractionOptions} options to use
+		 * @param {Chart} chart - the chart we are returning items from
+		 * @param {Event} e - the event we are find things at
+		 * @param {IInteractionOptions} options - options to use
 		 * @return {Chart.Element[]} Array of elements that are under the point. If none are found, an empty array is returned
 		 */
 		y: function(chart, e, options) {
@@ -6094,19 +6179,19 @@ core_defaults._set('global', {
 
 /**
  * @interface ILayoutItem
- * @prop {String} position - The position of the item in the chart layout. Possible values are
+ * @prop {string} position - The position of the item in the chart layout. Possible values are
  * 'left', 'top', 'right', 'bottom', and 'chartArea'
- * @prop {Number} weight - The weight used to sort the item. Higher weights are further away from the chart area
- * @prop {Boolean} fullWidth - if true, and the item is horizontal, then push vertical boxes down
- * @prop {Function} isHorizontal - returns true if the layout item is horizontal (ie. top or bottom)
- * @prop {Function} update - Takes two parameters: width and height. Returns size of item
- * @prop {Function} getPadding -  Returns an object with padding on the edges
- * @prop {Number} width - Width of item. Must be valid after update()
- * @prop {Number} height - Height of item. Must be valid after update()
- * @prop {Number} left - Left edge of the item. Set by layout system and cannot be used in update
- * @prop {Number} top - Top edge of the item. Set by layout system and cannot be used in update
- * @prop {Number} right - Right edge of the item. Set by layout system and cannot be used in update
- * @prop {Number} bottom - Bottom edge of the item. Set by layout system and cannot be used in update
+ * @prop {number} weight - The weight used to sort the item. Higher weights are further away from the chart area
+ * @prop {boolean} fullWidth - if true, and the item is horizontal, then push vertical boxes down
+ * @prop {function} isHorizontal - returns true if the layout item is horizontal (ie. top or bottom)
+ * @prop {function} update - Takes two parameters: width and height. Returns size of item
+ * @prop {function} getPadding -  Returns an object with padding on the edges
+ * @prop {number} width - Width of item. Must be valid after update()
+ * @prop {number} height - Height of item. Must be valid after update()
+ * @prop {number} left - Left edge of the item. Set by layout system and cannot be used in update
+ * @prop {number} top - Top edge of the item. Set by layout system and cannot be used in update
+ * @prop {number} right - Right edge of the item. Set by layout system and cannot be used in update
+ * @prop {number} bottom - Bottom edge of the item. Set by layout system and cannot be used in update
  */
 
 // The layout service is very self explanatory.  It's responsible for the layout within a chart.
@@ -6137,7 +6222,7 @@ var core_layouts = {
 	/**
 	 * Remove a layoutItem from a chart
 	 * @param {Chart} chart - the chart to remove the box from
-	 * @param {Object} layoutItem - the item to remove from the layout
+	 * @param {ILayoutItem} layoutItem - the item to remove from the layout
 	 */
 	removeBox: function(chart, layoutItem) {
 		var index = chart.boxes ? chart.boxes.indexOf(layoutItem) : -1;
@@ -6149,8 +6234,8 @@ var core_layouts = {
 	/**
 	 * Sets (or updates) options on the given `item`.
 	 * @param {Chart} chart - the chart in which the item lives (or will be added to)
-	 * @param {Object} item - the item to configure with the given options
-	 * @param {Object} options - the new item options.
+	 * @param {ILayoutItem} item - the item to configure with the given options
+	 * @param {object} options - the new item options.
 	 */
 	configure: function(chart, item, options) {
 		var props = ['fullWidth', 'position', 'weight'];
@@ -6170,8 +6255,8 @@ var core_layouts = {
 	 * Fits boxes of the given chart into the given size by having each box measure itself
 	 * then running a fitting algorithm
 	 * @param {Chart} chart - the chart
-	 * @param {Number} width - the width to fit into
-	 * @param {Number} height - the height to fit into
+	 * @param {number} width - the width to fit into
+	 * @param {number} height - the height to fit into
 	 */
 	update: function(chart, width, height) {
 		if (!chart) {
@@ -6442,8 +6527,31 @@ var platform_basic = {
 	}
 };
 
+var platform_dom = "/*\n * DOM element rendering detection\n * https://davidwalsh.name/detect-node-insertion\n */\n@keyframes chartjs-render-animation {\n\tfrom { opacity: 0.99; }\n\tto { opacity: 1; }\n}\n\n.chartjs-render-monitor {\n\tanimation: chartjs-render-animation 0.001s;\n}\n\n/*\n * DOM element resizing detection\n * https://github.com/marcj/css-element-queries\n */\n.chartjs-size-monitor,\n.chartjs-size-monitor-expand,\n.chartjs-size-monitor-shrink {\n\tposition: absolute;\n\tdirection: ltr;\n\tleft: 0;\n\ttop: 0;\n\tright: 0;\n\tbottom: 0;\n\toverflow: hidden;\n\tpointer-events: none;\n\tvisibility: hidden;\n\tz-index: -1;\n}\n\n.chartjs-size-monitor-expand > div {\n\tposition: absolute;\n\twidth: 1000000px;\n\theight: 1000000px;\n\tleft: 0;\n\ttop: 0;\n}\n\n.chartjs-size-monitor-shrink > div {\n\tposition: absolute;\n\twidth: 200%;\n\theight: 200%;\n\tleft: 0;\n\ttop: 0;\n}\n";
+
+var platform_dom$1 = /*#__PURE__*/Object.freeze({
+default: platform_dom
+});
+
+var commonjsGlobal = typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
+
+function commonjsRequire () {
+	throw new Error('Dynamic requires are not currently supported by rollup-plugin-commonjs');
+}
+
+function createCommonjsModule(fn, module) {
+	return module = { exports: {} }, fn(module, module.exports), module.exports;
+}
+
+function getCjsExportFromNamespace (n) {
+	return n && n.default || n;
+}
+
+var stylesheet = getCjsExportFromNamespace(platform_dom$1);
+
 var EXPANDO_KEY = '$chartjs';
 var CSS_PREFIX = 'chartjs-';
+var CSS_SIZE_MONITOR = CSS_PREFIX + 'size-monitor';
 var CSS_RENDER_MONITOR = CSS_PREFIX + 'render-monitor';
 var CSS_RENDER_ANIMATION = CSS_PREFIX + 'render-animation';
 var ANIMATION_START_EVENTS = ['animationstart', 'webkitAnimationStart'];
@@ -6472,7 +6580,7 @@ var EVENT_TYPES = {
  * `element` has a size relative to its parent and this last one is not yet displayed,
  * for example because of `display: none` on a parent node.
  * @see https://developer.mozilla.org/en-US/docs/Web/CSS/used_value
- * @returns {Number} Size in pixels or undefined if unknown.
+ * @returns {number} Size in pixels or undefined if unknown.
  */
 function readUsedSize(element, property) {
 	var value = helpers$1.getStyle(element, property);
@@ -6602,48 +6710,24 @@ function throttled(fn, thisArg) {
 	};
 }
 
-function createDiv(cls, style) {
+function createDiv(cls) {
 	var el = document.createElement('div');
-	el.style.cssText = style || '';
 	el.className = cls || '';
 	return el;
 }
 
 // Implementation based on https://github.com/marcj/css-element-queries
 function createResizer(handler) {
-	var cls = CSS_PREFIX + 'size-monitor';
 	var maxSize = 1000000;
-	var style =
-		'position:absolute;' +
-		'left:0;' +
-		'top:0;' +
-		'right:0;' +
-		'bottom:0;' +
-		'overflow:hidden;' +
-		'pointer-events:none;' +
-		'visibility:hidden;' +
-		'z-index:-1;';
 
 	// NOTE(SB) Don't use innerHTML because it could be considered unsafe.
 	// https://github.com/chartjs/Chart.js/issues/5902
-	var resizer = createDiv(cls, style);
-	var expand = createDiv(cls + '-expand', style);
-	var shrink = createDiv(cls + '-shrink', style);
+	var resizer = createDiv(CSS_SIZE_MONITOR);
+	var expand = createDiv(CSS_SIZE_MONITOR + '-expand');
+	var shrink = createDiv(CSS_SIZE_MONITOR + '-shrink');
 
-	expand.appendChild(createDiv('',
-		'position:absolute;' +
-		'height:' + maxSize + 'px;' +
-		'width:' + maxSize + 'px;' +
-		'left:0;' +
-		'top:0;'
-	));
-	shrink.appendChild(createDiv('',
-		'position:absolute;' +
-		'height:200%;' +
-		'width:200%;' +
-		'left:0;' +
-		'top:0;'
-	));
+	expand.appendChild(createDiv());
+	shrink.appendChild(createDiv());
 
 	resizer.appendChild(expand);
 	resizer.appendChild(shrink);
@@ -6765,7 +6849,16 @@ function injectCSS(platform, css) {
 	style.appendChild(document.createTextNode(css));
 }
 
-var platform_dom = {
+var platform_dom$2 = {
+	/**
+	 * When `true`, prevents the automatic injection of the stylesheet required to
+	 * correctly detect when the chart is added to the DOM and then resized. This
+	 * switch has been added to allow external stylesheet (`dist/Chart(.min)?.js`)
+	 * to be manually imported to make this library compatible with any CSP.
+	 * See https://github.com/chartjs/Chart.js/issues/5208
+	 */
+	disableCSSInjection: false,
+
 	/**
 	 * This property holds whether this platform is enabled for the current environment.
 	 * Currently used by platform.js to select the proper implementation.
@@ -6773,19 +6866,20 @@ var platform_dom = {
 	 */
 	_enabled: typeof window !== 'undefined' && typeof document !== 'undefined',
 
-	initialize: function() {
-		var keyframes = 'from{opacity:0.99}to{opacity:1}';
+	/**
+	 * @private
+	 */
+	_ensureLoaded: function() {
+		if (this._loaded) {
+			return;
+		}
 
-		injectCSS(this,
-			// DOM rendering detection
-			// https://davidwalsh.name/detect-node-insertion
-			'@-webkit-keyframes ' + CSS_RENDER_ANIMATION + '{' + keyframes + '}' +
-			'@keyframes ' + CSS_RENDER_ANIMATION + '{' + keyframes + '}' +
-			'.' + CSS_RENDER_MONITOR + '{' +
-				'-webkit-animation:' + CSS_RENDER_ANIMATION + ' 0.001s;' +
-				'animation:' + CSS_RENDER_ANIMATION + ' 0.001s;' +
-			'}'
-		);
+		this._loaded = true;
+
+		// https://github.com/chartjs/Chart.js/issues/5208
+		if (!this.disableCSSInjection) {
+			injectCSS(this, stylesheet);
+		}
 	},
 
 	acquireContext: function(item, config) {
@@ -6805,6 +6899,10 @@ var platform_dom = {
 		// method, for example: https://github.com/kkapsner/CanvasBlocker
 		// https://github.com/chartjs/Chart.js/issues/2807
 		var context = item && item.getContext && item.getContext('2d');
+
+		// Load platform resources on first chart creation, to make possible to change
+		// platform options after importing the library (e.g. `disableCSSInjection`).
+		this._ensureLoaded();
 
 		// `instanceof HTMLCanvasElement/CanvasRenderingContext2D` fails when the item is
 		// inside an iframe or when running in a protected environment. We could guess the
@@ -6912,7 +7010,7 @@ helpers$1.addEvent = addListener;
 helpers$1.removeEvent = removeListener;
 
 // @TODO Make possible to select another platform at build time.
-var implementation = platform_dom._enabled ? platform_dom : platform_basic;
+var implementation = platform_dom$2._enabled ? platform_dom$2 : platform_basic;
 
 /**
  * @namespace Chart.platform
@@ -6929,7 +7027,7 @@ var platform = helpers$1.extend({
 	 * Called at chart construction time, returns a context2d instance implementing
 	 * the [W3C Canvas 2D Context API standard]{@link https://www.w3.org/TR/2dcontext/}.
 	 * @param {*} item - The native item from which to acquire context (platform specific)
-	 * @param {Object} options - The chart options
+	 * @param {object} options - The chart options
 	 * @returns {CanvasRenderingContext2D} context2d instance
 	 */
 	acquireContext: function() {},
@@ -6938,24 +7036,24 @@ var platform = helpers$1.extend({
 	 * Called at chart destruction time, releases any resources associated to the context
 	 * previously returned by the acquireContext() method.
 	 * @param {CanvasRenderingContext2D} context - The context2d instance
-	 * @returns {Boolean} true if the method succeeded, else false
+	 * @returns {boolean} true if the method succeeded, else false
 	 */
 	releaseContext: function() {},
 
 	/**
 	 * Registers the specified listener on the given chart.
 	 * @param {Chart} chart - Chart from which to listen for event
-	 * @param {String} type - The ({@link IEvent}) type to listen for
-	 * @param {Function} listener - Receives a notification (an object that implements
+	 * @param {string} type - The ({@link IEvent}) type to listen for
+	 * @param {function} listener - Receives a notification (an object that implements
 	 * the {@link IEvent} interface) when an event of the specified type occurs.
 	 */
 	addEventListener: function() {},
 
 	/**
 	 * Removes the specified listener previously registered with addEventListener.
-	 * @param {Chart} chart -Chart from which to remove the listener
-	 * @param {String} type - The ({@link IEvent}) type to remove
-	 * @param {Function} listener - The listener function to remove from the event target.
+	 * @param {Chart} chart - Chart from which to remove the listener
+	 * @param {string} type - The ({@link IEvent}) type to remove
+	 * @param {function} listener - The listener function to remove from the event target.
 	 */
 	removeEventListener: function() {}
 
@@ -6987,7 +7085,7 @@ var core_plugins = {
 
 	/**
 	 * Registers the given plugin(s) if not already registered.
-	 * @param {Array|Object} plugins plugin instance(s).
+	 * @param {IPlugin[]|IPlugin} plugins plugin instance(s).
 	 */
 	register: function(plugins) {
 		var p = this._plugins;
@@ -7002,7 +7100,7 @@ var core_plugins = {
 
 	/**
 	 * Unregisters the given plugin(s) only if registered.
-	 * @param {Array|Object} plugins plugin instance(s).
+	 * @param {IPlugin[]|IPlugin} plugins plugin instance(s).
 	 */
 	unregister: function(plugins) {
 		var p = this._plugins;
@@ -7027,7 +7125,7 @@ var core_plugins = {
 
 	/**
 	 * Returns the number of registered plugins?
-	 * @returns {Number}
+	 * @returns {number}
 	 * @since 2.1.5
 	 */
 	count: function() {
@@ -7036,7 +7134,7 @@ var core_plugins = {
 
 	/**
 	 * Returns all registered plugin instances.
-	 * @returns {Array} array of plugin objects.
+	 * @returns {IPlugin[]} array of plugin objects.
 	 * @since 2.1.5
 	 */
 	getAll: function() {
@@ -7047,10 +7145,10 @@ var core_plugins = {
 	 * Calls enabled plugins for `chart` on the specified hook and with the given args.
 	 * This method immediately returns as soon as a plugin explicitly returns false. The
 	 * returned value can be used, for instance, to interrupt the current action.
-	 * @param {Object} chart - The chart instance for which plugins should be called.
-	 * @param {String} hook - The name of the plugin method to call (e.g. 'beforeUpdate').
+	 * @param {Chart} chart - The chart instance for which plugins should be called.
+	 * @param {string} hook - The name of the plugin method to call (e.g. 'beforeUpdate').
 	 * @param {Array} [args] - Extra arguments to apply to the hook call.
-	 * @returns {Boolean} false if any of the plugins return false, else returns true.
+	 * @returns {boolean} false if any of the plugins return false, else returns true.
 	 */
 	notify: function(chart, hook, args) {
 		var descriptors = this.descriptors(chart);
@@ -7075,7 +7173,7 @@ var core_plugins = {
 
 	/**
 	 * Returns descriptors of enabled plugins for the given chart.
-	 * @returns {Array} [{ plugin, options }]
+	 * @returns {object[]} [{ plugin, options }]
 	 * @private
 	 */
 	descriptors: function(chart) {
@@ -7166,7 +7264,7 @@ var core_scaleService = {
 	}
 };
 
-var valueOrDefault$5 = helpers$1.valueOrDefault;
+var valueOrDefault$7 = helpers$1.valueOrDefault;
 
 core_defaults._set('global', {
 	tooltips: {
@@ -7269,7 +7367,7 @@ var positioners = {
 	 * Average mode places the tooltip at the average position of the elements shown
 	 * @function Chart.Tooltip.positioners.average
 	 * @param elements {ChartElement[]} the elements being displayed in the tooltip
-	 * @returns {Point} tooltip position
+	 * @returns {object} tooltip position
 	 */
 	average: function(elements) {
 		if (!elements.length) {
@@ -7301,8 +7399,8 @@ var positioners = {
 	 * Gets the tooltip position nearest of the item nearest to the event position
 	 * @function Chart.Tooltip.positioners.nearest
 	 * @param elements {Chart.Element[]} the tooltip elements
-	 * @param eventPosition {Point} the position of the event in canvas coordinates
-	 * @returns {Point} the tooltip position
+	 * @param eventPosition {object} the position of the event in canvas coordinates
+	 * @returns {object} the tooltip position
 	 */
 	nearest: function(elements, eventPosition) {
 		var x = eventPosition.x;
@@ -7352,8 +7450,8 @@ function pushOrConcat(base, toPush) {
 
 /**
  * Returns array of strings split by newline
- * @param {String} value - The value to split by newline.
- * @returns {Array} value if newline present - Returned from String split() method
+ * @param {string} value - The value to split by newline.
+ * @returns {string[]} value if newline present - Returned from String split() method
  * @function
  */
 function splitNewlines(str) {
@@ -7364,9 +7462,11 @@ function splitNewlines(str) {
 }
 
 
-// Private helper to create a tooltip item model
-// @param element : the chart element (point, arc, bar) to create the tooltip item for
-// @return : new tooltip item
+/**
+ * Private helper to create a tooltip item model
+ * @param element - the chart element (point, arc, bar) to create the tooltip item for
+ * @return new tooltip item
+ */
 function createTooltipItem(element) {
 	var xScale = element._xScale;
 	var yScale = element._yScale || element._scale; // handle radar || polarArea charts
@@ -7390,7 +7490,7 @@ function createTooltipItem(element) {
 
 /**
  * Helper to get the reset model for the tooltip
- * @param tooltipOpts {Object} the tooltip options
+ * @param tooltipOpts {object} the tooltip options
  */
 function getBaseModel(tooltipOpts) {
 	var globalDefaults = core_defaults.global;
@@ -7404,26 +7504,26 @@ function getBaseModel(tooltipOpts) {
 
 		// Body
 		bodyFontColor: tooltipOpts.bodyFontColor,
-		_bodyFontFamily: valueOrDefault$5(tooltipOpts.bodyFontFamily, globalDefaults.defaultFontFamily),
-		_bodyFontStyle: valueOrDefault$5(tooltipOpts.bodyFontStyle, globalDefaults.defaultFontStyle),
+		_bodyFontFamily: valueOrDefault$7(tooltipOpts.bodyFontFamily, globalDefaults.defaultFontFamily),
+		_bodyFontStyle: valueOrDefault$7(tooltipOpts.bodyFontStyle, globalDefaults.defaultFontStyle),
 		_bodyAlign: tooltipOpts.bodyAlign,
-		bodyFontSize: valueOrDefault$5(tooltipOpts.bodyFontSize, globalDefaults.defaultFontSize),
+		bodyFontSize: valueOrDefault$7(tooltipOpts.bodyFontSize, globalDefaults.defaultFontSize),
 		bodySpacing: tooltipOpts.bodySpacing,
 
 		// Title
 		titleFontColor: tooltipOpts.titleFontColor,
-		_titleFontFamily: valueOrDefault$5(tooltipOpts.titleFontFamily, globalDefaults.defaultFontFamily),
-		_titleFontStyle: valueOrDefault$5(tooltipOpts.titleFontStyle, globalDefaults.defaultFontStyle),
-		titleFontSize: valueOrDefault$5(tooltipOpts.titleFontSize, globalDefaults.defaultFontSize),
+		_titleFontFamily: valueOrDefault$7(tooltipOpts.titleFontFamily, globalDefaults.defaultFontFamily),
+		_titleFontStyle: valueOrDefault$7(tooltipOpts.titleFontStyle, globalDefaults.defaultFontStyle),
+		titleFontSize: valueOrDefault$7(tooltipOpts.titleFontSize, globalDefaults.defaultFontSize),
 		_titleAlign: tooltipOpts.titleAlign,
 		titleSpacing: tooltipOpts.titleSpacing,
 		titleMarginBottom: tooltipOpts.titleMarginBottom,
 
 		// Footer
 		footerFontColor: tooltipOpts.footerFontColor,
-		_footerFontFamily: valueOrDefault$5(tooltipOpts.footerFontFamily, globalDefaults.defaultFontFamily),
-		_footerFontStyle: valueOrDefault$5(tooltipOpts.footerFontStyle, globalDefaults.defaultFontStyle),
-		footerFontSize: valueOrDefault$5(tooltipOpts.footerFontSize, globalDefaults.defaultFontSize),
+		_footerFontFamily: valueOrDefault$7(tooltipOpts.footerFontFamily, globalDefaults.defaultFontFamily),
+		_footerFontStyle: valueOrDefault$7(tooltipOpts.footerFontStyle, globalDefaults.defaultFontStyle),
+		footerFontSize: valueOrDefault$7(tooltipOpts.footerFontSize, globalDefaults.defaultFontSize),
 		_footerAlign: tooltipOpts.footerAlign,
 		footerSpacing: tooltipOpts.footerSpacing,
 		footerMarginTop: tooltipOpts.footerMarginTop,
@@ -8115,7 +8215,7 @@ var exports$3 = core_element.extend({
 	 * Handle an event
 	 * @private
 	 * @param {IEvent} event - The event to handle
-	 * @returns {Boolean} true if the tooltip changed
+	 * @returns {boolean} true if the tooltip changed
 	 */
 	handleEvent: function(e) {
 		var me = this;
@@ -8161,7 +8261,7 @@ var positioners_1 = positioners;
 var core_tooltip = exports$3;
 core_tooltip.positioners = positioners_1;
 
-var valueOrDefault$6 = helpers$1.valueOrDefault;
+var valueOrDefault$8 = helpers$1.valueOrDefault;
 
 core_defaults._set('global', {
 	elements: {},
@@ -8202,7 +8302,7 @@ function mergeScaleConfig(/* config objects ... */) {
 
 				for (i = 0; i < slen; ++i) {
 					scale = source[key][i];
-					type = valueOrDefault$6(scale.type, key === 'xAxes' ? 'category' : 'linear');
+					type = valueOrDefault$8(scale.type, key === 'xAxes' ? 'category' : 'linear');
 
 					if (i >= target[key].length) {
 						target[key].push({});
@@ -8491,7 +8591,7 @@ helpers$1.extend(Chart.prototype, /** @lends Chart */ {
 		helpers$1.each(items, function(item) {
 			var scaleOptions = item.options;
 			var id = scaleOptions.id;
-			var scaleType = valueOrDefault$6(scaleOptions.type, item.dtype);
+			var scaleType = valueOrDefault$8(scaleOptions.type, item.dtype);
 
 			if (positionIsHorizontal(scaleOptions.position) !== positionIsHorizontal(item.dposition)) {
 				scaleOptions.position = item.dposition;
@@ -8733,7 +8833,7 @@ helpers$1.extend(Chart.prototype, /** @lends Chart */ {
 		}
 
 		var animationOptions = me.options.animation;
-		var duration = valueOrDefault$6(config.duration, animationOptions && animationOptions.duration);
+		var duration = valueOrDefault$8(config.duration, animationOptions && animationOptions.duration);
 		var lazy = config.lazy;
 
 		if (core_plugins.notify(me, 'beforeRender') === false) {
@@ -8885,8 +8985,10 @@ helpers$1.extend(Chart.prototype, /** @lends Chart */ {
 		core_plugins.notify(me, 'afterTooltipDraw', [args]);
 	},
 
-	// Get the single element that was clicked on
-	// @return : An object containing the dataset index and element index of the matching element. Also contains the rectangle that was draw
+	/**
+	 * Get the single element that was clicked on
+	 * @return An object containing the dataset index and element index of the matching element. Also contains the rectangle that was draw
+	 */
 	getElementAtEvent: function(e) {
 		return core_interaction.modes.single(this, e);
 	},
@@ -9119,7 +9221,7 @@ helpers$1.extend(Chart.prototype, /** @lends Chart */ {
 	 * Handle an event
 	 * @private
 	 * @param {IEvent} event the event to handle
-	 * @return {Boolean} true if the chart needs to re-render
+	 * @return {boolean} true if the chart needs to re-render
 	 */
 	handleEvent: function(e) {
 		var me = this;
@@ -9330,10 +9432,11 @@ var core_helpers = function() {
 	/**
 	 * Returns the number of decimal places
 	 * i.e. the number of digits after the decimal point, of the value of this Number.
-	 * @param {Number} x - A number.
-	 * @returns {Number} The number of decimal places.
+	 * @param {number} x - A number.
+	 * @returns {number} The number of decimal places.
+	 * @private
 	 */
-	helpers$1.decimalPlaces = function(x) {
+	helpers$1._decimalPlaces = function(x) {
 		if (!helpers$1.isFinite(x)) {
 			return;
 		}
@@ -9380,9 +9483,9 @@ var core_helpers = function() {
 	/**
 	 * Returns the aligned pixel value to avoid anti-aliasing blur
 	 * @param {Chart} chart - The chart instance.
-	 * @param {Number} pixel - A pixel value.
-	 * @param {Number} width - The width of the element.
-	 * @returns {Number} The aligned pixel value.
+	 * @param {number} pixel - A pixel value.
+	 * @param {number} width - The width of the element.
+	 * @returns {number} The aligned pixel value.
 	 * @private
 	 */
 	helpers$1._alignPixel = function(chart, pixel, width) {
@@ -9637,11 +9740,13 @@ var core_helpers = function() {
 		return value !== undefined && value !== null && value !== 'none';
 	}
 
-	// Private helper to get a constraint dimension
-	// @param domNode : the node to check the constraint on
-	// @param maxStyle : the style that defines the maximum for the direction we are using (maxWidth / maxHeight)
-	// @param percentageProperty : property of parent to use when calculating width as a percentage
-	// @see https://www.nathanaeljones.com/blog/2013/reading-max-width-cross-browser
+	/**
+	 * Returns the max width or height of the given DOM node in a cross-browser compatible fashion
+	 * @param {HTMLElement} domNode - the node to check the constraint on
+	 * @param {string} maxStyle - the style that defines the maximum for the direction we are using ('max-width' / 'max-height')
+	 * @param {string} percentageProperty - property of parent to use when calculating width as a percentage
+	 * @see {@link https://www.nathanaeljones.com/blog/2013/reading-max-width-cross-browser}
+	 */
 	function getConstraintDimension(domNode, maxStyle, percentageProperty) {
 		var view = document.defaultView;
 		var parentNode = helpers$1._getParentNode(domNode);
@@ -9827,12 +9932,6 @@ var core_helpers = function() {
 	};
 };
 
-/**
- * @namespace Chart._adapters
- * @since 2.8.0
- * @private
- */
-
 function abstract() {
 	throw new Error(
 		'This method is not implemented: either no adapter can ' +
@@ -9854,22 +9953,20 @@ function abstract() {
  * @name Unit
  */
 
-/** @lends Chart._adapters._date */
-var _date = {
+/**
+ * @class
+ */
+function DateAdapter(options) {
+	this.options = options || {};
+}
+
+helpers$1.extend(DateAdapter.prototype, /** @lends DateAdapter */ {
 	/**
-	 * Returns a map of time formats for the supported units.
+	 * Returns a map of time formats for the supported formatting units defined
+	 * in Unit as well as 'datetime' representing a detailed date/time string.
 	 * @returns {{string: string}}
 	 */
 	formats: abstract,
-
-	/**
-	 * Returns a map of date/time formats for the following presets:
-	 * 'full': date + time + millisecond
-	 * 'time': date + time
-	 * 'date': date
-	 * @returns {{string: string}}
-	 */
-	presets: abstract,
 
 	/**
 	 * Parses the given `value` and return the associated timestamp.
@@ -9939,7 +10036,13 @@ var _date = {
 	_create: function(value) {
 		return value;
 	}
+});
+
+DateAdapter.override = function(members) {
+	helpers$1.extend(DateAdapter.prototype, members);
 };
+
+var _date = DateAdapter;
 
 var core_adapters = {
 	_date: _date
@@ -9959,7 +10062,7 @@ var core_ticks = {
 		 * Formatter for value labels
 		 * @method Chart.Ticks.formatters.values
 		 * @param value the value to display
-		 * @return {String|Array} the label to display
+		 * @return {string|string[]} the label to display
 		 */
 		values: function(value) {
 			return helpers$1.isArray(value) ? value : '' + value;
@@ -9968,10 +10071,10 @@ var core_ticks = {
 		/**
 		 * Formatter for linear numeric ticks
 		 * @method Chart.Ticks.formatters.linear
-		 * @param tickValue {Number} the value to be formatted
-		 * @param index {Number} the position of the tickValue parameter in the ticks array
-		 * @param ticks {Array<Number>} the list of ticks being converted
-		 * @return {String} string representation of the tickValue parameter
+		 * @param tickValue {number} the value to be formatted
+		 * @param index {number} the position of the tickValue parameter in the ticks array
+		 * @param ticks {number[]} the list of ticks being converted
+		 * @return {string} string representation of the tickValue parameter
 		 */
 		linear: function(tickValue, index, ticks) {
 			// If we have lots of ticks, don't use the ones
@@ -10018,7 +10121,7 @@ var core_ticks = {
 	}
 };
 
-var valueOrDefault$7 = helpers$1.valueOrDefault;
+var valueOrDefault$9 = helpers$1.valueOrDefault;
 var valueAtIndexOrDefault = helpers$1.valueAtIndexOrDefault;
 
 core_defaults._set('scale', {
@@ -10184,6 +10287,9 @@ var core_scale = core_element.extend({
 			top: 0,
 			bottom: 0
 		}, margins);
+
+		me._maxLabelLines = 0;
+		me.longestLabelWidth = 0;
 		me.longestTextCache = me.longestTextCache || {};
 
 		// Dimensions
@@ -10432,20 +10538,18 @@ var core_scale = core_element.extend({
 			}
 		}
 
-		// Don't bother fitting the ticks if we are not showing them
+		// Don't bother fitting the ticks if we are not showing the labels
 		if (tickOpts.display && display) {
 			var largestTextWidth = helpers$1.longestText(me.ctx, tickFont.string, labels, me.longestTextCache);
 			var tallestLabelHeightInLines = helpers$1.numberOfLabelLines(labels);
 			var lineSpace = tickFont.size * 0.5;
 			var tickPadding = me.options.ticks.padding;
 
-			// Store max number of lines used in labels for _autoSkip
+			// Store max number of lines and widest label for _autoSkip
 			me._maxLabelLines = tallestLabelHeightInLines;
+			me.longestLabelWidth = largestTextWidth;
 
 			if (isHorizontal) {
-				// A horizontal axis is more constrained by the height.
-				me.longestLabelWidth = largestTextWidth;
-
 				var angleRadians = helpers$1.toRadians(me.labelRotation);
 				var cosRotation = Math.cos(angleRadians);
 				var sinRotation = Math.sin(angleRadians);
@@ -10638,31 +10742,16 @@ var core_scale = core_element.extend({
 	 * @private
 	 */
 	_autoSkip: function(ticks) {
-		var skipRatio;
 		var me = this;
 		var isHorizontal = me.isHorizontal();
 		var optionTicks = me.options.ticks.minor;
 		var tickCount = ticks.length;
-
-		// Calculate space needed by label in axis direction.
-		var rot = helpers$1.toRadians(me.labelRotation);
-		var cos = Math.abs(Math.cos(rot));
-		var sin = Math.abs(Math.sin(rot));
-
-		var padding = optionTicks.autoSkipPadding;
-		var w = me.longestLabelWidth + padding || 0;
-
-		var tickFont = helpers$1.options._parseFont(optionTicks);
-		var h = me._maxLabelLines * tickFont.lineHeight + padding;
-
-		// Calculate space needed for 1 tick in axis direction.
-		var tickSize = isHorizontal
-			? h * cos > w * sin ? w / cos : h / sin
-			: h * sin < w * cos ? h / cos : w / sin;
+		var skipRatio = false;
+		var maxTicks = optionTicks.maxTicksLimit;
 
 		// Total space needed to display all ticks. First and last ticks are
 		// drawn as their center at end of axis, so tickCount-1
-		var ticksLength = tickSize * (tickCount - 1);
+		var ticksLength = me._tickSize() * (tickCount - 1);
 
 		// Axis length
 		var axisLength = isHorizontal
@@ -10672,21 +10761,13 @@ var core_scale = core_element.extend({
 		var result = [];
 		var i, tick;
 
-		// figure out the maximum number of gridlines to show
-		var maxTicks;
-		if (optionTicks.maxTicksLimit) {
-			maxTicks = optionTicks.maxTicksLimit;
-		}
-
-		skipRatio = false;
-
 		if (ticksLength > axisLength) {
 			skipRatio = 1 + Math.floor(ticksLength / axisLength);
 		}
 
 		// if they defined a max number of optionTicks,
 		// increase skipRatio until that number is met
-		if (maxTicks && tickCount > maxTicks) {
+		if (tickCount > maxTicks) {
 			skipRatio = Math.max(skipRatio, 1 + Math.floor(tickCount / maxTicks));
 		}
 
@@ -10700,6 +10781,31 @@ var core_scale = core_element.extend({
 			result.push(tick);
 		}
 		return result;
+	},
+
+	/**
+	 * @private
+	 */
+	_tickSize: function() {
+		var me = this;
+		var isHorizontal = me.isHorizontal();
+		var optionTicks = me.options.ticks.minor;
+
+		// Calculate space needed by label in axis direction.
+		var rot = helpers$1.toRadians(me.labelRotation);
+		var cos = Math.abs(Math.cos(rot));
+		var sin = Math.abs(Math.sin(rot));
+
+		var padding = optionTicks.autoSkipPadding || 0;
+		var w = (me.longestLabelWidth + padding) || 0;
+
+		var tickFont = helpers$1.options._parseFont(optionTicks);
+		var h = (me._maxLabelLines * tickFont.lineHeight + padding) || 0;
+
+		// Calculate space needed for 1 tick in axis direction.
+		return isHorizontal
+			? h * cos > w * sin ? w / cos : h / sin
+			: h * sin < w * cos ? h / cos : w / sin;
 	},
 
 	/**
@@ -10728,8 +10834,10 @@ var core_scale = core_element.extend({
 		return false;
 	},
 
-	// Actually draw the scale on the canvas
-	// @param {rectangle} chartArea : the area of the chart to draw full grid lines on
+	/**
+	 * Actually draw the scale on the canvas
+	 * @param {object} chartArea - the area of the chart to draw full grid lines on
+	 */
 	draw: function(chartArea) {
 		var me = this;
 		var options = me.options;
@@ -10753,18 +10861,18 @@ var core_scale = core_element.extend({
 		var isHorizontal = me.isHorizontal();
 
 		var parseFont = helpers$1.options._parseFont;
-		var ticks = optionTicks.autoSkip ? me._autoSkip(me.getTicks()) : me.getTicks();
-		var tickFontColor = valueOrDefault$7(optionTicks.fontColor, defaultFontColor);
+		var ticks = optionTicks.display && optionTicks.autoSkip ? me._autoSkip(me.getTicks()) : me.getTicks();
+		var tickFontColor = valueOrDefault$9(optionTicks.fontColor, defaultFontColor);
 		var tickFont = parseFont(optionTicks);
 		var lineHeight = tickFont.lineHeight;
-		var majorTickFontColor = valueOrDefault$7(optionMajorTicks.fontColor, defaultFontColor);
+		var majorTickFontColor = valueOrDefault$9(optionMajorTicks.fontColor, defaultFontColor);
 		var majorTickFont = parseFont(optionMajorTicks);
 		var tickPadding = optionTicks.padding;
 		var labelOffset = optionTicks.labelOffset;
 
 		var tl = gridLines.drawTicks ? gridLines.tickMarkLength : 0;
 
-		var scaleLabelFontColor = valueOrDefault$7(scaleLabel.fontColor, defaultFontColor);
+		var scaleLabelFontColor = valueOrDefault$9(scaleLabel.fontColor, defaultFontColor);
 		var scaleLabelFont = parseFont(scaleLabel);
 		var scaleLabelPadding = helpers$1.options.toPadding(scaleLabel.padding);
 		var labelRotationRadians = helpers$1.toRadians(me.labelRotation);
@@ -11136,7 +11244,7 @@ var scale_category = core_scale.extend({
 	}
 });
 
-// INTERNAL: static default options, registered in src/chart.js
+// INTERNAL: static default options, registered in src/index.js
 var _defaults = defaultConfig;
 scale_category._defaults = _defaults;
 
@@ -11147,7 +11255,7 @@ var isNullOrUndef = helpers$1.isNullOrUndef;
  * Generate a set of linear ticks
  * @param generationOptions the options used to generate the ticks
  * @param dataRange the range of the data
- * @returns {Array<Number>} array of tick values
+ * @returns {number[]} array of tick values
  */
 function generateTicks(generationOptions, dataRange) {
 	var ticks = [];
@@ -11181,7 +11289,7 @@ function generateTicks(generationOptions, dataRange) {
 
 	if (stepSize || isNullOrUndef(precision)) {
 		// If a precision is not specified, calculate factor based on spacing
-		factor = Math.pow(10, helpers$1.decimalPlaces(spacing));
+		factor = Math.pow(10, helpers$1._decimalPlaces(spacing));
 	} else {
 		// If the user specified a precision, round to that number of decimal places
 		factor = Math.pow(10, precision);
@@ -11553,22 +11661,22 @@ var scale_linear = scale_linearbase.extend({
 	}
 });
 
-// INTERNAL: static default options, registered in src/chart.js
+// INTERNAL: static default options, registered in src/index.js
 var _defaults$1 = defaultConfig$1;
 scale_linear._defaults = _defaults$1;
 
-var valueOrDefault$8 = helpers$1.valueOrDefault;
+var valueOrDefault$a = helpers$1.valueOrDefault;
 
 /**
  * Generate a set of logarithmic ticks
  * @param generationOptions the options used to generate the ticks
  * @param dataRange the range of the data
- * @returns {Array<Number>} array of tick values
+ * @returns {number[]} array of tick values
  */
 function generateTicks$1(generationOptions, dataRange) {
 	var ticks = [];
 
-	var tickVal = valueOrDefault$8(generationOptions.min, Math.pow(10, Math.floor(helpers$1.log10(dataRange.min))));
+	var tickVal = valueOrDefault$a(generationOptions.min, Math.pow(10, Math.floor(helpers$1.log10(dataRange.min))));
 
 	var endExp = Math.floor(helpers$1.log10(dataRange.max));
 	var endSignificand = Math.ceil(dataRange.max / Math.pow(10, endExp));
@@ -11599,7 +11707,7 @@ function generateTicks$1(generationOptions, dataRange) {
 		tickVal = Math.round(significand * Math.pow(10, exp) * precision) / precision;
 	} while (exp < endExp || (exp === endExp && significand < endSignificand));
 
-	var lastTick = valueOrDefault$8(generationOptions.max, tickVal);
+	var lastTick = valueOrDefault$a(generationOptions.max, tickVal);
 	ticks.push(lastTick);
 
 	return ticks;
@@ -11613,6 +11721,11 @@ var defaultConfig$2 = {
 		callback: core_ticks.formatters.logarithmic
 	}
 };
+
+// TODO(v3): change this to positiveOrDefault
+function nonNegativeOrDefault(value, defaultValue) {
+	return helpers$1.isFinite(value) && value >= 0 ? value : defaultValue;
+}
 
 var scale_logarithmic = core_scale.extend({
 	determineDataLimits: function() {
@@ -11726,8 +11839,8 @@ var scale_logarithmic = core_scale.extend({
 		var DEFAULT_MIN = 1;
 		var DEFAULT_MAX = 10;
 
-		me.min = valueOrDefault$8(tickOpts.min, me.min);
-		me.max = valueOrDefault$8(tickOpts.max, me.max);
+		me.min = nonNegativeOrDefault(tickOpts.min, me.min);
+		me.max = nonNegativeOrDefault(tickOpts.max, me.max);
 
 		if (me.min === me.max) {
 			if (me.min !== 0 && me.min !== null) {
@@ -11763,8 +11876,8 @@ var scale_logarithmic = core_scale.extend({
 		var reverse = !me.isHorizontal();
 
 		var generationOptions = {
-			min: tickOpts.min,
-			max: tickOpts.max
+			min: nonNegativeOrDefault(tickOpts.min),
+			max: nonNegativeOrDefault(tickOpts.max)
 		};
 		var ticks = me.ticks = generateTicks$1(generationOptions, me);
 
@@ -11803,8 +11916,8 @@ var scale_logarithmic = core_scale.extend({
 
 	/**
 	 * Returns the value of the first tick.
-	 * @param {Number} value - The minimum not zero value.
-	 * @return {Number} The first tick value.
+	 * @param {number} value - The minimum not zero value.
+	 * @return {number} The first tick value.
 	 * @private
 	 */
 	_getFirstTickValue: function(value) {
@@ -11843,7 +11956,7 @@ var scale_logarithmic = core_scale.extend({
 		}
 		if (value !== start) {
 			if (start === 0) { // include zero tick
-				offset = valueOrDefault$8(tickOpts.fontSize, core_defaults.global.defaultFontSize);
+				offset = valueOrDefault$a(tickOpts.fontSize, core_defaults.global.defaultFontSize);
 				innerDimension -= offset;
 				start = firstTickValue;
 			}
@@ -11879,7 +11992,7 @@ var scale_logarithmic = core_scale.extend({
 		}
 		if (value !== start) {
 			if (start === 0) { // include zero tick
-				var offset = valueOrDefault$8(tickOpts.fontSize, core_defaults.global.defaultFontSize);
+				var offset = valueOrDefault$a(tickOpts.fontSize, core_defaults.global.defaultFontSize);
 				value -= offset;
 				innerDimension -= offset;
 				start = firstTickValue;
@@ -11892,11 +12005,11 @@ var scale_logarithmic = core_scale.extend({
 	}
 });
 
-// INTERNAL: static default options, registered in src/chart.js
+// INTERNAL: static default options, registered in src/index.js
 var _defaults$2 = defaultConfig$2;
 scale_logarithmic._defaults = _defaults$2;
 
-var valueOrDefault$9 = helpers$1.valueOrDefault;
+var valueOrDefault$b = helpers$1.valueOrDefault;
 var valueAtIndexOrDefault$1 = helpers$1.valueAtIndexOrDefault;
 var resolve$7 = helpers$1.options.resolve;
 
@@ -11966,7 +12079,7 @@ function getTickBackdropHeight(opts) {
 	var tickOpts = opts.ticks;
 
 	if (tickOpts.display && opts.display) {
-		return valueOrDefault$9(tickOpts.fontSize, core_defaults.global.defaultFontSize) + tickOpts.backdropPaddingY * 2;
+		return valueOrDefault$b(tickOpts.fontSize, core_defaults.global.defaultFontSize) + tickOpts.backdropPaddingY * 2;
 	}
 	return 0;
 }
@@ -12125,8 +12238,8 @@ function drawPointLabels(scale) {
 	var angleLineOpts = opts.angleLines;
 	var gridLineOpts = opts.gridLines;
 	var pointLabelOpts = opts.pointLabels;
-	var lineWidth = valueOrDefault$9(angleLineOpts.lineWidth, gridLineOpts.lineWidth);
-	var lineColor = valueOrDefault$9(angleLineOpts.color, gridLineOpts.color);
+	var lineWidth = valueOrDefault$b(angleLineOpts.lineWidth, gridLineOpts.lineWidth);
+	var lineColor = valueOrDefault$b(angleLineOpts.color, gridLineOpts.color);
 	var tickBackdropHeight = getTickBackdropHeight(opts);
 
 	ctx.save();
@@ -12433,7 +12546,7 @@ var scale_radialLinear = scale_linearbase.extend({
 					}
 
 					if (tickOpts.display) {
-						var tickFontColor = valueOrDefault$9(tickOpts.fontColor, core_defaults.global.defaultFontColor);
+						var tickFontColor = valueOrDefault$b(tickOpts.fontColor, core_defaults.global.defaultFontColor);
 						ctx.font = tickFont.string;
 
 						ctx.save();
@@ -12463,16 +12576,11 @@ var scale_radialLinear = scale_linearbase.extend({
 	}
 });
 
-// INTERNAL: static default options, registered in src/chart.js
+// INTERNAL: static default options, registered in src/index.js
 var _defaults$3 = defaultConfig$3;
 scale_radialLinear._defaults = _defaults$3;
 
-var adapter = core_adapters._date;
-
-
-
-
-var valueOrDefault$a = helpers$1.valueOrDefault;
+var valueOrDefault$c = helpers$1.valueOrDefault;
 
 // Integer constants are from the ES6 spec.
 var MIN_INTEGER = Number.MIN_SAFE_INTEGER || -9007199254740991;
@@ -12555,8 +12663,8 @@ function arrayUnique(items) {
  * store pre-computed pixels, but the scale dimensions are not guaranteed at the time we need
  * to create the lookup table. The table ALWAYS contains at least two items: min and max.
  *
- * @param {Number[]} timestamps - timestamps sorted from lowest to highest.
- * @param {String} distribution - If 'linear', timestamps will be spread linearly along the min
+ * @param {number[]} timestamps - timestamps sorted from lowest to highest.
+ * @param {string} distribution - If 'linear', timestamps will be spread linearly along the min
  * and max range, so basically, the table will contains only two items: {min, 0} and {max, 1}.
  * If 'series', timestamps will be positioned at the same distance from each other. In this
  * case, only timestamps that break the time linearity are registered, meaning that in the
@@ -12644,7 +12752,9 @@ function interpolate$1(table, skey, sval, tkey) {
 	return prev[tkey] + offset;
 }
 
-function toTimestamp(input, options) {
+function toTimestamp(scale, input) {
+	var adapter = scale._adapter;
+	var options = scale.options.time;
 	var parser = options.parser;
 	var format = parser || options.format;
 	var value = input;
@@ -12678,19 +12788,19 @@ function toTimestamp(input, options) {
 	return value;
 }
 
-function parse(input, scale) {
+function parse(scale, input) {
 	if (helpers$1.isNullOrUndef(input)) {
 		return null;
 	}
 
 	var options = scale.options.time;
-	var value = toTimestamp(scale.getRightValue(input), options);
+	var value = toTimestamp(scale, scale.getRightValue(input));
 	if (value === null) {
 		return value;
 	}
 
 	if (options.round) {
-		value = +adapter.startOf(value, options.round);
+		value = +scale._adapter.startOf(value, options.round);
 	}
 
 	return value;
@@ -12743,13 +12853,13 @@ function determineUnitForAutoTicks(minUnit, min, max, capacity) {
 /**
  * Figures out what unit to format a set of ticks with
  */
-function determineUnitForFormatting(ticks, minUnit, min, max) {
+function determineUnitForFormatting(scale, ticks, minUnit, min, max) {
 	var ilen = UNITS.length;
 	var i, unit;
 
 	for (i = ilen - 1; i >= UNITS.indexOf(minUnit); i--) {
 		unit = UNITS[i];
-		if (INTERVALS[unit].common && adapter.diff(max, min, unit) >= ticks.length) {
+		if (INTERVALS[unit].common && scale._adapter.diff(max, min, unit) >= ticks.length) {
 			return unit;
 		}
 	}
@@ -12771,11 +12881,13 @@ function determineMajorUnit(unit) {
  * Important: this method can return ticks outside the min and max range, it's the
  * responsibility of the calling code to clamp values if needed.
  */
-function generate(min, max, capacity, options) {
+function generate(scale, min, max, capacity) {
+	var adapter = scale._adapter;
+	var options = scale.options;
 	var timeOpts = options.time;
 	var minor = timeOpts.unit || determineUnitForAutoTicks(timeOpts.minUnit, min, max, capacity);
 	var major = determineMajorUnit(minor);
-	var stepSize = valueOrDefault$a(timeOpts.stepSize, timeOpts.unitStepSize);
+	var stepSize = valueOrDefault$c(timeOpts.stepSize, timeOpts.unitStepSize);
 	var weekday = minor === 'week' ? timeOpts.isoWeekday : false;
 	var majorTicksEnabled = options.ticks.major.enabled;
 	var interval = INTERVALS[minor];
@@ -12855,13 +12967,13 @@ function computeOffsets(table, ticks, min, max, options) {
 	return {start: start, end: end};
 }
 
-function ticksFromTimestamps(values, majorUnit) {
+function ticksFromTimestamps(scale, values, majorUnit) {
 	var ticks = [];
 	var i, ilen, value, major;
 
 	for (i = 0, ilen = values.length; i < ilen; ++i) {
 		value = values[i];
-		major = majorUnit ? value === +adapter.startOf(value, majorUnit) : false;
+		major = majorUnit ? value === +scale._adapter.startOf(value, majorUnit) : false;
 
 		ticks.push({
 			value: value,
@@ -12870,29 +12982,6 @@ function ticksFromTimestamps(values, majorUnit) {
 	}
 
 	return ticks;
-}
-
-/**
- * Return the time format for the label with the most parts (milliseconds, second, etc.)
- */
-function determineLabelFormat(timestamps) {
-	var presets = adapter.presets();
-	var ilen = timestamps.length;
-	var i, ts, hasTime;
-
-	for (i = 0; i < ilen; i++) {
-		ts = timestamps[i];
-		if (ts % INTERVALS.second.size !== 0) {
-			return presets.full;
-		}
-		if (!hasTime && adapter.startOf(ts, 'day') !== ts) {
-			hasTime = true;
-		}
-	}
-	if (hasTime) {
-		return presets.time;
-	}
-	return presets.date;
 }
 
 var defaultConfig$4 = {
@@ -12916,6 +13005,7 @@ var defaultConfig$4 = {
 	 */
 	bounds: 'data',
 
+	adapters: {},
 	time: {
 		parser: false, // false == a pattern string from https://momentjs.com/docs/#/parsing/string-format/ or a custom callback that converts its argument to a moment
 		format: false, // DEPRECATED false == date objects, moment object, callback or a pattern string from https://momentjs.com/docs/#/parsing/string-format/
@@ -12955,6 +13045,7 @@ var scale_time = core_scale.extend({
 		var me = this;
 		var options = me.options;
 		var time = options.time || (options.time = {});
+		var adapter = me._adapter = new core_adapters._date(options.adapters.date);
 
 		// DEPRECATIONS: output a message only one time per update
 		if (time.format) {
@@ -12983,6 +13074,7 @@ var scale_time = core_scale.extend({
 	determineDataLimits: function() {
 		var me = this;
 		var chart = me.chart;
+		var adapter = me._adapter;
 		var timeOpts = me.options.time;
 		var unit = timeOpts.unit || 'day';
 		var min = MAX_INTEGER;
@@ -12995,7 +13087,7 @@ var scale_time = core_scale.extend({
 
 		// Convert labels to timestamps
 		for (i = 0, ilen = dataLabels.length; i < ilen; ++i) {
-			labels.push(parse(dataLabels[i], me));
+			labels.push(parse(me, dataLabels[i]));
 		}
 
 		// Convert data to timestamps
@@ -13008,7 +13100,7 @@ var scale_time = core_scale.extend({
 					datasets[i] = [];
 
 					for (j = 0, jlen = data.length; j < jlen; ++j) {
-						timestamp = parse(data[j], me);
+						timestamp = parse(me, data[j]);
 						timestamps.push(timestamp);
 						datasets[i][j] = timestamp;
 					}
@@ -13036,8 +13128,8 @@ var scale_time = core_scale.extend({
 			max = Math.max(max, timestamps[timestamps.length - 1]);
 		}
 
-		min = parse(timeOpts.min, me) || min;
-		max = parse(timeOpts.max, me) || max;
+		min = parse(me, timeOpts.min) || min;
+		max = parse(me, timeOpts.max) || max;
 
 		// In case there is no valid min/max, set limits based on unit time option
 		min = min === MAX_INTEGER ? +adapter.startOf(Date.now(), unit) : min;
@@ -13076,7 +13168,7 @@ var scale_time = core_scale.extend({
 			break;
 		case 'auto':
 		default:
-			timestamps = generate(min, max, me.getLabelCapacity(min), options);
+			timestamps = generate(me, min, max, me.getLabelCapacity(min), options);
 		}
 
 		if (options.bounds === 'ticks' && timestamps.length) {
@@ -13085,8 +13177,8 @@ var scale_time = core_scale.extend({
 		}
 
 		// Enforce limits with user min/max options
-		min = parse(timeOpts.min, me) || min;
-		max = parse(timeOpts.max, me) || max;
+		min = parse(me, timeOpts.min) || min;
+		max = parse(me, timeOpts.max) || max;
 
 		// Remove ticks outside the min/max range
 		for (i = 0, ilen = timestamps.length; i < ilen; ++i) {
@@ -13100,21 +13192,21 @@ var scale_time = core_scale.extend({
 		me.max = max;
 
 		// PRIVATE
-		me._unit = timeOpts.unit || determineUnitForFormatting(ticks, timeOpts.minUnit, me.min, me.max);
+		me._unit = timeOpts.unit || determineUnitForFormatting(me, ticks, timeOpts.minUnit, me.min, me.max);
 		me._majorUnit = determineMajorUnit(me._unit);
 		me._table = buildLookupTable(me._timestamps.data, min, max, options.distribution);
 		me._offsets = computeOffsets(me._table, ticks, min, max, options);
-		me._labelFormat = determineLabelFormat(me._timestamps.data);
 
 		if (options.ticks.reverse) {
 			ticks.reverse();
 		}
 
-		return ticksFromTimestamps(ticks, me._majorUnit);
+		return ticksFromTimestamps(me, ticks, me._majorUnit);
 	},
 
 	getLabelForIndex: function(index, datasetIndex) {
 		var me = this;
+		var adapter = me._adapter;
 		var data = me.chart.data;
 		var timeOpts = me.options.time;
 		var label = data.labels && index < data.labels.length ? data.labels[index] : '';
@@ -13124,13 +13216,12 @@ var scale_time = core_scale.extend({
 			label = me.getRightValue(value);
 		}
 		if (timeOpts.tooltipFormat) {
-			return adapter.format(toTimestamp(label, timeOpts), timeOpts.tooltipFormat);
+			return adapter.format(toTimestamp(me, label), timeOpts.tooltipFormat);
 		}
 		if (typeof label === 'string') {
 			return label;
 		}
-
-		return adapter.format(toTimestamp(label, timeOpts), me._labelFormat);
+		return adapter.format(toTimestamp(me, label), timeOpts.displayFormats.datetime);
 	},
 
 	/**
@@ -13139,6 +13230,7 @@ var scale_time = core_scale.extend({
 	 */
 	tickFormatFunction: function(time, index, ticks, format) {
 		var me = this;
+		var adapter = me._adapter;
 		var options = me.options;
 		var formats = options.time.displayFormats;
 		var minorFormat = formats[me._unit];
@@ -13149,7 +13241,7 @@ var scale_time = core_scale.extend({
 		var major = majorTickOpts.enabled && majorUnit && majorFormat && time === majorTime;
 		var label = adapter.format(time, format ? format : major ? majorFormat : minorFormat);
 		var tickOpts = major ? majorTickOpts : options.ticks.minor;
-		var formatter = valueOrDefault$a(tickOpts.callback, tickOpts.userCallback);
+		var formatter = valueOrDefault$c(tickOpts.callback, tickOpts.userCallback);
 
 		return formatter ? formatter(label, index, ticks) : label;
 	},
@@ -13188,7 +13280,7 @@ var scale_time = core_scale.extend({
 		}
 
 		if (time === null) {
-			time = parse(value, me);
+			time = parse(me, value);
 		}
 
 		if (time !== null) {
@@ -13211,7 +13303,7 @@ var scale_time = core_scale.extend({
 		var time = interpolate$1(me._table, 'pos', pos, 'time');
 
 		// DEPRECATION, we should return time directly
-		return adapter._create(time);
+		return me._adapter._create(time);
 	},
 
 	/**
@@ -13225,7 +13317,7 @@ var scale_time = core_scale.extend({
 		var angle = helpers$1.toRadians(ticksOpts.maxRotation);
 		var cosRotation = Math.cos(angle);
 		var sinRotation = Math.sin(angle);
-		var tickFontSize = valueOrDefault$a(ticksOpts.fontSize, core_defaults.global.defaultFontSize);
+		var tickFontSize = valueOrDefault$c(ticksOpts.fontSize, core_defaults.global.defaultFontSize);
 
 		return (tickLabelWidth * cosRotation) + (tickFontSize * sinRotation);
 	},
@@ -13247,7 +13339,7 @@ var scale_time = core_scale.extend({
 	}
 });
 
-// INTERNAL: static default options, registered in src/chart.js
+// INTERNAL: static default options, registered in src/index.js
 var _defaults$4 = defaultConfig$4;
 scale_time._defaults = _defaults$4;
 
@@ -13259,23 +13351,13 @@ var scales = {
 	time: scale_time
 };
 
-var commonjsGlobal = typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
-
-function commonjsRequire () {
-	throw new Error('Dynamic requires are not currently supported by rollup-plugin-commonjs');
-}
-
-function createCommonjsModule(fn, module) {
-	return module = { exports: {} }, fn(module, module.exports), module.exports;
-}
-
 var moment = createCommonjsModule(function (module, exports) {
 (function (global, factory) {
     module.exports = factory();
-}(commonjsGlobal, function () {
+}(commonjsGlobal, (function () {
     var hookCallback;
 
-    function utils_hooks__hooks () {
+    function hooks () {
         return hookCallback.apply(null, arguments);
     }
 
@@ -13296,12 +13378,25 @@ var moment = createCommonjsModule(function (module, exports) {
     }
 
     function isObjectEmpty(obj) {
-        var k;
-        for (k in obj) {
-            // even if its not own property I'd still call it non-empty
-            return false;
+        if (Object.getOwnPropertyNames) {
+            return (Object.getOwnPropertyNames(obj).length === 0);
+        } else {
+            var k;
+            for (k in obj) {
+                if (obj.hasOwnProperty(k)) {
+                    return false;
+                }
+            }
+            return true;
         }
-        return true;
+    }
+
+    function isUndefined(input) {
+        return input === void 0;
+    }
+
+    function isNumber(input) {
+        return typeof input === 'number' || Object.prototype.toString.call(input) === '[object Number]';
     }
 
     function isDate(input) {
@@ -13338,7 +13433,7 @@ var moment = createCommonjsModule(function (module, exports) {
         return a;
     }
 
-    function create_utc__createUTC (input, format, locale, strict) {
+    function createUTC (input, format, locale, strict) {
         return createLocalOrUTC(input, format, locale, strict, true).utc();
     }
 
@@ -13356,7 +13451,9 @@ var moment = createCommonjsModule(function (module, exports) {
             userInvalidated : false,
             iso             : false,
             parsedDateParts : [],
-            meridiem        : null
+            meridiem        : null,
+            rfc2822         : false,
+            weekdayMismatch : false
         };
     }
 
@@ -13385,7 +13482,7 @@ var moment = createCommonjsModule(function (module, exports) {
         };
     }
 
-    function valid__isValid(m) {
+    function isValid(m) {
         if (m._isValid == null) {
             var flags = getParsingFlags(m);
             var parsedParts = some.call(flags.parsedDateParts, function (i) {
@@ -13396,6 +13493,7 @@ var moment = createCommonjsModule(function (module, exports) {
                 !flags.empty &&
                 !flags.invalidMonth &&
                 !flags.invalidWeekday &&
+                !flags.weekdayMismatch &&
                 !flags.nullInput &&
                 !flags.invalidFormat &&
                 !flags.userInvalidated &&
@@ -13418,8 +13516,8 @@ var moment = createCommonjsModule(function (module, exports) {
         return m._isValid;
     }
 
-    function valid__createInvalid (flags) {
-        var m = create_utc__createUTC(NaN);
+    function createInvalid (flags) {
+        var m = createUTC(NaN);
         if (flags != null) {
             extend(getParsingFlags(m), flags);
         }
@@ -13430,13 +13528,9 @@ var moment = createCommonjsModule(function (module, exports) {
         return m;
     }
 
-    function isUndefined(input) {
-        return input === void 0;
-    }
-
     // Plugins that add properties should also add the key here (null value),
     // so we can properly clone ourselves.
-    var momentProperties = utils_hooks__hooks.momentProperties = [];
+    var momentProperties = hooks.momentProperties = [];
 
     function copyConfig(to, from) {
         var i, prop, val;
@@ -13473,7 +13567,7 @@ var moment = createCommonjsModule(function (module, exports) {
         }
 
         if (momentProperties.length > 0) {
-            for (i in momentProperties) {
+            for (i = 0; i < momentProperties.length; i++) {
                 prop = momentProperties[i];
                 val = from[prop];
                 if (!isUndefined(val)) {
@@ -13491,11 +13585,14 @@ var moment = createCommonjsModule(function (module, exports) {
     function Moment(config) {
         copyConfig(this, config);
         this._d = new Date(config._d != null ? config._d.getTime() : NaN);
+        if (!this.isValid()) {
+            this._d = new Date(NaN);
+        }
         // Prevent infinite loop in case updateOffset creates new moment
         // objects.
         if (updateInProgress === false) {
             updateInProgress = true;
-            utils_hooks__hooks.updateOffset(this);
+            hooks.updateOffset(this);
             updateInProgress = false;
         }
     }
@@ -13540,7 +13637,7 @@ var moment = createCommonjsModule(function (module, exports) {
     }
 
     function warn(msg) {
-        if (utils_hooks__hooks.suppressDeprecationWarnings === false &&
+        if (hooks.suppressDeprecationWarnings === false &&
                 (typeof console !==  'undefined') && console.warn) {
             console.warn('Deprecation warning: ' + msg);
         }
@@ -13550,8 +13647,8 @@ var moment = createCommonjsModule(function (module, exports) {
         var firstTime = true;
 
         return extend(function () {
-            if (utils_hooks__hooks.deprecationHandler != null) {
-                utils_hooks__hooks.deprecationHandler(null, msg);
+            if (hooks.deprecationHandler != null) {
+                hooks.deprecationHandler(null, msg);
             }
             if (firstTime) {
                 var args = [];
@@ -13579,8 +13676,8 @@ var moment = createCommonjsModule(function (module, exports) {
     var deprecations = {};
 
     function deprecateSimple(name, msg) {
-        if (utils_hooks__hooks.deprecationHandler != null) {
-            utils_hooks__hooks.deprecationHandler(name, msg);
+        if (hooks.deprecationHandler != null) {
+            hooks.deprecationHandler(name, msg);
         }
         if (!deprecations[name]) {
             warn(msg);
@@ -13588,14 +13685,14 @@ var moment = createCommonjsModule(function (module, exports) {
         }
     }
 
-    utils_hooks__hooks.suppressDeprecationWarnings = false;
-    utils_hooks__hooks.deprecationHandler = null;
+    hooks.suppressDeprecationWarnings = false;
+    hooks.deprecationHandler = null;
 
     function isFunction(input) {
         return input instanceof Function || Object.prototype.toString.call(input) === '[object Function]';
     }
 
-    function locale_set__set (config) {
+    function set (config) {
         var prop, i;
         for (i in config) {
             prop = config[i];
@@ -13607,8 +13704,11 @@ var moment = createCommonjsModule(function (module, exports) {
         }
         this._config = config;
         // Lenient ordinal parsing accepts just a number in addition to
-        // number + (possibly) stuff coming from _ordinalParseLenient.
-        this._ordinalParseLenient = new RegExp(this._ordinalParse.source + '|' + (/\d{1,2}/).source);
+        // number + (possibly) stuff coming from _dayOfMonthOrdinalParse.
+        // TODO: Remove "ordinalParse" fallback in next major release.
+        this._dayOfMonthOrdinalParseLenient = new RegExp(
+            (this._dayOfMonthOrdinalParse.source || this._ordinalParse.source) +
+                '|' + (/\d{1,2}/).source);
     }
 
     function mergeConfigs(parentConfig, childConfig) {
@@ -13668,7 +13768,7 @@ var moment = createCommonjsModule(function (module, exports) {
         sameElse : 'L'
     };
 
-    function locale_calendar__calendar (key, mom, now) {
+    function calendar (key, mom, now) {
         var output = this._calendar[key] || this._calendar['sameElse'];
         return isFunction(output) ? output.call(mom, now) : output;
     }
@@ -13704,7 +13804,7 @@ var moment = createCommonjsModule(function (module, exports) {
     }
 
     var defaultOrdinal = '%d';
-    var defaultOrdinalParse = /\d{1,2}/;
+    var defaultDayOfMonthOrdinalParse = /\d{1,2}/;
 
     function ordinal (number) {
         return this._ordinal.replace('%d', number);
@@ -13714,6 +13814,7 @@ var moment = createCommonjsModule(function (module, exports) {
         future : 'in %s',
         past   : '%s ago',
         s  : 'a few seconds',
+        ss : '%d seconds',
         m  : 'a minute',
         mm : '%d minutes',
         h  : 'an hour',
@@ -13726,7 +13827,7 @@ var moment = createCommonjsModule(function (module, exports) {
         yy : '%d years'
     };
 
-    function relative__relativeTime (number, withoutSuffix, string, isFuture) {
+    function relativeTime (number, withoutSuffix, string, isFuture) {
         var output = this._relativeTime[string];
         return (isFunction(output)) ?
             output(number, withoutSuffix, string, isFuture) :
@@ -13781,56 +13882,6 @@ var moment = createCommonjsModule(function (module, exports) {
             return a.priority - b.priority;
         });
         return units;
-    }
-
-    function makeGetSet (unit, keepTime) {
-        return function (value) {
-            if (value != null) {
-                get_set__set(this, unit, value);
-                utils_hooks__hooks.updateOffset(this, keepTime);
-                return this;
-            } else {
-                return get_set__get(this, unit);
-            }
-        };
-    }
-
-    function get_set__get (mom, unit) {
-        return mom.isValid() ?
-            mom._d['get' + (mom._isUTC ? 'UTC' : '') + unit]() : NaN;
-    }
-
-    function get_set__set (mom, unit, value) {
-        if (mom.isValid()) {
-            mom._d['set' + (mom._isUTC ? 'UTC' : '') + unit](value);
-        }
-    }
-
-    // MOMENTS
-
-    function stringGet (units) {
-        units = normalizeUnits(units);
-        if (isFunction(this[units])) {
-            return this[units]();
-        }
-        return this;
-    }
-
-
-    function stringSet (units, value) {
-        if (typeof units === 'object') {
-            units = normalizeObjectUnits(units);
-            var prioritized = getPrioritizedUnits(units);
-            for (var i = 0; i < prioritized.length; i++) {
-                this[prioritized[i].unit](units[prioritized[i].unit]);
-            }
-        } else {
-            units = normalizeUnits(units);
-            if (isFunction(this[units])) {
-                return this[units](value);
-            }
-        }
-        return this;
     }
 
     function zeroFill(number, targetLength, forceSign) {
@@ -13896,7 +13947,7 @@ var moment = createCommonjsModule(function (module, exports) {
         return function (mom) {
             var output = '', i;
             for (i = 0; i < length; i++) {
-                output += array[i] instanceof Function ? array[i].call(mom, format) : array[i];
+                output += isFunction(array[i]) ? array[i].call(mom, format) : array[i];
             }
             return output;
         };
@@ -13953,8 +14004,7 @@ var moment = createCommonjsModule(function (module, exports) {
 
     // any word (or two) characters or numbers including two/three word month in arabic.
     // includes scottish gaelic two word and hyphenated months
-    var matchWord = /[0-9]*['a-z\u00A0-\u05FF\u0700-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+|[\u0600-\u06FF\/]+(\s*?[\u0600-\u06FF]+){1,2}/i;
-
+    var matchWord = /[0-9]{0,256}['a-z\u00A0-\u05FF\u0700-\uD7FF\uF900-\uFDCF\uFDF0-\uFF07\uFF10-\uFFEF]{1,256}|[\u0600-\u06FF\/]{1,256}(\s*?[\u0600-\u06FF]{1,256}){1,2}/i;
 
     var regexes = {};
 
@@ -13990,7 +14040,7 @@ var moment = createCommonjsModule(function (module, exports) {
         if (typeof token === 'string') {
             token = [token];
         }
-        if (typeof callback === 'number') {
+        if (isNumber(callback)) {
             func = function (input, array) {
                 array[callback] = toInt(input);
             };
@@ -14023,6 +14073,131 @@ var moment = createCommonjsModule(function (module, exports) {
     var WEEK = 7;
     var WEEKDAY = 8;
 
+    // FORMATTING
+
+    addFormatToken('Y', 0, 0, function () {
+        var y = this.year();
+        return y <= 9999 ? '' + y : '+' + y;
+    });
+
+    addFormatToken(0, ['YY', 2], 0, function () {
+        return this.year() % 100;
+    });
+
+    addFormatToken(0, ['YYYY',   4],       0, 'year');
+    addFormatToken(0, ['YYYYY',  5],       0, 'year');
+    addFormatToken(0, ['YYYYYY', 6, true], 0, 'year');
+
+    // ALIASES
+
+    addUnitAlias('year', 'y');
+
+    // PRIORITIES
+
+    addUnitPriority('year', 1);
+
+    // PARSING
+
+    addRegexToken('Y',      matchSigned);
+    addRegexToken('YY',     match1to2, match2);
+    addRegexToken('YYYY',   match1to4, match4);
+    addRegexToken('YYYYY',  match1to6, match6);
+    addRegexToken('YYYYYY', match1to6, match6);
+
+    addParseToken(['YYYYY', 'YYYYYY'], YEAR);
+    addParseToken('YYYY', function (input, array) {
+        array[YEAR] = input.length === 2 ? hooks.parseTwoDigitYear(input) : toInt(input);
+    });
+    addParseToken('YY', function (input, array) {
+        array[YEAR] = hooks.parseTwoDigitYear(input);
+    });
+    addParseToken('Y', function (input, array) {
+        array[YEAR] = parseInt(input, 10);
+    });
+
+    // HELPERS
+
+    function daysInYear(year) {
+        return isLeapYear(year) ? 366 : 365;
+    }
+
+    function isLeapYear(year) {
+        return (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;
+    }
+
+    // HOOKS
+
+    hooks.parseTwoDigitYear = function (input) {
+        return toInt(input) + (toInt(input) > 68 ? 1900 : 2000);
+    };
+
+    // MOMENTS
+
+    var getSetYear = makeGetSet('FullYear', true);
+
+    function getIsLeapYear () {
+        return isLeapYear(this.year());
+    }
+
+    function makeGetSet (unit, keepTime) {
+        return function (value) {
+            if (value != null) {
+                set$1(this, unit, value);
+                hooks.updateOffset(this, keepTime);
+                return this;
+            } else {
+                return get(this, unit);
+            }
+        };
+    }
+
+    function get (mom, unit) {
+        return mom.isValid() ?
+            mom._d['get' + (mom._isUTC ? 'UTC' : '') + unit]() : NaN;
+    }
+
+    function set$1 (mom, unit, value) {
+        if (mom.isValid() && !isNaN(value)) {
+            if (unit === 'FullYear' && isLeapYear(mom.year()) && mom.month() === 1 && mom.date() === 29) {
+                mom._d['set' + (mom._isUTC ? 'UTC' : '') + unit](value, mom.month(), daysInMonth(value, mom.month()));
+            }
+            else {
+                mom._d['set' + (mom._isUTC ? 'UTC' : '') + unit](value);
+            }
+        }
+    }
+
+    // MOMENTS
+
+    function stringGet (units) {
+        units = normalizeUnits(units);
+        if (isFunction(this[units])) {
+            return this[units]();
+        }
+        return this;
+    }
+
+
+    function stringSet (units, value) {
+        if (typeof units === 'object') {
+            units = normalizeObjectUnits(units);
+            var prioritized = getPrioritizedUnits(units);
+            for (var i = 0; i < prioritized.length; i++) {
+                this[prioritized[i].unit](units[prioritized[i].unit]);
+            }
+        } else {
+            units = normalizeUnits(units);
+            if (isFunction(this[units])) {
+                return this[units](value);
+            }
+        }
+        return this;
+    }
+
+    function mod(n, x) {
+        return ((n % x) + x) % x;
+    }
+
     var indexOf;
 
     if (Array.prototype.indexOf) {
@@ -14041,7 +14216,12 @@ var moment = createCommonjsModule(function (module, exports) {
     }
 
     function daysInMonth(year, month) {
-        return new Date(Date.UTC(year, month + 1, 0)).getUTCDate();
+        if (isNaN(year) || isNaN(month)) {
+            return NaN;
+        }
+        var modMonth = mod(month, 12);
+        year += (month - modMonth) / 12;
+        return modMonth === 1 ? (isLeapYear(year) ? 29 : 28) : (31 - modMonth % 7 % 2);
     }
 
     // FORMATTING
@@ -14097,7 +14277,8 @@ var moment = createCommonjsModule(function (module, exports) {
     var defaultLocaleMonths = 'January_February_March_April_May_June_July_August_September_October_November_December'.split('_');
     function localeMonths (m, format) {
         if (!m) {
-            return this._months;
+            return isArray(this._months) ? this._months :
+                this._months['standalone'];
         }
         return isArray(this._months) ? this._months[m.month()] :
             this._months[(this._months.isFormat || MONTHS_IN_FORMAT).test(format) ? 'format' : 'standalone'][m.month()];
@@ -14106,13 +14287,14 @@ var moment = createCommonjsModule(function (module, exports) {
     var defaultLocaleMonthsShort = 'Jan_Feb_Mar_Apr_May_Jun_Jul_Aug_Sep_Oct_Nov_Dec'.split('_');
     function localeMonthsShort (m, format) {
         if (!m) {
-            return this._monthsShort;
+            return isArray(this._monthsShort) ? this._monthsShort :
+                this._monthsShort['standalone'];
         }
         return isArray(this._monthsShort) ? this._monthsShort[m.month()] :
             this._monthsShort[MONTHS_IN_FORMAT.test(format) ? 'format' : 'standalone'][m.month()];
     }
 
-    function units_month__handleStrictParse(monthName, format, strict) {
+    function handleStrictParse(monthName, format, strict) {
         var i, ii, mom, llc = monthName.toLocaleLowerCase();
         if (!this._monthsParse) {
             // this is not used
@@ -14120,7 +14302,7 @@ var moment = createCommonjsModule(function (module, exports) {
             this._longMonthsParse = [];
             this._shortMonthsParse = [];
             for (i = 0; i < 12; ++i) {
-                mom = create_utc__createUTC([2000, i]);
+                mom = createUTC([2000, i]);
                 this._shortMonthsParse[i] = this.monthsShort(mom, '').toLocaleLowerCase();
                 this._longMonthsParse[i] = this.months(mom, '').toLocaleLowerCase();
             }
@@ -14157,7 +14339,7 @@ var moment = createCommonjsModule(function (module, exports) {
         var i, mom, regex;
 
         if (this._monthsParseExact) {
-            return units_month__handleStrictParse.call(this, monthName, format, strict);
+            return handleStrictParse.call(this, monthName, format, strict);
         }
 
         if (!this._monthsParse) {
@@ -14171,7 +14353,7 @@ var moment = createCommonjsModule(function (module, exports) {
         // see sorting in computeMonthsParse
         for (i = 0; i < 12; i++) {
             // make the regex if we don't have it already
-            mom = create_utc__createUTC([2000, i]);
+            mom = createUTC([2000, i]);
             if (strict && !this._longMonthsParse[i]) {
                 this._longMonthsParse[i] = new RegExp('^' + this.months(mom, '').replace('.', '') + '$', 'i');
                 this._shortMonthsParse[i] = new RegExp('^' + this.monthsShort(mom, '').replace('.', '') + '$', 'i');
@@ -14207,7 +14389,7 @@ var moment = createCommonjsModule(function (module, exports) {
             } else {
                 value = mom.localeData().monthsParse(value);
                 // TODO: Another silent failure?
-                if (typeof value !== 'number') {
+                if (!isNumber(value)) {
                     return mom;
                 }
             }
@@ -14221,10 +14403,10 @@ var moment = createCommonjsModule(function (module, exports) {
     function getSetMonth (value) {
         if (value != null) {
             setMonth(this, value);
-            utils_hooks__hooks.updateOffset(this, true);
+            hooks.updateOffset(this, true);
             return this;
         } else {
-            return get_set__get(this, 'Month');
+            return get(this, 'Month');
         }
     }
 
@@ -14281,7 +14463,7 @@ var moment = createCommonjsModule(function (module, exports) {
             i, mom;
         for (i = 0; i < 12; i++) {
             // make the regex if we don't have it already
-            mom = create_utc__createUTC([2000, i]);
+            mom = createUTC([2000, i]);
             shortPieces.push(this.monthsShort(mom, ''));
             longPieces.push(this.months(mom, ''));
             mixedPieces.push(this.months(mom, ''));
@@ -14306,91 +14488,39 @@ var moment = createCommonjsModule(function (module, exports) {
         this._monthsShortStrictRegex = new RegExp('^(' + shortPieces.join('|') + ')', 'i');
     }
 
-    // FORMATTING
-
-    addFormatToken('Y', 0, 0, function () {
-        var y = this.year();
-        return y <= 9999 ? '' + y : '+' + y;
-    });
-
-    addFormatToken(0, ['YY', 2], 0, function () {
-        return this.year() % 100;
-    });
-
-    addFormatToken(0, ['YYYY',   4],       0, 'year');
-    addFormatToken(0, ['YYYYY',  5],       0, 'year');
-    addFormatToken(0, ['YYYYYY', 6, true], 0, 'year');
-
-    // ALIASES
-
-    addUnitAlias('year', 'y');
-
-    // PRIORITIES
-
-    addUnitPriority('year', 1);
-
-    // PARSING
-
-    addRegexToken('Y',      matchSigned);
-    addRegexToken('YY',     match1to2, match2);
-    addRegexToken('YYYY',   match1to4, match4);
-    addRegexToken('YYYYY',  match1to6, match6);
-    addRegexToken('YYYYYY', match1to6, match6);
-
-    addParseToken(['YYYYY', 'YYYYYY'], YEAR);
-    addParseToken('YYYY', function (input, array) {
-        array[YEAR] = input.length === 2 ? utils_hooks__hooks.parseTwoDigitYear(input) : toInt(input);
-    });
-    addParseToken('YY', function (input, array) {
-        array[YEAR] = utils_hooks__hooks.parseTwoDigitYear(input);
-    });
-    addParseToken('Y', function (input, array) {
-        array[YEAR] = parseInt(input, 10);
-    });
-
-    // HELPERS
-
-    function daysInYear(year) {
-        return isLeapYear(year) ? 366 : 365;
-    }
-
-    function isLeapYear(year) {
-        return (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;
-    }
-
-    // HOOKS
-
-    utils_hooks__hooks.parseTwoDigitYear = function (input) {
-        return toInt(input) + (toInt(input) > 68 ? 1900 : 2000);
-    };
-
-    // MOMENTS
-
-    var getSetYear = makeGetSet('FullYear', true);
-
-    function getIsLeapYear () {
-        return isLeapYear(this.year());
-    }
-
     function createDate (y, m, d, h, M, s, ms) {
-        //can't just apply() to create a date:
-        //http://stackoverflow.com/questions/181348/instantiating-a-javascript-object-by-calling-prototype-constructor-apply
-        var date = new Date(y, m, d, h, M, s, ms);
-
-        //the date constructor remaps years 0-99 to 1900-1999
-        if (y < 100 && y >= 0 && isFinite(date.getFullYear())) {
-            date.setFullYear(y);
+        // can't just apply() to create a date:
+        // https://stackoverflow.com/q/181348
+        var date;
+        // the date constructor remaps years 0-99 to 1900-1999
+        if (y < 100 && y >= 0) {
+            // preserve leap years using a full 400 year cycle, then reset
+            date = new Date(y + 400, m, d, h, M, s, ms);
+            if (isFinite(date.getFullYear())) {
+                date.setFullYear(y);
+            }
+        } else {
+            date = new Date(y, m, d, h, M, s, ms);
         }
+
         return date;
     }
 
     function createUTCDate (y) {
-        var date = new Date(Date.UTC.apply(null, arguments));
-
-        //the Date.UTC function remaps years 0-99 to 1900-1999
-        if (y < 100 && y >= 0 && isFinite(date.getUTCFullYear())) {
-            date.setUTCFullYear(y);
+        var date;
+        // the Date.UTC function remaps years 0-99 to 1900-1999
+        if (y < 100 && y >= 0) {
+            var args = Array.prototype.slice.call(arguments);
+            // preserve leap years using a full 400 year cycle, then reset
+            args[0] = y + 400;
+            date = new Date(Date.UTC.apply(null, args));
+            if (isFinite(date.getUTCFullYear())) {
+                date.setUTCFullYear(y);
+            }
+        } else {
+            date = new Date(Date.UTC.apply(null, arguments));
         }
+
         return date;
     }
 
@@ -14404,7 +14534,7 @@ var moment = createCommonjsModule(function (module, exports) {
         return -fwdlw + fwd - 1;
     }
 
-    //http://en.wikipedia.org/wiki/ISO_week_date#Calculating_a_date_given_the_year.2C_week_number_and_weekday
+    // https://en.wikipedia.org/wiki/ISO_week_date#Calculating_a_date_given_the_year.2C_week_number_and_weekday
     function dayOfYearFromWeeks(year, week, weekday, dow, doy) {
         var localWeekday = (7 + weekday - dow) % 7,
             weekOffset = firstWeekOffset(year, dow, doy),
@@ -14492,7 +14622,7 @@ var moment = createCommonjsModule(function (module, exports) {
 
     var defaultLocaleWeek = {
         dow : 0, // Sunday is the first day of the week.
-        doy : 6  // The week that contains Jan 1st is the first week of the year.
+        doy : 6  // The week that contains Jan 6th is the first week of the year.
     };
 
     function localeFirstDayOfWeek () {
@@ -14601,27 +14731,31 @@ var moment = createCommonjsModule(function (module, exports) {
     }
 
     // LOCALES
+    function shiftWeekdays (ws, n) {
+        return ws.slice(n, 7).concat(ws.slice(0, n));
+    }
 
     var defaultLocaleWeekdays = 'Sunday_Monday_Tuesday_Wednesday_Thursday_Friday_Saturday'.split('_');
     function localeWeekdays (m, format) {
-        if (!m) {
-            return this._weekdays;
-        }
-        return isArray(this._weekdays) ? this._weekdays[m.day()] :
-            this._weekdays[this._weekdays.isFormat.test(format) ? 'format' : 'standalone'][m.day()];
+        var weekdays = isArray(this._weekdays) ? this._weekdays :
+            this._weekdays[(m && m !== true && this._weekdays.isFormat.test(format)) ? 'format' : 'standalone'];
+        return (m === true) ? shiftWeekdays(weekdays, this._week.dow)
+            : (m) ? weekdays[m.day()] : weekdays;
     }
 
     var defaultLocaleWeekdaysShort = 'Sun_Mon_Tue_Wed_Thu_Fri_Sat'.split('_');
     function localeWeekdaysShort (m) {
-        return (m) ? this._weekdaysShort[m.day()] : this._weekdaysShort;
+        return (m === true) ? shiftWeekdays(this._weekdaysShort, this._week.dow)
+            : (m) ? this._weekdaysShort[m.day()] : this._weekdaysShort;
     }
 
     var defaultLocaleWeekdaysMin = 'Su_Mo_Tu_We_Th_Fr_Sa'.split('_');
     function localeWeekdaysMin (m) {
-        return (m) ? this._weekdaysMin[m.day()] : this._weekdaysMin;
+        return (m === true) ? shiftWeekdays(this._weekdaysMin, this._week.dow)
+            : (m) ? this._weekdaysMin[m.day()] : this._weekdaysMin;
     }
 
-    function day_of_week__handleStrictParse(weekdayName, format, strict) {
+    function handleStrictParse$1(weekdayName, format, strict) {
         var i, ii, mom, llc = weekdayName.toLocaleLowerCase();
         if (!this._weekdaysParse) {
             this._weekdaysParse = [];
@@ -14629,7 +14763,7 @@ var moment = createCommonjsModule(function (module, exports) {
             this._minWeekdaysParse = [];
 
             for (i = 0; i < 7; ++i) {
-                mom = create_utc__createUTC([2000, 1]).day(i);
+                mom = createUTC([2000, 1]).day(i);
                 this._minWeekdaysParse[i] = this.weekdaysMin(mom, '').toLocaleLowerCase();
                 this._shortWeekdaysParse[i] = this.weekdaysShort(mom, '').toLocaleLowerCase();
                 this._weekdaysParse[i] = this.weekdays(mom, '').toLocaleLowerCase();
@@ -14689,7 +14823,7 @@ var moment = createCommonjsModule(function (module, exports) {
         var i, mom, regex;
 
         if (this._weekdaysParseExact) {
-            return day_of_week__handleStrictParse.call(this, weekdayName, format, strict);
+            return handleStrictParse$1.call(this, weekdayName, format, strict);
         }
 
         if (!this._weekdaysParse) {
@@ -14702,11 +14836,11 @@ var moment = createCommonjsModule(function (module, exports) {
         for (i = 0; i < 7; i++) {
             // make the regex if we don't have it already
 
-            mom = create_utc__createUTC([2000, 1]).day(i);
+            mom = createUTC([2000, 1]).day(i);
             if (strict && !this._fullWeekdaysParse[i]) {
-                this._fullWeekdaysParse[i] = new RegExp('^' + this.weekdays(mom, '').replace('.', '\.?') + '$', 'i');
-                this._shortWeekdaysParse[i] = new RegExp('^' + this.weekdaysShort(mom, '').replace('.', '\.?') + '$', 'i');
-                this._minWeekdaysParse[i] = new RegExp('^' + this.weekdaysMin(mom, '').replace('.', '\.?') + '$', 'i');
+                this._fullWeekdaysParse[i] = new RegExp('^' + this.weekdays(mom, '').replace('.', '\\.?') + '$', 'i');
+                this._shortWeekdaysParse[i] = new RegExp('^' + this.weekdaysShort(mom, '').replace('.', '\\.?') + '$', 'i');
+                this._minWeekdaysParse[i] = new RegExp('^' + this.weekdaysMin(mom, '').replace('.', '\\.?') + '$', 'i');
             }
             if (!this._weekdaysParse[i]) {
                 regex = '^' + this.weekdays(mom, '') + '|^' + this.weekdaysShort(mom, '') + '|^' + this.weekdaysMin(mom, '');
@@ -14835,7 +14969,7 @@ var moment = createCommonjsModule(function (module, exports) {
             i, mom, minp, shortp, longp;
         for (i = 0; i < 7; i++) {
             // make the regex if we don't have it already
-            mom = create_utc__createUTC([2000, 1]).day(i);
+            mom = createUTC([2000, 1]).day(i);
             minp = this.weekdaysMin(mom, '');
             shortp = this.weekdaysShort(mom, '');
             longp = this.weekdays(mom, '');
@@ -14925,8 +15059,10 @@ var moment = createCommonjsModule(function (module, exports) {
     addRegexToken('A',  matchMeridiem);
     addRegexToken('H',  match1to2);
     addRegexToken('h',  match1to2);
+    addRegexToken('k',  match1to2);
     addRegexToken('HH', match1to2, match2);
     addRegexToken('hh', match1to2, match2);
+    addRegexToken('kk', match1to2, match2);
 
     addRegexToken('hmm', match3to4);
     addRegexToken('hmmss', match5to6);
@@ -14934,6 +15070,10 @@ var moment = createCommonjsModule(function (module, exports) {
     addRegexToken('Hmmss', match5to6);
 
     addParseToken(['H', 'HH'], HOUR);
+    addParseToken(['k', 'kk'], function (input, array, config) {
+        var kInput = toInt(input);
+        array[HOUR] = kInput === 24 ? 0 : kInput;
+    });
     addParseToken(['a', 'A'], function (input, array, config) {
         config._isPm = config._locale.isPM(input);
         config._meridiem = input;
@@ -14990,7 +15130,7 @@ var moment = createCommonjsModule(function (module, exports) {
     // MOMENTS
 
     // Setting the hour should keep the time, because the user explicitly
-    // specified which hour he wants. So trying to maintain the same hour (in
+    // specified which hour they want. So trying to maintain the same hour (in
     // a new timezone) makes sense. Adding/subtracting hours does not follow
     // this rule.
     var getSetHour = makeGetSet('Hours', true);
@@ -15000,7 +15140,7 @@ var moment = createCommonjsModule(function (module, exports) {
         longDateFormat: defaultLongDateFormat,
         invalidDate: defaultInvalidDate,
         ordinal: defaultOrdinal,
-        ordinalParse: defaultOrdinalParse,
+        dayOfMonthOrdinalParse: defaultDayOfMonthOrdinalParse,
         relativeTime: defaultRelativeTime,
 
         months: defaultLocaleMonths,
@@ -15017,6 +15157,7 @@ var moment = createCommonjsModule(function (module, exports) {
 
     // internal storage for locale config files
     var locales = {};
+    var localeFamilies = {};
     var globalLocale;
 
     function normalizeLocale(key) {
@@ -15047,7 +15188,7 @@ var moment = createCommonjsModule(function (module, exports) {
             }
             i++;
         }
-        return null;
+        return globalLocale;
     }
 
     function loadLocale(name) {
@@ -15057,11 +15198,10 @@ var moment = createCommonjsModule(function (module, exports) {
                 module && module.exports) {
             try {
                 oldLocale = globalLocale._abbr;
-                commonjsRequire('./locale/' + name);
-                // because defineLocale currently also sets the global locale, we
-                // want to undo that for lazy loaded locales
-                locale_locales__getSetGlobalLocale(oldLocale);
-            } catch (e) { }
+                var aliasedRequire = commonjsRequire;
+                aliasedRequire('./locale/' + name);
+                getSetGlobalLocale(oldLocale);
+            } catch (e) {}
         }
         return locales[name];
     }
@@ -15069,11 +15209,11 @@ var moment = createCommonjsModule(function (module, exports) {
     // This function will load locale and then set the global locale.  If
     // no arguments are passed in, it will simply return the current global
     // locale key.
-    function locale_locales__getSetGlobalLocale (key, values) {
+    function getSetGlobalLocale (key, values) {
         var data;
         if (key) {
             if (isUndefined(values)) {
-                data = locale_locales__getLocale(key);
+                data = getLocale(key);
             }
             else {
                 data = defineLocale(key, values);
@@ -15083,6 +15223,12 @@ var moment = createCommonjsModule(function (module, exports) {
                 // moment.duration._locale = moment._locale = data;
                 globalLocale = data;
             }
+            else {
+                if ((typeof console !==  'undefined') && console.warn) {
+                    //warn user if arguments are passed but the locale could not be set
+                    console.warn('Locale ' + key +  ' not found. Did you forget to load it?');
+                }
+            }
         }
 
         return globalLocale._abbr;
@@ -15090,7 +15236,7 @@ var moment = createCommonjsModule(function (module, exports) {
 
     function defineLocale (name, config) {
         if (config !== null) {
-            var parentConfig = baseConfig;
+            var locale, parentConfig = baseConfig;
             config.abbr = name;
             if (locales[name] != null) {
                 deprecateSimple('defineLocaleOverride',
@@ -15103,15 +15249,34 @@ var moment = createCommonjsModule(function (module, exports) {
                 if (locales[config.parentLocale] != null) {
                     parentConfig = locales[config.parentLocale]._config;
                 } else {
-                    // treat as if there is no base config
-                    deprecateSimple('parentLocaleUndefined',
-                            'specified parentLocale is not defined yet. See http://momentjs.com/guides/#/warnings/parent-locale/');
+                    locale = loadLocale(config.parentLocale);
+                    if (locale != null) {
+                        parentConfig = locale._config;
+                    } else {
+                        if (!localeFamilies[config.parentLocale]) {
+                            localeFamilies[config.parentLocale] = [];
+                        }
+                        localeFamilies[config.parentLocale].push({
+                            name: name,
+                            config: config
+                        });
+                        return null;
+                    }
                 }
             }
             locales[name] = new Locale(mergeConfigs(parentConfig, config));
 
+            if (localeFamilies[name]) {
+                localeFamilies[name].forEach(function (x) {
+                    defineLocale(x.name, x.config);
+                });
+            }
+
             // backwards compat for now: also set the locale
-            locale_locales__getSetGlobalLocale(name);
+            // make sure we set the locale AFTER all child locales have been
+            // created, so we won't end up with the child locale set.
+            getSetGlobalLocale(name);
+
 
             return locales[name];
         } else {
@@ -15123,10 +15288,11 @@ var moment = createCommonjsModule(function (module, exports) {
 
     function updateLocale(name, config) {
         if (config != null) {
-            var locale, parentConfig = baseConfig;
+            var locale, tmpLocale, parentConfig = baseConfig;
             // MERGE
-            if (locales[name] != null) {
-                parentConfig = locales[name]._config;
+            tmpLocale = loadLocale(name);
+            if (tmpLocale != null) {
+                parentConfig = tmpLocale._config;
             }
             config = mergeConfigs(parentConfig, config);
             locale = new Locale(config);
@@ -15134,7 +15300,7 @@ var moment = createCommonjsModule(function (module, exports) {
             locales[name] = locale;
 
             // backwards compat for now: also set the locale
-            locale_locales__getSetGlobalLocale(name);
+            getSetGlobalLocale(name);
         } else {
             // pass null for config to unupdate, useful for tests
             if (locales[name] != null) {
@@ -15149,7 +15315,7 @@ var moment = createCommonjsModule(function (module, exports) {
     }
 
     // returns locale data
-    function locale_locales__getLocale (key) {
+    function getLocale (key) {
         var locale;
 
         if (key && key._locale && key._locale._abbr) {
@@ -15172,7 +15338,7 @@ var moment = createCommonjsModule(function (module, exports) {
         return chooseLocale(key);
     }
 
-    function locale_locales__listLocales() {
+    function listLocales() {
         return keys(locales);
     }
 
@@ -15206,10 +15372,160 @@ var moment = createCommonjsModule(function (module, exports) {
         return m;
     }
 
+    // Pick the first defined of two or three arguments.
+    function defaults(a, b, c) {
+        if (a != null) {
+            return a;
+        }
+        if (b != null) {
+            return b;
+        }
+        return c;
+    }
+
+    function currentDateArray(config) {
+        // hooks is actually the exported moment object
+        var nowValue = new Date(hooks.now());
+        if (config._useUTC) {
+            return [nowValue.getUTCFullYear(), nowValue.getUTCMonth(), nowValue.getUTCDate()];
+        }
+        return [nowValue.getFullYear(), nowValue.getMonth(), nowValue.getDate()];
+    }
+
+    // convert an array to a date.
+    // the array should mirror the parameters below
+    // note: all values past the year are optional and will default to the lowest possible value.
+    // [year, month, day , hour, minute, second, millisecond]
+    function configFromArray (config) {
+        var i, date, input = [], currentDate, expectedWeekday, yearToUse;
+
+        if (config._d) {
+            return;
+        }
+
+        currentDate = currentDateArray(config);
+
+        //compute day of the year from weeks and weekdays
+        if (config._w && config._a[DATE] == null && config._a[MONTH] == null) {
+            dayOfYearFromWeekInfo(config);
+        }
+
+        //if the day of the year is set, figure out what it is
+        if (config._dayOfYear != null) {
+            yearToUse = defaults(config._a[YEAR], currentDate[YEAR]);
+
+            if (config._dayOfYear > daysInYear(yearToUse) || config._dayOfYear === 0) {
+                getParsingFlags(config)._overflowDayOfYear = true;
+            }
+
+            date = createUTCDate(yearToUse, 0, config._dayOfYear);
+            config._a[MONTH] = date.getUTCMonth();
+            config._a[DATE] = date.getUTCDate();
+        }
+
+        // Default to current date.
+        // * if no year, month, day of month are given, default to today
+        // * if day of month is given, default month and year
+        // * if month is given, default only year
+        // * if year is given, don't default anything
+        for (i = 0; i < 3 && config._a[i] == null; ++i) {
+            config._a[i] = input[i] = currentDate[i];
+        }
+
+        // Zero out whatever was not defaulted, including time
+        for (; i < 7; i++) {
+            config._a[i] = input[i] = (config._a[i] == null) ? (i === 2 ? 1 : 0) : config._a[i];
+        }
+
+        // Check for 24:00:00.000
+        if (config._a[HOUR] === 24 &&
+                config._a[MINUTE] === 0 &&
+                config._a[SECOND] === 0 &&
+                config._a[MILLISECOND] === 0) {
+            config._nextDay = true;
+            config._a[HOUR] = 0;
+        }
+
+        config._d = (config._useUTC ? createUTCDate : createDate).apply(null, input);
+        expectedWeekday = config._useUTC ? config._d.getUTCDay() : config._d.getDay();
+
+        // Apply timezone offset from input. The actual utcOffset can be changed
+        // with parseZone.
+        if (config._tzm != null) {
+            config._d.setUTCMinutes(config._d.getUTCMinutes() - config._tzm);
+        }
+
+        if (config._nextDay) {
+            config._a[HOUR] = 24;
+        }
+
+        // check for mismatching day of week
+        if (config._w && typeof config._w.d !== 'undefined' && config._w.d !== expectedWeekday) {
+            getParsingFlags(config).weekdayMismatch = true;
+        }
+    }
+
+    function dayOfYearFromWeekInfo(config) {
+        var w, weekYear, week, weekday, dow, doy, temp, weekdayOverflow;
+
+        w = config._w;
+        if (w.GG != null || w.W != null || w.E != null) {
+            dow = 1;
+            doy = 4;
+
+            // TODO: We need to take the current isoWeekYear, but that depends on
+            // how we interpret now (local, utc, fixed offset). So create
+            // a now version of current config (take local/utc/offset flags, and
+            // create now).
+            weekYear = defaults(w.GG, config._a[YEAR], weekOfYear(createLocal(), 1, 4).year);
+            week = defaults(w.W, 1);
+            weekday = defaults(w.E, 1);
+            if (weekday < 1 || weekday > 7) {
+                weekdayOverflow = true;
+            }
+        } else {
+            dow = config._locale._week.dow;
+            doy = config._locale._week.doy;
+
+            var curWeek = weekOfYear(createLocal(), dow, doy);
+
+            weekYear = defaults(w.gg, config._a[YEAR], curWeek.year);
+
+            // Default to current week.
+            week = defaults(w.w, curWeek.week);
+
+            if (w.d != null) {
+                // weekday -- low day numbers are considered next week
+                weekday = w.d;
+                if (weekday < 0 || weekday > 6) {
+                    weekdayOverflow = true;
+                }
+            } else if (w.e != null) {
+                // local weekday -- counting starts from beginning of week
+                weekday = w.e + dow;
+                if (w.e < 0 || w.e > 6) {
+                    weekdayOverflow = true;
+                }
+            } else {
+                // default to beginning of week
+                weekday = dow;
+            }
+        }
+        if (week < 1 || week > weeksInYear(weekYear, dow, doy)) {
+            getParsingFlags(config)._overflowWeeks = true;
+        } else if (weekdayOverflow != null) {
+            getParsingFlags(config)._overflowWeekday = true;
+        } else {
+            temp = dayOfYearFromWeeks(weekYear, week, weekday, dow, doy);
+            config._a[YEAR] = temp.year;
+            config._dayOfYear = temp.dayOfYear;
+        }
+    }
+
     // iso 8601 regex
     // 0000-00-00 0000-W00 or 0000-W00-0 + T + 00 or 00:00 or 00:00:00 or 00:00:00.000 + +00:00 or +0000 or +00)
-    var extendedIsoRegex = /^\s*((?:[+-]\d{6}|\d{4})-(?:\d\d-\d\d|W\d\d-\d|W\d\d|\d\d\d|\d\d))(?:(T| )(\d\d(?::\d\d(?::\d\d(?:[.,]\d+)?)?)?)([\+\-]\d\d(?::?\d\d)?|\s*Z)?)?/;
-    var basicIsoRegex = /^\s*((?:[+-]\d{6}|\d{4})(?:\d\d\d\d|W\d\d\d|W\d\d|\d\d\d|\d\d))(?:(T| )(\d\d(?:\d\d(?:\d\d(?:[.,]\d+)?)?)?)([\+\-]\d\d(?::?\d\d)?|\s*Z)?)?/;
+    var extendedIsoRegex = /^\s*((?:[+-]\d{6}|\d{4})-(?:\d\d-\d\d|W\d\d-\d|W\d\d|\d\d\d|\d\d))(?:(T| )(\d\d(?::\d\d(?::\d\d(?:[.,]\d+)?)?)?)([\+\-]\d\d(?::?\d\d)?|\s*Z)?)?$/;
+    var basicIsoRegex = /^\s*((?:[+-]\d{6}|\d{4})(?:\d\d\d\d|W\d\d\d|W\d\d|\d\d\d|\d\d))(?:(T| )(\d\d(?:\d\d(?:\d\d(?:[.,]\d+)?)?)?)([\+\-]\d\d(?::?\d\d)?|\s*Z)?)?$/;
 
     var tzRegex = /Z|[+-]\d\d(?::?\d\d)?/;
 
@@ -15296,6 +15612,101 @@ var moment = createCommonjsModule(function (module, exports) {
         }
     }
 
+    // RFC 2822 regex: For details see https://tools.ietf.org/html/rfc2822#section-3.3
+    var rfc2822 = /^(?:(Mon|Tue|Wed|Thu|Fri|Sat|Sun),?\s)?(\d{1,2})\s(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s(\d{2,4})\s(\d\d):(\d\d)(?::(\d\d))?\s(?:(UT|GMT|[ECMP][SD]T)|([Zz])|([+-]\d{4}))$/;
+
+    function extractFromRFC2822Strings(yearStr, monthStr, dayStr, hourStr, minuteStr, secondStr) {
+        var result = [
+            untruncateYear(yearStr),
+            defaultLocaleMonthsShort.indexOf(monthStr),
+            parseInt(dayStr, 10),
+            parseInt(hourStr, 10),
+            parseInt(minuteStr, 10)
+        ];
+
+        if (secondStr) {
+            result.push(parseInt(secondStr, 10));
+        }
+
+        return result;
+    }
+
+    function untruncateYear(yearStr) {
+        var year = parseInt(yearStr, 10);
+        if (year <= 49) {
+            return 2000 + year;
+        } else if (year <= 999) {
+            return 1900 + year;
+        }
+        return year;
+    }
+
+    function preprocessRFC2822(s) {
+        // Remove comments and folding whitespace and replace multiple-spaces with a single space
+        return s.replace(/\([^)]*\)|[\n\t]/g, ' ').replace(/(\s\s+)/g, ' ').replace(/^\s\s*/, '').replace(/\s\s*$/, '');
+    }
+
+    function checkWeekday(weekdayStr, parsedInput, config) {
+        if (weekdayStr) {
+            // TODO: Replace the vanilla JS Date object with an indepentent day-of-week check.
+            var weekdayProvided = defaultLocaleWeekdaysShort.indexOf(weekdayStr),
+                weekdayActual = new Date(parsedInput[0], parsedInput[1], parsedInput[2]).getDay();
+            if (weekdayProvided !== weekdayActual) {
+                getParsingFlags(config).weekdayMismatch = true;
+                config._isValid = false;
+                return false;
+            }
+        }
+        return true;
+    }
+
+    var obsOffsets = {
+        UT: 0,
+        GMT: 0,
+        EDT: -4 * 60,
+        EST: -5 * 60,
+        CDT: -5 * 60,
+        CST: -6 * 60,
+        MDT: -6 * 60,
+        MST: -7 * 60,
+        PDT: -7 * 60,
+        PST: -8 * 60
+    };
+
+    function calculateOffset(obsOffset, militaryOffset, numOffset) {
+        if (obsOffset) {
+            return obsOffsets[obsOffset];
+        } else if (militaryOffset) {
+            // the only allowed military tz is Z
+            return 0;
+        } else {
+            var hm = parseInt(numOffset, 10);
+            var m = hm % 100, h = (hm - m) / 100;
+            return h * 60 + m;
+        }
+    }
+
+    // date and time from ref 2822 format
+    function configFromRFC2822(config) {
+        var match = rfc2822.exec(preprocessRFC2822(config._i));
+        if (match) {
+            var parsedArray = extractFromRFC2822Strings(match[4], match[3], match[2], match[5], match[6], match[7]);
+            if (!checkWeekday(match[1], parsedArray, config)) {
+                return;
+            }
+
+            config._a = parsedArray;
+            config._tzm = calculateOffset(match[8], match[9], match[10]);
+
+            config._d = createUTCDate.apply(null, config._a);
+            config._d.setUTCMinutes(config._d.getUTCMinutes() - config._tzm);
+
+            getParsingFlags(config).rfc2822 = true;
+        } else {
+            config._isValid = false;
+        }
+    }
+
     // date from iso format or fallback
     function configFromString(config) {
         var matched = aspNetJsonRegex.exec(config._i);
@@ -15308,13 +15719,24 @@ var moment = createCommonjsModule(function (module, exports) {
         configFromISO(config);
         if (config._isValid === false) {
             delete config._isValid;
-            utils_hooks__hooks.createFromInputFallback(config);
+        } else {
+            return;
         }
+
+        configFromRFC2822(config);
+        if (config._isValid === false) {
+            delete config._isValid;
+        } else {
+            return;
+        }
+
+        // Final attempt, use Input Fallback
+        hooks.createFromInputFallback(config);
     }
 
-    utils_hooks__hooks.createFromInputFallback = deprecate(
-        'value provided is not in a recognized ISO format. moment construction falls back to js Date(), ' +
-        'which is not reliable across all browsers and versions. Non ISO date formats are ' +
+    hooks.createFromInputFallback = deprecate(
+        'value provided is not in a recognized RFC2822 or ISO format. moment construction falls back to js Date(), ' +
+        'which is not reliable across all browsers and versions. Non RFC2822/ISO date formats are ' +
         'discouraged and will be removed in an upcoming major release. Please refer to ' +
         'http://momentjs.com/guides/#/warnings/js-date/ for more info.',
         function (config) {
@@ -15322,156 +15744,23 @@ var moment = createCommonjsModule(function (module, exports) {
         }
     );
 
-    // Pick the first defined of two or three arguments.
-    function defaults(a, b, c) {
-        if (a != null) {
-            return a;
-        }
-        if (b != null) {
-            return b;
-        }
-        return c;
-    }
-
-    function currentDateArray(config) {
-        // hooks is actually the exported moment object
-        var nowValue = new Date(utils_hooks__hooks.now());
-        if (config._useUTC) {
-            return [nowValue.getUTCFullYear(), nowValue.getUTCMonth(), nowValue.getUTCDate()];
-        }
-        return [nowValue.getFullYear(), nowValue.getMonth(), nowValue.getDate()];
-    }
-
-    // convert an array to a date.
-    // the array should mirror the parameters below
-    // note: all values past the year are optional and will default to the lowest possible value.
-    // [year, month, day , hour, minute, second, millisecond]
-    function configFromArray (config) {
-        var i, date, input = [], currentDate, yearToUse;
-
-        if (config._d) {
-            return;
-        }
-
-        currentDate = currentDateArray(config);
-
-        //compute day of the year from weeks and weekdays
-        if (config._w && config._a[DATE] == null && config._a[MONTH] == null) {
-            dayOfYearFromWeekInfo(config);
-        }
-
-        //if the day of the year is set, figure out what it is
-        if (config._dayOfYear) {
-            yearToUse = defaults(config._a[YEAR], currentDate[YEAR]);
-
-            if (config._dayOfYear > daysInYear(yearToUse)) {
-                getParsingFlags(config)._overflowDayOfYear = true;
-            }
-
-            date = createUTCDate(yearToUse, 0, config._dayOfYear);
-            config._a[MONTH] = date.getUTCMonth();
-            config._a[DATE] = date.getUTCDate();
-        }
-
-        // Default to current date.
-        // * if no year, month, day of month are given, default to today
-        // * if day of month is given, default month and year
-        // * if month is given, default only year
-        // * if year is given, don't default anything
-        for (i = 0; i < 3 && config._a[i] == null; ++i) {
-            config._a[i] = input[i] = currentDate[i];
-        }
-
-        // Zero out whatever was not defaulted, including time
-        for (; i < 7; i++) {
-            config._a[i] = input[i] = (config._a[i] == null) ? (i === 2 ? 1 : 0) : config._a[i];
-        }
-
-        // Check for 24:00:00.000
-        if (config._a[HOUR] === 24 &&
-                config._a[MINUTE] === 0 &&
-                config._a[SECOND] === 0 &&
-                config._a[MILLISECOND] === 0) {
-            config._nextDay = true;
-            config._a[HOUR] = 0;
-        }
-
-        config._d = (config._useUTC ? createUTCDate : createDate).apply(null, input);
-        // Apply timezone offset from input. The actual utcOffset can be changed
-        // with parseZone.
-        if (config._tzm != null) {
-            config._d.setUTCMinutes(config._d.getUTCMinutes() - config._tzm);
-        }
-
-        if (config._nextDay) {
-            config._a[HOUR] = 24;
-        }
-    }
-
-    function dayOfYearFromWeekInfo(config) {
-        var w, weekYear, week, weekday, dow, doy, temp, weekdayOverflow;
-
-        w = config._w;
-        if (w.GG != null || w.W != null || w.E != null) {
-            dow = 1;
-            doy = 4;
-
-            // TODO: We need to take the current isoWeekYear, but that depends on
-            // how we interpret now (local, utc, fixed offset). So create
-            // a now version of current config (take local/utc/offset flags, and
-            // create now).
-            weekYear = defaults(w.GG, config._a[YEAR], weekOfYear(local__createLocal(), 1, 4).year);
-            week = defaults(w.W, 1);
-            weekday = defaults(w.E, 1);
-            if (weekday < 1 || weekday > 7) {
-                weekdayOverflow = true;
-            }
-        } else {
-            dow = config._locale._week.dow;
-            doy = config._locale._week.doy;
-
-            weekYear = defaults(w.gg, config._a[YEAR], weekOfYear(local__createLocal(), dow, doy).year);
-            week = defaults(w.w, 1);
-
-            if (w.d != null) {
-                // weekday -- low day numbers are considered next week
-                weekday = w.d;
-                if (weekday < 0 || weekday > 6) {
-                    weekdayOverflow = true;
-                }
-            } else if (w.e != null) {
-                // local weekday -- counting starts from begining of week
-                weekday = w.e + dow;
-                if (w.e < 0 || w.e > 6) {
-                    weekdayOverflow = true;
-                }
-            } else {
-                // default to begining of week
-                weekday = dow;
-            }
-        }
-        if (week < 1 || week > weeksInYear(weekYear, dow, doy)) {
-            getParsingFlags(config)._overflowWeeks = true;
-        } else if (weekdayOverflow != null) {
-            getParsingFlags(config)._overflowWeekday = true;
-        } else {
-            temp = dayOfYearFromWeeks(weekYear, week, weekday, dow, doy);
-            config._a[YEAR] = temp.year;
-            config._dayOfYear = temp.dayOfYear;
-        }
-    }
-
     // constant that refers to the ISO standard
-    utils_hooks__hooks.ISO_8601 = function () {};
+    hooks.ISO_8601 = function () {};
+
+    // constant that refers to the RFC 2822 form
+    hooks.RFC_2822 = function () {};
 
     // date from string and format string
     function configFromStringAndFormat(config) {
         // TODO: Move this to another part of the creation flow to prevent circular deps
-        if (config._f === utils_hooks__hooks.ISO_8601) {
+        if (config._f === hooks.ISO_8601) {
             configFromISO(config);
             return;
         }
-
+        if (config._f === hooks.RFC_2822) {
+            configFromRFC2822(config);
+            return;
+        }
         config._a = [];
         getParsingFlags(config).empty = true;
 
@@ -15583,7 +15872,7 @@ var moment = createCommonjsModule(function (module, exports) {
             tempConfig._f = config._f[i];
             configFromStringAndFormat(tempConfig);
 
-            if (!valid__isValid(tempConfig)) {
+            if (!isValid(tempConfig)) {
                 continue;
             }
 
@@ -15632,10 +15921,10 @@ var moment = createCommonjsModule(function (module, exports) {
         var input = config._i,
             format = config._f;
 
-        config._locale = config._locale || locale_locales__getLocale(config._l);
+        config._locale = config._locale || getLocale(config._l);
 
         if (input === null || (format === undefined && input === '')) {
-            return valid__createInvalid({nullInput: true});
+            return createInvalid({nullInput: true});
         }
 
         if (typeof input === 'string') {
@@ -15644,17 +15933,17 @@ var moment = createCommonjsModule(function (module, exports) {
 
         if (isMoment(input)) {
             return new Moment(checkOverflow(input));
-        } else if (isArray(format)) {
-            configFromStringAndArray(config);
         } else if (isDate(input)) {
             config._d = input;
+        } else if (isArray(format)) {
+            configFromStringAndArray(config);
         } else if (format) {
             configFromStringAndFormat(config);
         }  else {
             configFromInput(config);
         }
 
-        if (!valid__isValid(config)) {
+        if (!isValid(config)) {
             config._d = null;
         }
 
@@ -15663,8 +15952,8 @@ var moment = createCommonjsModule(function (module, exports) {
 
     function configFromInput(config) {
         var input = config._i;
-        if (input === undefined) {
-            config._d = new Date(utils_hooks__hooks.now());
+        if (isUndefined(input)) {
+            config._d = new Date(hooks.now());
         } else if (isDate(input)) {
             config._d = new Date(input.valueOf());
         } else if (typeof input === 'string') {
@@ -15674,20 +15963,20 @@ var moment = createCommonjsModule(function (module, exports) {
                 return parseInt(obj, 10);
             });
             configFromArray(config);
-        } else if (typeof(input) === 'object') {
+        } else if (isObject(input)) {
             configFromObject(config);
-        } else if (typeof(input) === 'number') {
+        } else if (isNumber(input)) {
             // from milliseconds
             config._d = new Date(input);
         } else {
-            utils_hooks__hooks.createFromInputFallback(config);
+            hooks.createFromInputFallback(config);
         }
     }
 
     function createLocalOrUTC (input, format, locale, strict, isUTC) {
         var c = {};
 
-        if (typeof(locale) === 'boolean') {
+        if (locale === true || locale === false) {
             strict = locale;
             locale = undefined;
         }
@@ -15708,18 +15997,18 @@ var moment = createCommonjsModule(function (module, exports) {
         return createFromConfig(c);
     }
 
-    function local__createLocal (input, format, locale, strict) {
+    function createLocal (input, format, locale, strict) {
         return createLocalOrUTC(input, format, locale, strict, false);
     }
 
     var prototypeMin = deprecate(
         'moment().min is deprecated, use moment.max instead. http://momentjs.com/guides/#/warnings/min-max/',
         function () {
-            var other = local__createLocal.apply(null, arguments);
+            var other = createLocal.apply(null, arguments);
             if (this.isValid() && other.isValid()) {
                 return other < this ? this : other;
             } else {
-                return valid__createInvalid();
+                return createInvalid();
             }
         }
     );
@@ -15727,11 +16016,11 @@ var moment = createCommonjsModule(function (module, exports) {
     var prototypeMax = deprecate(
         'moment().max is deprecated, use moment.min instead. http://momentjs.com/guides/#/warnings/min-max/',
         function () {
-            var other = local__createLocal.apply(null, arguments);
+            var other = createLocal.apply(null, arguments);
             if (this.isValid() && other.isValid()) {
                 return other > this ? this : other;
             } else {
-                return valid__createInvalid();
+                return createInvalid();
             }
         }
     );
@@ -15747,7 +16036,7 @@ var moment = createCommonjsModule(function (module, exports) {
             moments = moments[0];
         }
         if (!moments.length) {
-            return local__createLocal();
+            return createLocal();
         }
         res = moments[0];
         for (i = 1; i < moments.length; ++i) {
@@ -15775,17 +16064,51 @@ var moment = createCommonjsModule(function (module, exports) {
         return Date.now ? Date.now() : +(new Date());
     };
 
+    var ordering = ['year', 'quarter', 'month', 'week', 'day', 'hour', 'minute', 'second', 'millisecond'];
+
+    function isDurationValid(m) {
+        for (var key in m) {
+            if (!(indexOf.call(ordering, key) !== -1 && (m[key] == null || !isNaN(m[key])))) {
+                return false;
+            }
+        }
+
+        var unitHasDecimal = false;
+        for (var i = 0; i < ordering.length; ++i) {
+            if (m[ordering[i]]) {
+                if (unitHasDecimal) {
+                    return false; // only allow non-integers for smallest unit
+                }
+                if (parseFloat(m[ordering[i]]) !== toInt(m[ordering[i]])) {
+                    unitHasDecimal = true;
+                }
+            }
+        }
+
+        return true;
+    }
+
+    function isValid$1() {
+        return this._isValid;
+    }
+
+    function createInvalid$1() {
+        return createDuration(NaN);
+    }
+
     function Duration (duration) {
         var normalizedInput = normalizeObjectUnits(duration),
             years = normalizedInput.year || 0,
             quarters = normalizedInput.quarter || 0,
             months = normalizedInput.month || 0,
-            weeks = normalizedInput.week || 0,
+            weeks = normalizedInput.week || normalizedInput.isoWeek || 0,
             days = normalizedInput.day || 0,
             hours = normalizedInput.hour || 0,
             minutes = normalizedInput.minute || 0,
             seconds = normalizedInput.second || 0,
             milliseconds = normalizedInput.millisecond || 0;
+
+        this._isValid = isDurationValid(normalizedInput);
 
         // representation for dateAddRemove
         this._milliseconds = +milliseconds +
@@ -15796,7 +16119,7 @@ var moment = createCommonjsModule(function (module, exports) {
         // day when working around DST, we need to store them separately
         this._days = +days +
             weeks * 7;
-        // It is impossible translate months into days without knowing
+        // It is impossible to translate months into days without knowing
         // which months you are are talking about, so we have to store
         // it separately.
         this._months = +months +
@@ -15805,7 +16128,7 @@ var moment = createCommonjsModule(function (module, exports) {
 
         this._data = {};
 
-        this._locale = locale_locales__getLocale();
+        this._locale = getLocale();
 
         this._bubble();
     }
@@ -15856,12 +16179,19 @@ var moment = createCommonjsModule(function (module, exports) {
     var chunkOffset = /([\+\-]|\d\d)/gi;
 
     function offsetFromString(matcher, string) {
-        var matches = ((string || '').match(matcher) || []);
+        var matches = (string || '').match(matcher);
+
+        if (matches === null) {
+            return null;
+        }
+
         var chunk   = matches[matches.length - 1] || [];
         var parts   = (chunk + '').match(chunkOffset) || ['-', 0, 0];
         var minutes = +(parts[1] * 60) + toInt(parts[2]);
 
-        return parts[0] === '+' ? minutes : -minutes;
+        return minutes === 0 ?
+          0 :
+          parts[0] === '+' ? minutes : -minutes;
     }
 
     // Return a moment from input, that is local/utc/zone equivalent to model.
@@ -15869,13 +16199,13 @@ var moment = createCommonjsModule(function (module, exports) {
         var res, diff;
         if (model._isUTC) {
             res = model.clone();
-            diff = (isMoment(input) || isDate(input) ? input.valueOf() : local__createLocal(input).valueOf()) - res.valueOf();
+            diff = (isMoment(input) || isDate(input) ? input.valueOf() : createLocal(input).valueOf()) - res.valueOf();
             // Use low-level api, because this fn is low-level api.
             res._d.setTime(res._d.valueOf() + diff);
-            utils_hooks__hooks.updateOffset(res, false);
+            hooks.updateOffset(res, false);
             return res;
         } else {
-            return local__createLocal(input).local();
+            return createLocal(input).local();
         }
     }
 
@@ -15889,7 +16219,7 @@ var moment = createCommonjsModule(function (module, exports) {
 
     // This function will be called whenever a moment is mutated.
     // It is intended to keep the offset in sync with the timezone.
-    utils_hooks__hooks.updateOffset = function () {};
+    hooks.updateOffset = function () {};
 
     // MOMENTS
 
@@ -15903,7 +16233,7 @@ var moment = createCommonjsModule(function (module, exports) {
     // a second time. In case it wants us to change the offset again
     // _changeInProgress == true case, then we have to adjust, because
     // there is no such time in the given timezone.
-    function getSetOffset (input, keepLocalTime) {
+    function getSetOffset (input, keepLocalTime, keepMinutes) {
         var offset = this._offset || 0,
             localAdjust;
         if (!this.isValid()) {
@@ -15912,7 +16242,10 @@ var moment = createCommonjsModule(function (module, exports) {
         if (input != null) {
             if (typeof input === 'string') {
                 input = offsetFromString(matchShortOffset, input);
-            } else if (Math.abs(input) < 16) {
+                if (input === null) {
+                    return this;
+                }
+            } else if (Math.abs(input) < 16 && !keepMinutes) {
                 input = input * 60;
             }
             if (!this._isUTC && keepLocalTime) {
@@ -15925,10 +16258,10 @@ var moment = createCommonjsModule(function (module, exports) {
             }
             if (offset !== input) {
                 if (!keepLocalTime || this._changeInProgress) {
-                    add_subtract__addSubtract(this, create__createDuration(input - offset, 'm'), 1, false);
+                    addSubtract(this, createDuration(input - offset, 'm'), 1, false);
                 } else if (!this._changeInProgress) {
                     this._changeInProgress = true;
-                    utils_hooks__hooks.updateOffset(this, true);
+                    hooks.updateOffset(this, true);
                     this._changeInProgress = null;
                 }
             }
@@ -15969,15 +16302,15 @@ var moment = createCommonjsModule(function (module, exports) {
     }
 
     function setOffsetToParsedOffset () {
-        if (this._tzm) {
-            this.utcOffset(this._tzm);
+        if (this._tzm != null) {
+            this.utcOffset(this._tzm, false, true);
         } else if (typeof this._i === 'string') {
             var tZone = offsetFromString(matchOffset, this._i);
-
-            if (tZone === 0) {
+            if (tZone != null) {
+                this.utcOffset(tZone);
+            }
+            else {
                 this.utcOffset(0, true);
-            } else {
-                this.utcOffset(offsetFromString(matchOffset, this._i));
             }
         }
         return this;
@@ -15987,7 +16320,7 @@ var moment = createCommonjsModule(function (module, exports) {
         if (!this.isValid()) {
             return false;
         }
-        input = input ? local__createLocal(input).utcOffset() : 0;
+        input = input ? createLocal(input).utcOffset() : 0;
 
         return (this.utcOffset() - input) % 60 === 0;
     }
@@ -16010,7 +16343,7 @@ var moment = createCommonjsModule(function (module, exports) {
         c = prepareConfig(c);
 
         if (c._a) {
-            var other = c._isUTC ? create_utc__createUTC(c._a) : local__createLocal(c._a);
+            var other = c._isUTC ? createUTC(c._a) : createLocal(c._a);
             this._isDSTShifted = this.isValid() &&
                 compareArrays(c._a, other.toArray()) > 0;
         } else {
@@ -16033,14 +16366,14 @@ var moment = createCommonjsModule(function (module, exports) {
     }
 
     // ASP.NET json date format regex
-    var aspNetRegex = /^(\-)?(?:(\d*)[. ])?(\d+)\:(\d+)(?:\:(\d+)(\.\d*)?)?$/;
+    var aspNetRegex = /^(\-|\+)?(?:(\d*)[. ])?(\d+)\:(\d+)(?:\:(\d+)(\.\d*)?)?$/;
 
     // from http://docs.closure-library.googlecode.com/git/closure_goog_date_date.js.source.html
     // somewhat more in line with 4.4.3.2 2004 spec, but allows decimal anywhere
     // and further modified to allow for strings containing both week and day
-    var isoRegex = /^(-)?P(?:(-?[0-9,.]*)Y)?(?:(-?[0-9,.]*)M)?(?:(-?[0-9,.]*)W)?(?:(-?[0-9,.]*)D)?(?:T(?:(-?[0-9,.]*)H)?(?:(-?[0-9,.]*)M)?(?:(-?[0-9,.]*)S)?)?$/;
+    var isoRegex = /^(-|\+)?P(?:([-+]?[0-9,.]*)Y)?(?:([-+]?[0-9,.]*)M)?(?:([-+]?[0-9,.]*)W)?(?:([-+]?[0-9,.]*)D)?(?:T(?:([-+]?[0-9,.]*)H)?(?:([-+]?[0-9,.]*)M)?(?:([-+]?[0-9,.]*)S)?)?$/;
 
-    function create__createDuration (input, key) {
+    function createDuration (input, key) {
         var duration = input,
             // matching against regexp is expensive, do it on demand
             match = null,
@@ -16054,7 +16387,7 @@ var moment = createCommonjsModule(function (module, exports) {
                 d  : input._days,
                 M  : input._months
             };
-        } else if (typeof input === 'number') {
+        } else if (isNumber(input)) {
             duration = {};
             if (key) {
                 duration[key] = input;
@@ -16085,7 +16418,7 @@ var moment = createCommonjsModule(function (module, exports) {
         } else if (duration == null) {// checks for null or undefined
             duration = {};
         } else if (typeof duration === 'object' && ('from' in duration || 'to' in duration)) {
-            diffRes = momentsDifference(local__createLocal(duration.from), local__createLocal(duration.to));
+            diffRes = momentsDifference(createLocal(duration.from), createLocal(duration.to));
 
             duration = {};
             duration.ms = diffRes.milliseconds;
@@ -16101,7 +16434,8 @@ var moment = createCommonjsModule(function (module, exports) {
         return ret;
     }
 
-    create__createDuration.fn = Duration.prototype;
+    createDuration.fn = Duration.prototype;
+    createDuration.invalid = createInvalid$1;
 
     function parseIso (inp, sign) {
         // We'd normally use ~~inp for this, but unfortunately it also
@@ -16113,7 +16447,7 @@ var moment = createCommonjsModule(function (module, exports) {
     }
 
     function positiveMomentsDifference(base, other) {
-        var res = {milliseconds: 0, months: 0};
+        var res = {};
 
         res.months = other.month() - base.month() +
             (other.year() - base.year()) * 12;
@@ -16156,13 +16490,13 @@ var moment = createCommonjsModule(function (module, exports) {
             }
 
             val = typeof val === 'string' ? +val : val;
-            dur = create__createDuration(val, period);
-            add_subtract__addSubtract(this, dur, direction);
+            dur = createDuration(val, period);
+            addSubtract(this, dur, direction);
             return this;
         };
     }
 
-    function add_subtract__addSubtract (mom, duration, isAdding, updateOffset) {
+    function addSubtract (mom, duration, isAdding, updateOffset) {
         var milliseconds = duration._milliseconds,
             days = absRound(duration._days),
             months = absRound(duration._months);
@@ -16174,22 +16508,22 @@ var moment = createCommonjsModule(function (module, exports) {
 
         updateOffset = updateOffset == null ? true : updateOffset;
 
+        if (months) {
+            setMonth(mom, get(mom, 'Month') + months * isAdding);
+        }
+        if (days) {
+            set$1(mom, 'Date', get(mom, 'Date') + days * isAdding);
+        }
         if (milliseconds) {
             mom._d.setTime(mom._d.valueOf() + milliseconds * isAdding);
         }
-        if (days) {
-            get_set__set(mom, 'Date', get_set__get(mom, 'Date') + days * isAdding);
-        }
-        if (months) {
-            setMonth(mom, get_set__get(mom, 'Month') + months * isAdding);
-        }
         if (updateOffset) {
-            utils_hooks__hooks.updateOffset(mom, days || months);
+            hooks.updateOffset(mom, days || months);
         }
     }
 
-    var add_subtract__add      = createAdder(1, 'add');
-    var add_subtract__subtract = createAdder(-1, 'subtract');
+    var add      = createAdder(1, 'add');
+    var subtract = createAdder(-1, 'subtract');
 
     function getCalendarFormat(myMoment, now) {
         var diff = myMoment.diff(now, 'days', true);
@@ -16201,16 +16535,16 @@ var moment = createCommonjsModule(function (module, exports) {
                 diff < 7 ? 'nextWeek' : 'sameElse';
     }
 
-    function moment_calendar__calendar (time, formats) {
+    function calendar$1 (time, formats) {
         // We want to compare the start of today, vs this.
         // Getting start-of-today depends on whether we're local/utc/offset or not.
-        var now = time || local__createLocal(),
+        var now = time || createLocal(),
             sod = cloneWithOffset(now, this).startOf('day'),
-            format = utils_hooks__hooks.calendarFormat(this, sod) || 'sameElse';
+            format = hooks.calendarFormat(this, sod) || 'sameElse';
 
         var output = formats && (isFunction(formats[format]) ? formats[format].call(this, now) : formats[format]);
 
-        return this.format(output || this.localeData().calendar(format, this, local__createLocal(now)));
+        return this.format(output || this.localeData().calendar(format, this, createLocal(now)));
     }
 
     function clone () {
@@ -16218,11 +16552,11 @@ var moment = createCommonjsModule(function (module, exports) {
     }
 
     function isAfter (input, units) {
-        var localInput = isMoment(input) ? input : local__createLocal(input);
+        var localInput = isMoment(input) ? input : createLocal(input);
         if (!(this.isValid() && localInput.isValid())) {
             return false;
         }
-        units = normalizeUnits(!isUndefined(units) ? units : 'millisecond');
+        units = normalizeUnits(units) || 'millisecond';
         if (units === 'millisecond') {
             return this.valueOf() > localInput.valueOf();
         } else {
@@ -16231,11 +16565,11 @@ var moment = createCommonjsModule(function (module, exports) {
     }
 
     function isBefore (input, units) {
-        var localInput = isMoment(input) ? input : local__createLocal(input);
+        var localInput = isMoment(input) ? input : createLocal(input);
         if (!(this.isValid() && localInput.isValid())) {
             return false;
         }
-        units = normalizeUnits(!isUndefined(units) ? units : 'millisecond');
+        units = normalizeUnits(units) || 'millisecond';
         if (units === 'millisecond') {
             return this.valueOf() < localInput.valueOf();
         } else {
@@ -16244,18 +16578,23 @@ var moment = createCommonjsModule(function (module, exports) {
     }
 
     function isBetween (from, to, units, inclusivity) {
+        var localFrom = isMoment(from) ? from : createLocal(from),
+            localTo = isMoment(to) ? to : createLocal(to);
+        if (!(this.isValid() && localFrom.isValid() && localTo.isValid())) {
+            return false;
+        }
         inclusivity = inclusivity || '()';
-        return (inclusivity[0] === '(' ? this.isAfter(from, units) : !this.isBefore(from, units)) &&
-            (inclusivity[1] === ')' ? this.isBefore(to, units) : !this.isAfter(to, units));
+        return (inclusivity[0] === '(' ? this.isAfter(localFrom, units) : !this.isBefore(localFrom, units)) &&
+            (inclusivity[1] === ')' ? this.isBefore(localTo, units) : !this.isAfter(localTo, units));
     }
 
     function isSame (input, units) {
-        var localInput = isMoment(input) ? input : local__createLocal(input),
+        var localInput = isMoment(input) ? input : createLocal(input),
             inputMs;
         if (!(this.isValid() && localInput.isValid())) {
             return false;
         }
-        units = normalizeUnits(units || 'millisecond');
+        units = normalizeUnits(units) || 'millisecond';
         if (units === 'millisecond') {
             return this.valueOf() === localInput.valueOf();
         } else {
@@ -16265,17 +16604,17 @@ var moment = createCommonjsModule(function (module, exports) {
     }
 
     function isSameOrAfter (input, units) {
-        return this.isSame(input, units) || this.isAfter(input,units);
+        return this.isSame(input, units) || this.isAfter(input, units);
     }
 
     function isSameOrBefore (input, units) {
-        return this.isSame(input, units) || this.isBefore(input,units);
+        return this.isSame(input, units) || this.isBefore(input, units);
     }
 
     function diff (input, units, asFloat) {
         var that,
             zoneDelta,
-            delta, output;
+            output;
 
         if (!this.isValid()) {
             return NaN;
@@ -16291,22 +16630,18 @@ var moment = createCommonjsModule(function (module, exports) {
 
         units = normalizeUnits(units);
 
-        if (units === 'year' || units === 'month' || units === 'quarter') {
-            output = monthDiff(this, that);
-            if (units === 'quarter') {
-                output = output / 3;
-            } else if (units === 'year') {
-                output = output / 12;
-            }
-        } else {
-            delta = this - that;
-            output = units === 'second' ? delta / 1e3 : // 1000
-                units === 'minute' ? delta / 6e4 : // 1000 * 60
-                units === 'hour' ? delta / 36e5 : // 1000 * 60 * 60
-                units === 'day' ? (delta - zoneDelta) / 864e5 : // 1000 * 60 * 60 * 24, negate dst
-                units === 'week' ? (delta - zoneDelta) / 6048e5 : // 1000 * 60 * 60 * 24 * 7, negate dst
-                delta;
+        switch (units) {
+            case 'year': output = monthDiff(this, that) / 12; break;
+            case 'month': output = monthDiff(this, that); break;
+            case 'quarter': output = monthDiff(this, that) / 3; break;
+            case 'second': output = (this - that) / 1e3; break; // 1000
+            case 'minute': output = (this - that) / 6e4; break; // 1000 * 60
+            case 'hour': output = (this - that) / 36e5; break; // 1000 * 60 * 60
+            case 'day': output = (this - that - zoneDelta) / 864e5; break; // 1000 * 60 * 60 * 24, negate dst
+            case 'week': output = (this - that - zoneDelta) / 6048e5; break; // 1000 * 60 * 60 * 24 * 7, negate dst
+            default: output = this - that;
         }
+
         return asFloat ? output : absFloor(output);
     }
 
@@ -16331,30 +16666,60 @@ var moment = createCommonjsModule(function (module, exports) {
         return -(wholeMonthDiff + adjust) || 0;
     }
 
-    utils_hooks__hooks.defaultFormat = 'YYYY-MM-DDTHH:mm:ssZ';
-    utils_hooks__hooks.defaultFormatUtc = 'YYYY-MM-DDTHH:mm:ss[Z]';
+    hooks.defaultFormat = 'YYYY-MM-DDTHH:mm:ssZ';
+    hooks.defaultFormatUtc = 'YYYY-MM-DDTHH:mm:ss[Z]';
 
     function toString () {
         return this.clone().locale('en').format('ddd MMM DD YYYY HH:mm:ss [GMT]ZZ');
     }
 
-    function moment_format__toISOString () {
-        var m = this.clone().utc();
-        if (0 < m.year() && m.year() <= 9999) {
-            if (isFunction(Date.prototype.toISOString)) {
-                // native implementation is ~50x faster, use it when we can
+    function toISOString(keepOffset) {
+        if (!this.isValid()) {
+            return null;
+        }
+        var utc = keepOffset !== true;
+        var m = utc ? this.clone().utc() : this;
+        if (m.year() < 0 || m.year() > 9999) {
+            return formatMoment(m, utc ? 'YYYYYY-MM-DD[T]HH:mm:ss.SSS[Z]' : 'YYYYYY-MM-DD[T]HH:mm:ss.SSSZ');
+        }
+        if (isFunction(Date.prototype.toISOString)) {
+            // native implementation is ~50x faster, use it when we can
+            if (utc) {
                 return this.toDate().toISOString();
             } else {
-                return formatMoment(m, 'YYYY-MM-DD[T]HH:mm:ss.SSS[Z]');
+                return new Date(this.valueOf() + this.utcOffset() * 60 * 1000).toISOString().replace('Z', formatMoment(m, 'Z'));
             }
-        } else {
-            return formatMoment(m, 'YYYYYY-MM-DD[T]HH:mm:ss.SSS[Z]');
         }
+        return formatMoment(m, utc ? 'YYYY-MM-DD[T]HH:mm:ss.SSS[Z]' : 'YYYY-MM-DD[T]HH:mm:ss.SSSZ');
+    }
+
+    /**
+     * Return a human readable representation of a moment that can
+     * also be evaluated to get a new moment which is the same
+     *
+     * @link https://nodejs.org/dist/latest/docs/api/util.html#util_custom_inspect_function_on_objects
+     */
+    function inspect () {
+        if (!this.isValid()) {
+            return 'moment.invalid(/* ' + this._i + ' */)';
+        }
+        var func = 'moment';
+        var zone = '';
+        if (!this.isLocal()) {
+            func = this.utcOffset() === 0 ? 'moment.utc' : 'moment.parseZone';
+            zone = 'Z';
+        }
+        var prefix = '[' + func + '("]';
+        var year = (0 <= this.year() && this.year() <= 9999) ? 'YYYY' : 'YYYYYY';
+        var datetime = '-MM-DD[T]HH:mm:ss.SSS';
+        var suffix = zone + '[")]';
+
+        return this.format(prefix + year + datetime + suffix);
     }
 
     function format (inputString) {
         if (!inputString) {
-            inputString = this.isUtc() ? utils_hooks__hooks.defaultFormatUtc : utils_hooks__hooks.defaultFormat;
+            inputString = this.isUtc() ? hooks.defaultFormatUtc : hooks.defaultFormat;
         }
         var output = formatMoment(this, inputString);
         return this.localeData().postformat(output);
@@ -16363,29 +16728,29 @@ var moment = createCommonjsModule(function (module, exports) {
     function from (time, withoutSuffix) {
         if (this.isValid() &&
                 ((isMoment(time) && time.isValid()) ||
-                 local__createLocal(time).isValid())) {
-            return create__createDuration({to: this, from: time}).locale(this.locale()).humanize(!withoutSuffix);
+                 createLocal(time).isValid())) {
+            return createDuration({to: this, from: time}).locale(this.locale()).humanize(!withoutSuffix);
         } else {
             return this.localeData().invalidDate();
         }
     }
 
     function fromNow (withoutSuffix) {
-        return this.from(local__createLocal(), withoutSuffix);
+        return this.from(createLocal(), withoutSuffix);
     }
 
     function to (time, withoutSuffix) {
         if (this.isValid() &&
                 ((isMoment(time) && time.isValid()) ||
-                 local__createLocal(time).isValid())) {
-            return create__createDuration({from: this, to: time}).locale(this.locale()).humanize(!withoutSuffix);
+                 createLocal(time).isValid())) {
+            return createDuration({from: this, to: time}).locale(this.locale()).humanize(!withoutSuffix);
         } else {
             return this.localeData().invalidDate();
         }
     }
 
     function toNow (withoutSuffix) {
-        return this.to(local__createLocal(), withoutSuffix);
+        return this.to(createLocal(), withoutSuffix);
     }
 
     // If passed a locale key, it will set the locale for this
@@ -16397,7 +16762,7 @@ var moment = createCommonjsModule(function (module, exports) {
         if (key === undefined) {
             return this._locale._abbr;
         } else {
-            newLocaleData = locale_locales__getLocale(key);
+            newLocaleData = getLocale(key);
             if (newLocaleData != null) {
                 this._locale = newLocaleData;
             }
@@ -16420,65 +16785,133 @@ var moment = createCommonjsModule(function (module, exports) {
         return this._locale;
     }
 
+    var MS_PER_SECOND = 1000;
+    var MS_PER_MINUTE = 60 * MS_PER_SECOND;
+    var MS_PER_HOUR = 60 * MS_PER_MINUTE;
+    var MS_PER_400_YEARS = (365 * 400 + 97) * 24 * MS_PER_HOUR;
+
+    // actual modulo - handles negative numbers (for dates before 1970):
+    function mod$1(dividend, divisor) {
+        return (dividend % divisor + divisor) % divisor;
+    }
+
+    function localStartOfDate(y, m, d) {
+        // the date constructor remaps years 0-99 to 1900-1999
+        if (y < 100 && y >= 0) {
+            // preserve leap years using a full 400 year cycle, then reset
+            return new Date(y + 400, m, d) - MS_PER_400_YEARS;
+        } else {
+            return new Date(y, m, d).valueOf();
+        }
+    }
+
+    function utcStartOfDate(y, m, d) {
+        // Date.UTC remaps years 0-99 to 1900-1999
+        if (y < 100 && y >= 0) {
+            // preserve leap years using a full 400 year cycle, then reset
+            return Date.UTC(y + 400, m, d) - MS_PER_400_YEARS;
+        } else {
+            return Date.UTC(y, m, d);
+        }
+    }
+
     function startOf (units) {
+        var time;
         units = normalizeUnits(units);
-        // the following switch intentionally omits break keywords
-        // to utilize falling through the cases.
+        if (units === undefined || units === 'millisecond' || !this.isValid()) {
+            return this;
+        }
+
+        var startOfDate = this._isUTC ? utcStartOfDate : localStartOfDate;
+
         switch (units) {
             case 'year':
-                this.month(0);
-                /* falls through */
+                time = startOfDate(this.year(), 0, 1);
+                break;
             case 'quarter':
+                time = startOfDate(this.year(), this.month() - this.month() % 3, 1);
+                break;
             case 'month':
-                this.date(1);
-                /* falls through */
+                time = startOfDate(this.year(), this.month(), 1);
+                break;
             case 'week':
+                time = startOfDate(this.year(), this.month(), this.date() - this.weekday());
+                break;
             case 'isoWeek':
+                time = startOfDate(this.year(), this.month(), this.date() - (this.isoWeekday() - 1));
+                break;
             case 'day':
             case 'date':
-                this.hours(0);
-                /* falls through */
+                time = startOfDate(this.year(), this.month(), this.date());
+                break;
             case 'hour':
-                this.minutes(0);
-                /* falls through */
+                time = this._d.valueOf();
+                time -= mod$1(time + (this._isUTC ? 0 : this.utcOffset() * MS_PER_MINUTE), MS_PER_HOUR);
+                break;
             case 'minute':
-                this.seconds(0);
-                /* falls through */
+                time = this._d.valueOf();
+                time -= mod$1(time, MS_PER_MINUTE);
+                break;
             case 'second':
-                this.milliseconds(0);
+                time = this._d.valueOf();
+                time -= mod$1(time, MS_PER_SECOND);
+                break;
         }
 
-        // weeks are a special case
-        if (units === 'week') {
-            this.weekday(0);
-        }
-        if (units === 'isoWeek') {
-            this.isoWeekday(1);
-        }
-
-        // quarters are also special
-        if (units === 'quarter') {
-            this.month(Math.floor(this.month() / 3) * 3);
-        }
-
+        this._d.setTime(time);
+        hooks.updateOffset(this, true);
         return this;
     }
 
     function endOf (units) {
+        var time;
         units = normalizeUnits(units);
-        if (units === undefined || units === 'millisecond') {
+        if (units === undefined || units === 'millisecond' || !this.isValid()) {
             return this;
         }
 
-        // 'date' is an alias for 'day', so it should be considered as such.
-        if (units === 'date') {
-            units = 'day';
+        var startOfDate = this._isUTC ? utcStartOfDate : localStartOfDate;
+
+        switch (units) {
+            case 'year':
+                time = startOfDate(this.year() + 1, 0, 1) - 1;
+                break;
+            case 'quarter':
+                time = startOfDate(this.year(), this.month() - this.month() % 3 + 3, 1) - 1;
+                break;
+            case 'month':
+                time = startOfDate(this.year(), this.month() + 1, 1) - 1;
+                break;
+            case 'week':
+                time = startOfDate(this.year(), this.month(), this.date() - this.weekday() + 7) - 1;
+                break;
+            case 'isoWeek':
+                time = startOfDate(this.year(), this.month(), this.date() - (this.isoWeekday() - 1) + 7) - 1;
+                break;
+            case 'day':
+            case 'date':
+                time = startOfDate(this.year(), this.month(), this.date() + 1) - 1;
+                break;
+            case 'hour':
+                time = this._d.valueOf();
+                time += MS_PER_HOUR - mod$1(time + (this._isUTC ? 0 : this.utcOffset() * MS_PER_MINUTE), MS_PER_HOUR) - 1;
+                break;
+            case 'minute':
+                time = this._d.valueOf();
+                time += MS_PER_MINUTE - mod$1(time, MS_PER_MINUTE) - 1;
+                break;
+            case 'second':
+                time = this._d.valueOf();
+                time += MS_PER_SECOND - mod$1(time, MS_PER_SECOND) - 1;
+                break;
         }
 
-        return this.startOf(units).add(1, (units === 'isoWeek' ? 'week' : units)).subtract(1, 'ms');
+        this._d.setTime(time);
+        hooks.updateOffset(this, true);
+        return this;
     }
 
-    function to_type__valueOf () {
+    function valueOf () {
         return this._d.valueOf() - ((this._offset || 0) * 60000);
     }
 
@@ -16513,8 +16946,8 @@ var moment = createCommonjsModule(function (module, exports) {
         return this.isValid() ? this.toISOString() : null;
     }
 
-    function moment_valid__isValid () {
-        return valid__isValid(this);
+    function isValid$2 () {
+        return isValid(this);
     }
 
     function parsingFlags () {
@@ -16581,7 +17014,7 @@ var moment = createCommonjsModule(function (module, exports) {
     });
 
     addWeekParseToken(['gg', 'GG'], function (input, week, config, token) {
-        week[token] = utils_hooks__hooks.parseTwoDigitYear(input);
+        week[token] = hooks.parseTwoDigitYear(input);
     });
 
     // MOMENTS
@@ -16665,7 +17098,7 @@ var moment = createCommonjsModule(function (module, exports) {
 
     addUnitAlias('date', 'D');
 
-    // PRIOROITY
+    // PRIORITY
     addUnitPriority('date', 9);
 
     // PARSING
@@ -16673,12 +17106,15 @@ var moment = createCommonjsModule(function (module, exports) {
     addRegexToken('D',  match1to2);
     addRegexToken('DD', match1to2, match2);
     addRegexToken('Do', function (isStrict, locale) {
-        return isStrict ? locale._ordinalParse : locale._ordinalParseLenient;
+        // TODO: Remove "ordinalParse" fallback in next major release.
+        return isStrict ?
+          (locale._dayOfMonthOrdinalParse || locale._ordinalParse) :
+          locale._dayOfMonthOrdinalParseLenient;
     });
 
     addParseToken(['D', 'DD'], DATE);
     addParseToken('Do', function (input, array) {
-        array[DATE] = toInt(input.match(match1to2)[0], 10);
+        array[DATE] = toInt(input.match(match1to2)[0]);
     });
 
     // MOMENTS
@@ -16833,169 +17269,137 @@ var moment = createCommonjsModule(function (module, exports) {
         return this._isUTC ? 'Coordinated Universal Time' : '';
     }
 
-    var momentPrototype__proto = Moment.prototype;
+    var proto = Moment.prototype;
 
-    momentPrototype__proto.add               = add_subtract__add;
-    momentPrototype__proto.calendar          = moment_calendar__calendar;
-    momentPrototype__proto.clone             = clone;
-    momentPrototype__proto.diff              = diff;
-    momentPrototype__proto.endOf             = endOf;
-    momentPrototype__proto.format            = format;
-    momentPrototype__proto.from              = from;
-    momentPrototype__proto.fromNow           = fromNow;
-    momentPrototype__proto.to                = to;
-    momentPrototype__proto.toNow             = toNow;
-    momentPrototype__proto.get               = stringGet;
-    momentPrototype__proto.invalidAt         = invalidAt;
-    momentPrototype__proto.isAfter           = isAfter;
-    momentPrototype__proto.isBefore          = isBefore;
-    momentPrototype__proto.isBetween         = isBetween;
-    momentPrototype__proto.isSame            = isSame;
-    momentPrototype__proto.isSameOrAfter     = isSameOrAfter;
-    momentPrototype__proto.isSameOrBefore    = isSameOrBefore;
-    momentPrototype__proto.isValid           = moment_valid__isValid;
-    momentPrototype__proto.lang              = lang;
-    momentPrototype__proto.locale            = locale;
-    momentPrototype__proto.localeData        = localeData;
-    momentPrototype__proto.max               = prototypeMax;
-    momentPrototype__proto.min               = prototypeMin;
-    momentPrototype__proto.parsingFlags      = parsingFlags;
-    momentPrototype__proto.set               = stringSet;
-    momentPrototype__proto.startOf           = startOf;
-    momentPrototype__proto.subtract          = add_subtract__subtract;
-    momentPrototype__proto.toArray           = toArray;
-    momentPrototype__proto.toObject          = toObject;
-    momentPrototype__proto.toDate            = toDate;
-    momentPrototype__proto.toISOString       = moment_format__toISOString;
-    momentPrototype__proto.toJSON            = toJSON;
-    momentPrototype__proto.toString          = toString;
-    momentPrototype__proto.unix              = unix;
-    momentPrototype__proto.valueOf           = to_type__valueOf;
-    momentPrototype__proto.creationData      = creationData;
+    proto.add               = add;
+    proto.calendar          = calendar$1;
+    proto.clone             = clone;
+    proto.diff              = diff;
+    proto.endOf             = endOf;
+    proto.format            = format;
+    proto.from              = from;
+    proto.fromNow           = fromNow;
+    proto.to                = to;
+    proto.toNow             = toNow;
+    proto.get               = stringGet;
+    proto.invalidAt         = invalidAt;
+    proto.isAfter           = isAfter;
+    proto.isBefore          = isBefore;
+    proto.isBetween         = isBetween;
+    proto.isSame            = isSame;
+    proto.isSameOrAfter     = isSameOrAfter;
+    proto.isSameOrBefore    = isSameOrBefore;
+    proto.isValid           = isValid$2;
+    proto.lang              = lang;
+    proto.locale            = locale;
+    proto.localeData        = localeData;
+    proto.max               = prototypeMax;
+    proto.min               = prototypeMin;
+    proto.parsingFlags      = parsingFlags;
+    proto.set               = stringSet;
+    proto.startOf           = startOf;
+    proto.subtract          = subtract;
+    proto.toArray           = toArray;
+    proto.toObject          = toObject;
+    proto.toDate            = toDate;
+    proto.toISOString       = toISOString;
+    proto.inspect           = inspect;
+    proto.toJSON            = toJSON;
+    proto.toString          = toString;
+    proto.unix              = unix;
+    proto.valueOf           = valueOf;
+    proto.creationData      = creationData;
+    proto.year       = getSetYear;
+    proto.isLeapYear = getIsLeapYear;
+    proto.weekYear    = getSetWeekYear;
+    proto.isoWeekYear = getSetISOWeekYear;
+    proto.quarter = proto.quarters = getSetQuarter;
+    proto.month       = getSetMonth;
+    proto.daysInMonth = getDaysInMonth;
+    proto.week           = proto.weeks        = getSetWeek;
+    proto.isoWeek        = proto.isoWeeks     = getSetISOWeek;
+    proto.weeksInYear    = getWeeksInYear;
+    proto.isoWeeksInYear = getISOWeeksInYear;
+    proto.date       = getSetDayOfMonth;
+    proto.day        = proto.days             = getSetDayOfWeek;
+    proto.weekday    = getSetLocaleDayOfWeek;
+    proto.isoWeekday = getSetISODayOfWeek;
+    proto.dayOfYear  = getSetDayOfYear;
+    proto.hour = proto.hours = getSetHour;
+    proto.minute = proto.minutes = getSetMinute;
+    proto.second = proto.seconds = getSetSecond;
+    proto.millisecond = proto.milliseconds = getSetMillisecond;
+    proto.utcOffset            = getSetOffset;
+    proto.utc                  = setOffsetToUTC;
+    proto.local                = setOffsetToLocal;
+    proto.parseZone            = setOffsetToParsedOffset;
+    proto.hasAlignedHourOffset = hasAlignedHourOffset;
+    proto.isDST                = isDaylightSavingTime;
+    proto.isLocal              = isLocal;
+    proto.isUtcOffset          = isUtcOffset;
+    proto.isUtc                = isUtc;
+    proto.isUTC                = isUtc;
+    proto.zoneAbbr = getZoneAbbr;
+    proto.zoneName = getZoneName;
+    proto.dates  = deprecate('dates accessor is deprecated. Use date instead.', getSetDayOfMonth);
+    proto.months = deprecate('months accessor is deprecated. Use month instead', getSetMonth);
+    proto.years  = deprecate('years accessor is deprecated. Use year instead', getSetYear);
+    proto.zone   = deprecate('moment().zone is deprecated, use moment().utcOffset instead. http://momentjs.com/guides/#/warnings/zone/', getSetZone);
+    proto.isDSTShifted = deprecate('isDSTShifted is deprecated. See http://momentjs.com/guides/#/warnings/dst-shifted/ for more information', isDaylightSavingTimeShifted);
 
-    // Year
-    momentPrototype__proto.year       = getSetYear;
-    momentPrototype__proto.isLeapYear = getIsLeapYear;
-
-    // Week Year
-    momentPrototype__proto.weekYear    = getSetWeekYear;
-    momentPrototype__proto.isoWeekYear = getSetISOWeekYear;
-
-    // Quarter
-    momentPrototype__proto.quarter = momentPrototype__proto.quarters = getSetQuarter;
-
-    // Month
-    momentPrototype__proto.month       = getSetMonth;
-    momentPrototype__proto.daysInMonth = getDaysInMonth;
-
-    // Week
-    momentPrototype__proto.week           = momentPrototype__proto.weeks        = getSetWeek;
-    momentPrototype__proto.isoWeek        = momentPrototype__proto.isoWeeks     = getSetISOWeek;
-    momentPrototype__proto.weeksInYear    = getWeeksInYear;
-    momentPrototype__proto.isoWeeksInYear = getISOWeeksInYear;
-
-    // Day
-    momentPrototype__proto.date       = getSetDayOfMonth;
-    momentPrototype__proto.day        = momentPrototype__proto.days             = getSetDayOfWeek;
-    momentPrototype__proto.weekday    = getSetLocaleDayOfWeek;
-    momentPrototype__proto.isoWeekday = getSetISODayOfWeek;
-    momentPrototype__proto.dayOfYear  = getSetDayOfYear;
-
-    // Hour
-    momentPrototype__proto.hour = momentPrototype__proto.hours = getSetHour;
-
-    // Minute
-    momentPrototype__proto.minute = momentPrototype__proto.minutes = getSetMinute;
-
-    // Second
-    momentPrototype__proto.second = momentPrototype__proto.seconds = getSetSecond;
-
-    // Millisecond
-    momentPrototype__proto.millisecond = momentPrototype__proto.milliseconds = getSetMillisecond;
-
-    // Offset
-    momentPrototype__proto.utcOffset            = getSetOffset;
-    momentPrototype__proto.utc                  = setOffsetToUTC;
-    momentPrototype__proto.local                = setOffsetToLocal;
-    momentPrototype__proto.parseZone            = setOffsetToParsedOffset;
-    momentPrototype__proto.hasAlignedHourOffset = hasAlignedHourOffset;
-    momentPrototype__proto.isDST                = isDaylightSavingTime;
-    momentPrototype__proto.isLocal              = isLocal;
-    momentPrototype__proto.isUtcOffset          = isUtcOffset;
-    momentPrototype__proto.isUtc                = isUtc;
-    momentPrototype__proto.isUTC                = isUtc;
-
-    // Timezone
-    momentPrototype__proto.zoneAbbr = getZoneAbbr;
-    momentPrototype__proto.zoneName = getZoneName;
-
-    // Deprecations
-    momentPrototype__proto.dates  = deprecate('dates accessor is deprecated. Use date instead.', getSetDayOfMonth);
-    momentPrototype__proto.months = deprecate('months accessor is deprecated. Use month instead', getSetMonth);
-    momentPrototype__proto.years  = deprecate('years accessor is deprecated. Use year instead', getSetYear);
-    momentPrototype__proto.zone   = deprecate('moment().zone is deprecated, use moment().utcOffset instead. http://momentjs.com/guides/#/warnings/zone/', getSetZone);
-    momentPrototype__proto.isDSTShifted = deprecate('isDSTShifted is deprecated. See http://momentjs.com/guides/#/warnings/dst-shifted/ for more information', isDaylightSavingTimeShifted);
-
-    var momentPrototype = momentPrototype__proto;
-
-    function moment__createUnix (input) {
-        return local__createLocal(input * 1000);
+    function createUnix (input) {
+        return createLocal(input * 1000);
     }
 
-    function moment__createInZone () {
-        return local__createLocal.apply(null, arguments).parseZone();
+    function createInZone () {
+        return createLocal.apply(null, arguments).parseZone();
     }
 
     function preParsePostFormat (string) {
         return string;
     }
 
-    var prototype__proto = Locale.prototype;
+    var proto$1 = Locale.prototype;
 
-    prototype__proto.calendar        = locale_calendar__calendar;
-    prototype__proto.longDateFormat  = longDateFormat;
-    prototype__proto.invalidDate     = invalidDate;
-    prototype__proto.ordinal         = ordinal;
-    prototype__proto.preparse        = preParsePostFormat;
-    prototype__proto.postformat      = preParsePostFormat;
-    prototype__proto.relativeTime    = relative__relativeTime;
-    prototype__proto.pastFuture      = pastFuture;
-    prototype__proto.set             = locale_set__set;
+    proto$1.calendar        = calendar;
+    proto$1.longDateFormat  = longDateFormat;
+    proto$1.invalidDate     = invalidDate;
+    proto$1.ordinal         = ordinal;
+    proto$1.preparse        = preParsePostFormat;
+    proto$1.postformat      = preParsePostFormat;
+    proto$1.relativeTime    = relativeTime;
+    proto$1.pastFuture      = pastFuture;
+    proto$1.set             = set;
 
-    // Month
-    prototype__proto.months            =        localeMonths;
-    prototype__proto.monthsShort       =        localeMonthsShort;
-    prototype__proto.monthsParse       =        localeMonthsParse;
-    prototype__proto.monthsRegex       = monthsRegex;
-    prototype__proto.monthsShortRegex  = monthsShortRegex;
+    proto$1.months            =        localeMonths;
+    proto$1.monthsShort       =        localeMonthsShort;
+    proto$1.monthsParse       =        localeMonthsParse;
+    proto$1.monthsRegex       = monthsRegex;
+    proto$1.monthsShortRegex  = monthsShortRegex;
+    proto$1.week = localeWeek;
+    proto$1.firstDayOfYear = localeFirstDayOfYear;
+    proto$1.firstDayOfWeek = localeFirstDayOfWeek;
 
-    // Week
-    prototype__proto.week = localeWeek;
-    prototype__proto.firstDayOfYear = localeFirstDayOfYear;
-    prototype__proto.firstDayOfWeek = localeFirstDayOfWeek;
+    proto$1.weekdays       =        localeWeekdays;
+    proto$1.weekdaysMin    =        localeWeekdaysMin;
+    proto$1.weekdaysShort  =        localeWeekdaysShort;
+    proto$1.weekdaysParse  =        localeWeekdaysParse;
 
-    // Day of Week
-    prototype__proto.weekdays       =        localeWeekdays;
-    prototype__proto.weekdaysMin    =        localeWeekdaysMin;
-    prototype__proto.weekdaysShort  =        localeWeekdaysShort;
-    prototype__proto.weekdaysParse  =        localeWeekdaysParse;
+    proto$1.weekdaysRegex       =        weekdaysRegex;
+    proto$1.weekdaysShortRegex  =        weekdaysShortRegex;
+    proto$1.weekdaysMinRegex    =        weekdaysMinRegex;
 
-    prototype__proto.weekdaysRegex       =        weekdaysRegex;
-    prototype__proto.weekdaysShortRegex  =        weekdaysShortRegex;
-    prototype__proto.weekdaysMinRegex    =        weekdaysMinRegex;
+    proto$1.isPM = localeIsPM;
+    proto$1.meridiem = localeMeridiem;
 
-    // Hours
-    prototype__proto.isPM = localeIsPM;
-    prototype__proto.meridiem = localeMeridiem;
-
-    function lists__get (format, index, field, setter) {
-        var locale = locale_locales__getLocale();
-        var utc = create_utc__createUTC().set(setter, index);
+    function get$1 (format, index, field, setter) {
+        var locale = getLocale();
+        var utc = createUTC().set(setter, index);
         return locale[field](utc, format);
     }
 
     function listMonthsImpl (format, index, field) {
-        if (typeof format === 'number') {
+        if (isNumber(format)) {
             index = format;
             format = undefined;
         }
@@ -17003,13 +17407,13 @@ var moment = createCommonjsModule(function (module, exports) {
         format = format || '';
 
         if (index != null) {
-            return lists__get(format, index, field, 'month');
+            return get$1(format, index, field, 'month');
         }
 
         var i;
         var out = [];
         for (i = 0; i < 12; i++) {
-            out[i] = lists__get(format, i, field, 'month');
+            out[i] = get$1(format, i, field, 'month');
         }
         return out;
     }
@@ -17024,7 +17428,7 @@ var moment = createCommonjsModule(function (module, exports) {
     // (true, fmt)
     function listWeekdaysImpl (localeSorted, format, index, field) {
         if (typeof localeSorted === 'boolean') {
-            if (typeof format === 'number') {
+            if (isNumber(format)) {
                 index = format;
                 format = undefined;
             }
@@ -17035,7 +17439,7 @@ var moment = createCommonjsModule(function (module, exports) {
             index = format;
             localeSorted = false;
 
-            if (typeof format === 'number') {
+            if (isNumber(format)) {
                 index = format;
                 format = undefined;
             }
@@ -17043,43 +17447,43 @@ var moment = createCommonjsModule(function (module, exports) {
             format = format || '';
         }
 
-        var locale = locale_locales__getLocale(),
+        var locale = getLocale(),
             shift = localeSorted ? locale._week.dow : 0;
 
         if (index != null) {
-            return lists__get(format, (index + shift) % 7, field, 'day');
+            return get$1(format, (index + shift) % 7, field, 'day');
         }
 
         var i;
         var out = [];
         for (i = 0; i < 7; i++) {
-            out[i] = lists__get(format, (i + shift) % 7, field, 'day');
+            out[i] = get$1(format, (i + shift) % 7, field, 'day');
         }
         return out;
     }
 
-    function lists__listMonths (format, index) {
+    function listMonths (format, index) {
         return listMonthsImpl(format, index, 'months');
     }
 
-    function lists__listMonthsShort (format, index) {
+    function listMonthsShort (format, index) {
         return listMonthsImpl(format, index, 'monthsShort');
     }
 
-    function lists__listWeekdays (localeSorted, format, index) {
+    function listWeekdays (localeSorted, format, index) {
         return listWeekdaysImpl(localeSorted, format, index, 'weekdays');
     }
 
-    function lists__listWeekdaysShort (localeSorted, format, index) {
+    function listWeekdaysShort (localeSorted, format, index) {
         return listWeekdaysImpl(localeSorted, format, index, 'weekdaysShort');
     }
 
-    function lists__listWeekdaysMin (localeSorted, format, index) {
+    function listWeekdaysMin (localeSorted, format, index) {
         return listWeekdaysImpl(localeSorted, format, index, 'weekdaysMin');
     }
 
-    locale_locales__getSetGlobalLocale('en', {
-        ordinalParse: /\d{1,2}(th|st|nd|rd)/,
+    getSetGlobalLocale('en', {
+        dayOfMonthOrdinalParse: /\d{1,2}(th|st|nd|rd)/,
         ordinal : function (number) {
             var b = number % 10,
                 output = (toInt(number % 100 / 10) === 1) ? 'th' :
@@ -17091,12 +17495,13 @@ var moment = createCommonjsModule(function (module, exports) {
     });
 
     // Side effect imports
-    utils_hooks__hooks.lang = deprecate('moment.lang is deprecated. Use moment.locale instead.', locale_locales__getSetGlobalLocale);
-    utils_hooks__hooks.langData = deprecate('moment.langData is deprecated. Use moment.localeData instead.', locale_locales__getLocale);
+
+    hooks.lang = deprecate('moment.lang is deprecated. Use moment.locale instead.', getSetGlobalLocale);
+    hooks.langData = deprecate('moment.langData is deprecated. Use moment.localeData instead.', getLocale);
 
     var mathAbs = Math.abs;
 
-    function duration_abs__abs () {
+    function abs () {
         var data           = this._data;
 
         this._milliseconds = mathAbs(this._milliseconds);
@@ -17113,8 +17518,8 @@ var moment = createCommonjsModule(function (module, exports) {
         return this;
     }
 
-    function duration_add_subtract__addSubtract (duration, input, value, direction) {
-        var other = create__createDuration(input, value);
+    function addSubtract$1 (duration, input, value, direction) {
+        var other = createDuration(input, value);
 
         duration._milliseconds += direction * other._milliseconds;
         duration._days         += direction * other._days;
@@ -17124,13 +17529,13 @@ var moment = createCommonjsModule(function (module, exports) {
     }
 
     // supports only 2.0-style add(1, 's') or add(duration)
-    function duration_add_subtract__add (input, value) {
-        return duration_add_subtract__addSubtract(this, input, value, 1);
+    function add$1 (input, value) {
+        return addSubtract$1(this, input, value, 1);
     }
 
     // supports only 2.0-style subtract(1, 's') or subtract(duration)
-    function duration_add_subtract__subtract (input, value) {
-        return duration_add_subtract__addSubtract(this, input, value, -1);
+    function subtract$1 (input, value) {
+        return addSubtract$1(this, input, value, -1);
     }
 
     function absCeil (number) {
@@ -17200,16 +17605,23 @@ var moment = createCommonjsModule(function (module, exports) {
     }
 
     function as (units) {
+        if (!this.isValid()) {
+            return NaN;
+        }
         var days;
         var months;
         var milliseconds = this._milliseconds;
 
         units = normalizeUnits(units);
 
-        if (units === 'month' || units === 'year') {
-            days   = this._days   + milliseconds / 864e5;
+        if (units === 'month' || units === 'quarter' || units === 'year') {
+            days = this._days + milliseconds / 864e5;
             months = this._months + daysToMonths(days);
-            return units === 'month' ? months : months / 12;
+            switch (units) {
+                case 'month':   return months;
+                case 'quarter': return months / 3;
+                case 'year':    return months / 12;
+            }
         } else {
             // handle milliseconds separately because of floating point math errors (issue #1867)
             days = this._days + Math.round(monthsToDays(this._months));
@@ -17227,7 +17639,10 @@ var moment = createCommonjsModule(function (module, exports) {
     }
 
     // TODO: Use this.as('ms')?
-    function duration_as__valueOf () {
+    function valueOf$1 () {
+        if (!this.isValid()) {
+            return NaN;
+        }
         return (
             this._milliseconds +
             this._days * 864e5 +
@@ -17249,16 +17664,21 @@ var moment = createCommonjsModule(function (module, exports) {
     var asDays         = makeAs('d');
     var asWeeks        = makeAs('w');
     var asMonths       = makeAs('M');
+    var asQuarters     = makeAs('Q');
     var asYears        = makeAs('y');
 
-    function duration_get__get (units) {
+    function clone$1 () {
+        return createDuration(this);
+    }
+
+    function get$2 (units) {
         units = normalizeUnits(units);
-        return this[units + 's']();
+        return this.isValid() ? this[units + 's']() : NaN;
     }
 
     function makeGetter(name) {
         return function () {
-            return this._data[name];
+            return this.isValid() ? this._data[name] : NaN;
         };
     }
 
@@ -17276,11 +17696,12 @@ var moment = createCommonjsModule(function (module, exports) {
 
     var round = Math.round;
     var thresholds = {
-        s: 45,  // seconds to minute
-        m: 45,  // minutes to hour
-        h: 22,  // hours to day
-        d: 26,  // days to month
-        M: 11   // months to year
+        ss: 44,         // a few seconds to seconds
+        s : 45,         // seconds to minute
+        m : 45,         // minutes to hour
+        h : 22,         // hours to day
+        d : 26,         // days to month
+        M : 11          // months to year
     };
 
     // helper function for moment.fn.from, moment.fn.fromNow, and moment.duration.fn.humanize
@@ -17288,8 +17709,8 @@ var moment = createCommonjsModule(function (module, exports) {
         return locale.relativeTime(number || 1, !!withoutSuffix, string, isFuture);
     }
 
-    function duration_humanize__relativeTime (posNegDuration, withoutSuffix, locale) {
-        var duration = create__createDuration(posNegDuration).abs();
+    function relativeTime$1 (posNegDuration, withoutSuffix, locale) {
+        var duration = createDuration(posNegDuration).abs();
         var seconds  = round(duration.as('s'));
         var minutes  = round(duration.as('m'));
         var hours    = round(duration.as('h'));
@@ -17297,16 +17718,17 @@ var moment = createCommonjsModule(function (module, exports) {
         var months   = round(duration.as('M'));
         var years    = round(duration.as('y'));
 
-        var a = seconds < thresholds.s && ['s', seconds]  ||
-                minutes <= 1           && ['m']           ||
-                minutes < thresholds.m && ['mm', minutes] ||
-                hours   <= 1           && ['h']           ||
-                hours   < thresholds.h && ['hh', hours]   ||
-                days    <= 1           && ['d']           ||
-                days    < thresholds.d && ['dd', days]    ||
-                months  <= 1           && ['M']           ||
-                months  < thresholds.M && ['MM', months]  ||
-                years   <= 1           && ['y']           || ['yy', years];
+        var a = seconds <= thresholds.ss && ['s', seconds]  ||
+                seconds < thresholds.s   && ['ss', seconds] ||
+                minutes <= 1             && ['m']           ||
+                minutes < thresholds.m   && ['mm', minutes] ||
+                hours   <= 1             && ['h']           ||
+                hours   < thresholds.h   && ['hh', hours]   ||
+                days    <= 1             && ['d']           ||
+                days    < thresholds.d   && ['dd', days]    ||
+                months  <= 1             && ['M']           ||
+                months  < thresholds.M   && ['MM', months]  ||
+                years   <= 1             && ['y']           || ['yy', years];
 
         a[2] = withoutSuffix;
         a[3] = +posNegDuration > 0;
@@ -17315,7 +17737,7 @@ var moment = createCommonjsModule(function (module, exports) {
     }
 
     // This function allows you to set the rounding function for relative time strings
-    function duration_humanize__getSetRelativeTimeRounding (roundingFunction) {
+    function getSetRelativeTimeRounding (roundingFunction) {
         if (roundingFunction === undefined) {
             return round;
         }
@@ -17327,7 +17749,7 @@ var moment = createCommonjsModule(function (module, exports) {
     }
 
     // This function allows you to set a threshold for relative time strings
-    function duration_humanize__getSetRelativeTimeThreshold (threshold, limit) {
+    function getSetRelativeTimeThreshold (threshold, limit) {
         if (thresholds[threshold] === undefined) {
             return false;
         }
@@ -17335,12 +17757,19 @@ var moment = createCommonjsModule(function (module, exports) {
             return thresholds[threshold];
         }
         thresholds[threshold] = limit;
+        if (threshold === 's') {
+            thresholds.ss = limit - 1;
+        }
         return true;
     }
 
     function humanize (withSuffix) {
+        if (!this.isValid()) {
+            return this.localeData().invalidDate();
+        }
+
         var locale = this.localeData();
-        var output = duration_humanize__relativeTime(this, !withSuffix, locale);
+        var output = relativeTime$1(this, !withSuffix, locale);
 
         if (withSuffix) {
             output = locale.pastFuture(+this, output);
@@ -17349,9 +17778,13 @@ var moment = createCommonjsModule(function (module, exports) {
         return locale.postformat(output);
     }
 
-    var iso_string__abs = Math.abs;
+    var abs$1 = Math.abs;
 
-    function iso_string__toISOString() {
+    function sign(x) {
+        return ((x > 0) - (x < 0)) || +x;
+    }
+
+    function toISOString$1() {
         // for ISO strings we do not use the normal bubbling rules:
         //  * milliseconds bubble up until they become hours
         //  * days do not bubble at all
@@ -17359,9 +17792,13 @@ var moment = createCommonjsModule(function (module, exports) {
         // This is because there is no context-free conversion between hours and days
         // (think of clock changes)
         // and also not between days and months (28-31 days per month)
-        var seconds = iso_string__abs(this._milliseconds) / 1000;
-        var days         = iso_string__abs(this._days);
-        var months       = iso_string__abs(this._months);
+        if (!this.isValid()) {
+            return this.localeData().invalidDate();
+        }
+
+        var seconds = abs$1(this._milliseconds) / 1000;
+        var days         = abs$1(this._days);
+        var months       = abs$1(this._months);
         var minutes, hours, years;
 
         // 3600 seconds -> 60 minutes -> 1 hour
@@ -17381,7 +17818,7 @@ var moment = createCommonjsModule(function (module, exports) {
         var D = days;
         var h = hours;
         var m = minutes;
-        var s = seconds;
+        var s = seconds ? seconds.toFixed(3).replace(/\.?0+$/, '') : '';
         var total = this.asSeconds();
 
         if (!total) {
@@ -17390,52 +17827,58 @@ var moment = createCommonjsModule(function (module, exports) {
             return 'P0D';
         }
 
-        return (total < 0 ? '-' : '') +
-            'P' +
-            (Y ? Y + 'Y' : '') +
-            (M ? M + 'M' : '') +
-            (D ? D + 'D' : '') +
+        var totalSign = total < 0 ? '-' : '';
+        var ymSign = sign(this._months) !== sign(total) ? '-' : '';
+        var daysSign = sign(this._days) !== sign(total) ? '-' : '';
+        var hmsSign = sign(this._milliseconds) !== sign(total) ? '-' : '';
+
+        return totalSign + 'P' +
+            (Y ? ymSign + Y + 'Y' : '') +
+            (M ? ymSign + M + 'M' : '') +
+            (D ? daysSign + D + 'D' : '') +
             ((h || m || s) ? 'T' : '') +
-            (h ? h + 'H' : '') +
-            (m ? m + 'M' : '') +
-            (s ? s + 'S' : '');
+            (h ? hmsSign + h + 'H' : '') +
+            (m ? hmsSign + m + 'M' : '') +
+            (s ? hmsSign + s + 'S' : '');
     }
 
-    var duration_prototype__proto = Duration.prototype;
+    var proto$2 = Duration.prototype;
 
-    duration_prototype__proto.abs            = duration_abs__abs;
-    duration_prototype__proto.add            = duration_add_subtract__add;
-    duration_prototype__proto.subtract       = duration_add_subtract__subtract;
-    duration_prototype__proto.as             = as;
-    duration_prototype__proto.asMilliseconds = asMilliseconds;
-    duration_prototype__proto.asSeconds      = asSeconds;
-    duration_prototype__proto.asMinutes      = asMinutes;
-    duration_prototype__proto.asHours        = asHours;
-    duration_prototype__proto.asDays         = asDays;
-    duration_prototype__proto.asWeeks        = asWeeks;
-    duration_prototype__proto.asMonths       = asMonths;
-    duration_prototype__proto.asYears        = asYears;
-    duration_prototype__proto.valueOf        = duration_as__valueOf;
-    duration_prototype__proto._bubble        = bubble;
-    duration_prototype__proto.get            = duration_get__get;
-    duration_prototype__proto.milliseconds   = milliseconds;
-    duration_prototype__proto.seconds        = seconds;
-    duration_prototype__proto.minutes        = minutes;
-    duration_prototype__proto.hours          = hours;
-    duration_prototype__proto.days           = days;
-    duration_prototype__proto.weeks          = weeks;
-    duration_prototype__proto.months         = months;
-    duration_prototype__proto.years          = years;
-    duration_prototype__proto.humanize       = humanize;
-    duration_prototype__proto.toISOString    = iso_string__toISOString;
-    duration_prototype__proto.toString       = iso_string__toISOString;
-    duration_prototype__proto.toJSON         = iso_string__toISOString;
-    duration_prototype__proto.locale         = locale;
-    duration_prototype__proto.localeData     = localeData;
+    proto$2.isValid        = isValid$1;
+    proto$2.abs            = abs;
+    proto$2.add            = add$1;
+    proto$2.subtract       = subtract$1;
+    proto$2.as             = as;
+    proto$2.asMilliseconds = asMilliseconds;
+    proto$2.asSeconds      = asSeconds;
+    proto$2.asMinutes      = asMinutes;
+    proto$2.asHours        = asHours;
+    proto$2.asDays         = asDays;
+    proto$2.asWeeks        = asWeeks;
+    proto$2.asMonths       = asMonths;
+    proto$2.asQuarters     = asQuarters;
+    proto$2.asYears        = asYears;
+    proto$2.valueOf        = valueOf$1;
+    proto$2._bubble        = bubble;
+    proto$2.clone          = clone$1;
+    proto$2.get            = get$2;
+    proto$2.milliseconds   = milliseconds;
+    proto$2.seconds        = seconds;
+    proto$2.minutes        = minutes;
+    proto$2.hours          = hours;
+    proto$2.days           = days;
+    proto$2.weeks          = weeks;
+    proto$2.months         = months;
+    proto$2.years          = years;
+    proto$2.humanize       = humanize;
+    proto$2.toISOString    = toISOString$1;
+    proto$2.toString       = toISOString$1;
+    proto$2.toJSON         = toISOString$1;
+    proto$2.locale         = locale;
+    proto$2.localeData     = localeData;
 
-    // Deprecations
-    duration_prototype__proto.toIsoString = deprecate('toIsoString() is deprecated. Please use toISOString() instead (notice the capitals)', iso_string__toISOString);
-    duration_prototype__proto.lang = lang;
+    proto$2.toIsoString = deprecate('toIsoString() is deprecated. Please use toISOString() instead (notice the capitals)', toISOString$1);
+    proto$2.lang = lang;
 
     // Side effect imports
 
@@ -17458,49 +17901,58 @@ var moment = createCommonjsModule(function (module, exports) {
     // Side effect imports
 
 
-    utils_hooks__hooks.version = '2.15.2';
+    hooks.version = '2.24.0';
 
-    setHookCallback(local__createLocal);
+    setHookCallback(createLocal);
 
-    utils_hooks__hooks.fn                    = momentPrototype;
-    utils_hooks__hooks.min                   = min;
-    utils_hooks__hooks.max                   = max;
-    utils_hooks__hooks.now                   = now;
-    utils_hooks__hooks.utc                   = create_utc__createUTC;
-    utils_hooks__hooks.unix                  = moment__createUnix;
-    utils_hooks__hooks.months                = lists__listMonths;
-    utils_hooks__hooks.isDate                = isDate;
-    utils_hooks__hooks.locale                = locale_locales__getSetGlobalLocale;
-    utils_hooks__hooks.invalid               = valid__createInvalid;
-    utils_hooks__hooks.duration              = create__createDuration;
-    utils_hooks__hooks.isMoment              = isMoment;
-    utils_hooks__hooks.weekdays              = lists__listWeekdays;
-    utils_hooks__hooks.parseZone             = moment__createInZone;
-    utils_hooks__hooks.localeData            = locale_locales__getLocale;
-    utils_hooks__hooks.isDuration            = isDuration;
-    utils_hooks__hooks.monthsShort           = lists__listMonthsShort;
-    utils_hooks__hooks.weekdaysMin           = lists__listWeekdaysMin;
-    utils_hooks__hooks.defineLocale          = defineLocale;
-    utils_hooks__hooks.updateLocale          = updateLocale;
-    utils_hooks__hooks.locales               = locale_locales__listLocales;
-    utils_hooks__hooks.weekdaysShort         = lists__listWeekdaysShort;
-    utils_hooks__hooks.normalizeUnits        = normalizeUnits;
-    utils_hooks__hooks.relativeTimeRounding = duration_humanize__getSetRelativeTimeRounding;
-    utils_hooks__hooks.relativeTimeThreshold = duration_humanize__getSetRelativeTimeThreshold;
-    utils_hooks__hooks.calendarFormat        = getCalendarFormat;
-    utils_hooks__hooks.prototype             = momentPrototype;
+    hooks.fn                    = proto;
+    hooks.min                   = min;
+    hooks.max                   = max;
+    hooks.now                   = now;
+    hooks.utc                   = createUTC;
+    hooks.unix                  = createUnix;
+    hooks.months                = listMonths;
+    hooks.isDate                = isDate;
+    hooks.locale                = getSetGlobalLocale;
+    hooks.invalid               = createInvalid;
+    hooks.duration              = createDuration;
+    hooks.isMoment              = isMoment;
+    hooks.weekdays              = listWeekdays;
+    hooks.parseZone             = createInZone;
+    hooks.localeData            = getLocale;
+    hooks.isDuration            = isDuration;
+    hooks.monthsShort           = listMonthsShort;
+    hooks.weekdaysMin           = listWeekdaysMin;
+    hooks.defineLocale          = defineLocale;
+    hooks.updateLocale          = updateLocale;
+    hooks.locales               = listLocales;
+    hooks.weekdaysShort         = listWeekdaysShort;
+    hooks.normalizeUnits        = normalizeUnits;
+    hooks.relativeTimeRounding  = getSetRelativeTimeRounding;
+    hooks.relativeTimeThreshold = getSetRelativeTimeThreshold;
+    hooks.calendarFormat        = getCalendarFormat;
+    hooks.prototype             = proto;
 
-    var _moment = utils_hooks__hooks;
+    // currently HTML5 input type only supports 24-hour formats
+    hooks.HTML5_FMT = {
+        DATETIME_LOCAL: 'YYYY-MM-DDTHH:mm',             // <input type="datetime-local" />
+        DATETIME_LOCAL_SECONDS: 'YYYY-MM-DDTHH:mm:ss',  // <input type="datetime-local" step="1" />
+        DATETIME_LOCAL_MS: 'YYYY-MM-DDTHH:mm:ss.SSS',   // <input type="datetime-local" step="0.001" />
+        DATE: 'YYYY-MM-DD',                             // <input type="date" />
+        TIME: 'HH:mm',                                  // <input type="time" />
+        TIME_SECONDS: 'HH:mm:ss',                       // <input type="time" step="1" />
+        TIME_MS: 'HH:mm:ss.SSS',                        // <input type="time" step="0.001" />
+        WEEK: 'GGGG-[W]WW',                             // <input type="week" />
+        MONTH: 'YYYY-MM'                                // <input type="month" />
+    };
 
-    return _moment;
+    return hooks;
 
-}));
+})));
 });
 
-var adapter$1 = core_adapters._date;
-
-
 var FORMATS = {
+	datetime: 'MMM D, YYYY, h:mm:ss a',
 	millisecond: 'h:mm:ss.SSS a',
 	second: 'h:mm:ss a',
 	minute: 'h:mm a',
@@ -17512,21 +17964,11 @@ var FORMATS = {
 	year: 'YYYY'
 };
 
-var PRESETS = {
-	full: 'MMM D, YYYY h:mm:ss.SSS a',
-	time: 'MMM D, YYYY h:mm:ss a',
-	date: 'MMM D, YYYY'
-};
-
-helpers_core.merge(adapter$1, moment ? {
+core_adapters._date.override(typeof moment === 'function' ? {
 	_id: 'moment', // DEBUG ONLY
 
 	formats: function() {
 		return FORMATS;
-	},
-
-	presets: function() {
-		return PRESETS;
 	},
 
 	parse: function(value, format) {
@@ -17883,7 +18325,7 @@ var plugin_filler = {
 };
 
 var noop$1 = helpers$1.noop;
-var valueOrDefault$b = helpers$1.valueOrDefault;
+var valueOrDefault$d = helpers$1.valueOrDefault;
 
 core_defaults._set('global', {
 	legend: {
@@ -17907,6 +18349,7 @@ core_defaults._set('global', {
 		},
 
 		onHover: null,
+		onLeave: null,
 
 		labels: {
 			boxWidth: 40,
@@ -17962,13 +18405,13 @@ core_defaults._set('global', {
 
 /**
  * Helper function to get the box width based on the usePointStyle option
- * @param labelopts {Object} the label options on the legend
- * @param fontSize {Number} the label font size
- * @return {Number} width of the color box area
+ * @param {object} labelopts - the label options on the legend
+ * @param {number} fontSize - the label font size
+ * @return {number} width of the color box area
  */
 function getBoxWidth(labelOpts, fontSize) {
-	return labelOpts.usePointStyle ?
-		fontSize * Math.SQRT2 :
+	return labelOpts.usePointStyle && labelOpts.boxWidth > fontSize ?
+		fontSize :
 		labelOpts.boxWidth;
 }
 
@@ -17982,6 +18425,11 @@ var Legend = core_element.extend({
 
 		// Contains hit boxes for each dataset (in dataset order)
 		this.legendHitBoxes = [];
+
+		/**
+ 		 * @private
+ 		 */
+		this._hoveredItem = null;
 
 		// Are we in doughnut mode which has a different data type
 		this.doughnutMode = false;
@@ -18205,7 +18653,7 @@ var Legend = core_element.extend({
 
 		if (opts.display) {
 			var ctx = me.ctx;
-			var fontColor = valueOrDefault$b(labelOpts.fontColor, globalDefaults.defaultFontColor);
+			var fontColor = valueOrDefault$d(labelOpts.fontColor, globalDefaults.defaultFontColor);
 			var labelFont = helpers$1.options._parseFont(labelOpts);
 			var fontSize = labelFont.size;
 			var cursor;
@@ -18230,26 +18678,25 @@ var Legend = core_element.extend({
 				// Set the ctx for the box
 				ctx.save();
 
-				var lineWidth = valueOrDefault$b(legendItem.lineWidth, lineDefault.borderWidth);
-				ctx.fillStyle = valueOrDefault$b(legendItem.fillStyle, defaultColor);
-				ctx.lineCap = valueOrDefault$b(legendItem.lineCap, lineDefault.borderCapStyle);
-				ctx.lineDashOffset = valueOrDefault$b(legendItem.lineDashOffset, lineDefault.borderDashOffset);
-				ctx.lineJoin = valueOrDefault$b(legendItem.lineJoin, lineDefault.borderJoinStyle);
+				var lineWidth = valueOrDefault$d(legendItem.lineWidth, lineDefault.borderWidth);
+				ctx.fillStyle = valueOrDefault$d(legendItem.fillStyle, defaultColor);
+				ctx.lineCap = valueOrDefault$d(legendItem.lineCap, lineDefault.borderCapStyle);
+				ctx.lineDashOffset = valueOrDefault$d(legendItem.lineDashOffset, lineDefault.borderDashOffset);
+				ctx.lineJoin = valueOrDefault$d(legendItem.lineJoin, lineDefault.borderJoinStyle);
 				ctx.lineWidth = lineWidth;
-				ctx.strokeStyle = valueOrDefault$b(legendItem.strokeStyle, defaultColor);
+				ctx.strokeStyle = valueOrDefault$d(legendItem.strokeStyle, defaultColor);
 
 				if (ctx.setLineDash) {
 					// IE 9 and 10 do not support line dash
-					ctx.setLineDash(valueOrDefault$b(legendItem.lineDash, lineDefault.borderDash));
+					ctx.setLineDash(valueOrDefault$d(legendItem.lineDash, lineDefault.borderDash));
 				}
 
 				if (opts.labels && opts.labels.usePointStyle) {
 					// Recalculate x and y for drawPoint() because its expecting
 					// x and y to be center of figure (instead of top left)
-					var radius = fontSize * Math.SQRT2 / 2;
-					var offSet = radius / Math.SQRT2;
-					var centerX = x + offSet;
-					var centerY = y + offSet;
+					var radius = boxWidth * Math.SQRT2 / 2;
+					var centerX = x + boxWidth / 2;
+					var centerY = y + fontSize / 2;
 
 					// Draw pointStyle as legend symbol
 					helpers$1.canvas.drawPoint(ctx, legendItem.pointStyle, radius, centerX, centerY);
@@ -18337,19 +18784,41 @@ var Legend = core_element.extend({
 	},
 
 	/**
+	 * @private
+	 */
+	_getLegendItemAt: function(x, y) {
+		var me = this;
+		var i, hitBox, lh;
+
+		if (x >= me.left && x <= me.right && y >= me.top && y <= me.bottom) {
+			// See if we are touching one of the dataset boxes
+			lh = me.legendHitBoxes;
+			for (i = 0; i < lh.length; ++i) {
+				hitBox = lh[i];
+
+				if (x >= hitBox.left && x <= hitBox.left + hitBox.width && y >= hitBox.top && y <= hitBox.top + hitBox.height) {
+					// Touching an element
+					return me.legendItems[i];
+				}
+			}
+		}
+
+		return null;
+	},
+
+	/**
 	 * Handle an event
 	 * @private
 	 * @param {IEvent} event - The event to handle
-	 * @return {Boolean} true if a change occured
 	 */
 	handleEvent: function(e) {
 		var me = this;
 		var opts = me.options;
 		var type = e.type === 'mouseup' ? 'click' : e.type;
-		var changed = false;
+		var hoveredItem;
 
 		if (type === 'mousemove') {
-			if (!opts.onHover) {
+			if (!opts.onHover && !opts.onLeave) {
 				return;
 			}
 		} else if (type === 'click') {
@@ -18361,33 +18830,26 @@ var Legend = core_element.extend({
 		}
 
 		// Chart event already has relative position in it
-		var x = e.x;
-		var y = e.y;
+		hoveredItem = me._getLegendItemAt(e.x, e.y);
 
-		if (x >= me.left && x <= me.right && y >= me.top && y <= me.bottom) {
-			// See if we are touching one of the dataset boxes
-			var lh = me.legendHitBoxes;
-			for (var i = 0; i < lh.length; ++i) {
-				var hitBox = lh[i];
-
-				if (x >= hitBox.left && x <= hitBox.left + hitBox.width && y >= hitBox.top && y <= hitBox.top + hitBox.height) {
-					// Touching an element
-					if (type === 'click') {
-						// use e.native for backwards compatibility
-						opts.onClick.call(me, e.native, me.legendItems[i]);
-						changed = true;
-						break;
-					} else if (type === 'mousemove') {
-						// use e.native for backwards compatibility
-						opts.onHover.call(me, e.native, me.legendItems[i]);
-						changed = true;
-						break;
-					}
+		if (type === 'click') {
+			if (hoveredItem && opts.onClick) {
+				// use e.native for backwards compatibility
+				opts.onClick.call(me, e.native, hoveredItem);
+			}
+		} else {
+			if (opts.onLeave && hoveredItem !== me._hoveredItem) {
+				if (me._hoveredItem) {
+					opts.onLeave.call(me, e.native, me._hoveredItem);
 				}
+				me._hoveredItem = hoveredItem;
+			}
+
+			if (opts.onHover && hoveredItem) {
+				// use e.native for backwards compatibility
+				opts.onHover.call(me, e.native, hoveredItem);
 			}
 		}
-
-		return changed;
 	}
 });
 
@@ -18742,12 +19204,21 @@ for (var k in plugins) {
 
 core_controller.platform.initialize();
 
-var chart = core_controller;
+var src = core_controller;
 if (typeof window !== 'undefined') {
 	window.Chart = core_controller;
 }
 
 // DEPRECATIONS
+
+/**
+ * Provided for backward compatibility, not available anymore
+ * @namespace Chart.Chart
+ * @deprecated since version 2.8.0
+ * @todo remove at version 3
+ * @private
+ */
+core_controller.Chart = core_controller;
 
 /**
  * Provided for backward compatibility, not available anymore
@@ -18838,6 +19309,6 @@ core_controller.helpers.each(
 	}
 );
 
-return chart;
+return src;
 
 })));
