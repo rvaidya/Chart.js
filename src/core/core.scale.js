@@ -171,6 +171,9 @@ module.exports = Element.extend({
 			top: 0,
 			bottom: 0
 		}, margins);
+
+		me._maxLabelLines = 0;
+		me.longestLabelWidth = 0;
 		me.longestTextCache = me.longestTextCache || {};
 
 		// Dimensions
@@ -419,20 +422,18 @@ module.exports = Element.extend({
 			}
 		}
 
-		// Don't bother fitting the ticks if we are not showing them
+		// Don't bother fitting the ticks if we are not showing the labels
 		if (tickOpts.display && display) {
 			var largestTextWidth = helpers.longestText(me.ctx, tickFont.string, labels, me.longestTextCache);
 			var tallestLabelHeightInLines = helpers.numberOfLabelLines(labels);
 			var lineSpace = tickFont.size * 0.5;
 			var tickPadding = me.options.ticks.padding;
 
-			// Store max number of lines used in labels for _autoSkip
+			// Store max number of lines and widest label for _autoSkip
 			me._maxLabelLines = tallestLabelHeightInLines;
+			me.longestLabelWidth = largestTextWidth;
 
 			if (isHorizontal) {
-				// A horizontal axis is more constrained by the height.
-				me.longestLabelWidth = largestTextWidth;
-
 				var angleRadians = helpers.toRadians(me.labelRotation);
 				var cosRotation = Math.cos(angleRadians);
 				var sinRotation = Math.sin(angleRadians);
@@ -625,31 +626,16 @@ module.exports = Element.extend({
 	 * @private
 	 */
 	_autoSkip: function(ticks) {
-		var skipRatio;
 		var me = this;
 		var isHorizontal = me.isHorizontal();
 		var optionTicks = me.options.ticks.minor;
 		var tickCount = ticks.length;
-
-		// Calculate space needed by label in axis direction.
-		var rot = helpers.toRadians(me.labelRotation);
-		var cos = Math.abs(Math.cos(rot));
-		var sin = Math.abs(Math.sin(rot));
-
-		var padding = optionTicks.autoSkipPadding;
-		var w = me.longestLabelWidth + padding || 0;
-
-		var tickFont = helpers.options._parseFont(optionTicks);
-		var h = me._maxLabelLines * tickFont.lineHeight + padding;
-
-		// Calculate space needed for 1 tick in axis direction.
-		var tickSize = isHorizontal
-			? h * cos > w * sin ? w / cos : h / sin
-			: h * sin < w * cos ? h / cos : w / sin;
+		var skipRatio = false;
+		var maxTicks = optionTicks.maxTicksLimit;
 
 		// Total space needed to display all ticks. First and last ticks are
 		// drawn as their center at end of axis, so tickCount-1
-		var ticksLength = tickSize * (tickCount - 1);
+		var ticksLength = me._tickSize() * (tickCount - 1);
 
 		// Axis length
 		var axisLength = isHorizontal
@@ -659,21 +645,13 @@ module.exports = Element.extend({
 		var result = [];
 		var i, tick;
 
-		// figure out the maximum number of gridlines to show
-		var maxTicks;
-		if (optionTicks.maxTicksLimit) {
-			maxTicks = optionTicks.maxTicksLimit;
-		}
-
-		skipRatio = false;
-
 		if (ticksLength > axisLength) {
 			skipRatio = 1 + Math.floor(ticksLength / axisLength);
 		}
 
 		// if they defined a max number of optionTicks,
 		// increase skipRatio until that number is met
-		if (maxTicks && tickCount > maxTicks) {
+		if (tickCount > maxTicks) {
 			skipRatio = Math.max(skipRatio, 1 + Math.floor(tickCount / maxTicks));
 		}
 
@@ -687,6 +665,31 @@ module.exports = Element.extend({
 			result.push(tick);
 		}
 		return result;
+	},
+
+	/**
+	 * @private
+	 */
+	_tickSize: function() {
+		var me = this;
+		var isHorizontal = me.isHorizontal();
+		var optionTicks = me.options.ticks.minor;
+
+		// Calculate space needed by label in axis direction.
+		var rot = helpers.toRadians(me.labelRotation);
+		var cos = Math.abs(Math.cos(rot));
+		var sin = Math.abs(Math.sin(rot));
+
+		var padding = optionTicks.autoSkipPadding || 0;
+		var w = (me.longestLabelWidth + padding) || 0;
+
+		var tickFont = helpers.options._parseFont(optionTicks);
+		var h = (me._maxLabelLines * tickFont.lineHeight + padding) || 0;
+
+		// Calculate space needed for 1 tick in axis direction.
+		return isHorizontal
+			? h * cos > w * sin ? w / cos : h / sin
+			: h * sin < w * cos ? h / cos : w / sin;
 	},
 
 	/**
@@ -715,8 +718,10 @@ module.exports = Element.extend({
 		return false;
 	},
 
-	// Actually draw the scale on the canvas
-	// @param {rectangle} chartArea : the area of the chart to draw full grid lines on
+	/**
+	 * Actually draw the scale on the canvas
+	 * @param {object} chartArea - the area of the chart to draw full grid lines on
+	 */
 	draw: function(chartArea) {
 		var me = this;
 		var options = me.options;
@@ -740,7 +745,7 @@ module.exports = Element.extend({
 		var isHorizontal = me.isHorizontal();
 
 		var parseFont = helpers.options._parseFont;
-		var ticks = optionTicks.autoSkip ? me._autoSkip(me.getTicks()) : me.getTicks();
+		var ticks = optionTicks.display && optionTicks.autoSkip ? me._autoSkip(me.getTicks()) : me.getTicks();
 		var tickFontColor = valueOrDefault(optionTicks.fontColor, defaultFontColor);
 		var tickFont = parseFont(optionTicks);
 		var lineHeight = tickFont.lineHeight;
